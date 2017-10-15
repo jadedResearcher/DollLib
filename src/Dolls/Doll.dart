@@ -13,6 +13,8 @@ import "DenizenDoll.dart";
 import "../Rendering/ReferenceColors.dart";
 abstract class Doll {
     String folder;
+    int width = 400;
+    int height = 300;
     int renderingType = 0;
     ///in rendering order.
     List<SpriteLayer> layers = new List<SpriteLayer>();

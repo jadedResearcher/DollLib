@@ -12,6 +12,12 @@ import "../includes/palette.dart";
 class DenizenDoll extends Doll{
   @override
   int renderingType =4;
+
+  @override
+  int width = 440;
+  @override
+  int height = 580;
+
   @override
   String folder = "images/Homestuck/Denizen";
   final int maxFace = 14; //holy shit, is tht really how many we have?
