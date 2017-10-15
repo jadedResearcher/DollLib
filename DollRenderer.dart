@@ -9,11 +9,14 @@ library DollRenderer;
 export "src/Dolls/HomestuckDoll.dart";
 export "src/Dolls/HomestuckTrollDoll.dart";
 export "src/Dolls/ConsortDoll.dart";
+export "src/Dolls/Doll.dart";
 export "src/Dolls/DenizenDoll.dart";
 export "src/Dolls/SpriteLayer.dart";
 export "src/Rendering/Renderer.dart";
 export "src/Misc/random.dart";
 export "src/Misc/weighted_lists.dart";
 export "src/Rendering/ReferenceColors.dart";
+export "src/includes/colour.dart";
+export "src/includes/palette.dart";
 
 // TODO: Export any libraries intended for clients of this package.
