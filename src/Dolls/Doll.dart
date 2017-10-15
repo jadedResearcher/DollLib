@@ -99,9 +99,18 @@ abstract class Doll {
         return BASE64URL.encode(builder.toBuffer().asUint8List());
     }
 
+    //if it's in url form, it has a ? right before the text.
+    static String removeURLFromString(String ds) {
+        List<String> ret = ds.split("?");
+        if(ret.length == 1) return ret[0];
+        return ret[1];
+    }
+
 
     /* first part of any data string tells me what type of doll to load.*/
-    static Doll loadSpecificDoll(String dataString) {
+    static Doll loadSpecificDoll(String ds) {
+        String dataString = removeURLFromString(ds);
+        print("dataString is $dataString");
         Uint8List thingy = BASE64URL.decode(dataString);
         ByteReader reader = new ByteReader(thingy.buffer, 0);
         int type = reader.readByte();
