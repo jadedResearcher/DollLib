@@ -15,14 +15,14 @@ class Renderer {
     static int imagesLoaded = 0;
 
 
-    static  Future<bool>  drawDoll(CanvasElement canvas, Doll doll, Palette source) async {
+    static  Future<bool>  drawDoll(CanvasElement canvas, Doll doll) async {
         //print("Drawing a doll");
         CanvasElement buffer = getBufferCanvas(querySelector("#doll_template"));
         for(SpriteLayer l in doll.layers) {
             bool res = await drawWhateverFuture(buffer, l.imgLocation);
         }
         //print("done drawing images");
-        swapPalette(buffer, source, doll.palette);
+        swapPalette(buffer, doll.paletteSource, doll.palette);
         copyTmpCanvasToRealCanvasAtPos(canvas, buffer, 0, 0);
     }
 

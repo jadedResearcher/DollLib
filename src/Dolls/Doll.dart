@@ -10,12 +10,15 @@ import "HomestuckDoll.dart";
 import 'HomestuckTrollDoll.dart';
 import "ConsortDoll.dart";
 import "DenizenDoll.dart";
+import "../Rendering/ReferenceColors.dart";
 abstract class Doll {
     String folder;
     int renderingType = 0;
     ///in rendering order.
     List<SpriteLayer> layers = new List<SpriteLayer>();
     Palette palette;
+
+    Palette paletteSource = ReferenceColours.SPRITE_PALETTE;
 
     void initLayers();
     void randomize() {

@@ -6,12 +6,16 @@ import "dart:typed_data";
 import 'dart:convert';
 import "../includes/bytebuilder.dart";
 import "../includes/palette.dart";
+import "../Rendering/ReferenceColors.dart";
 class ConsortDoll extends Doll {
     int maxBody = 9;
     String folder = "images/Homestuck";
 
     @override
     int renderingType =3;
+
+    @override
+    Palette paletteSource = ReferenceColours.CONSORT_PALETTE;
 
     @override
     Palette palette = new ConsortPalette()

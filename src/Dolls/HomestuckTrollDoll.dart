@@ -7,6 +7,8 @@ import 'dart:convert';
 import "../includes/bytebuilder.dart";
 import "../includes/palette.dart";
 import "../Dolls/HomestuckDoll.dart";
+import "../Rendering/ReferenceColors.dart";
+
 
 class HomestuckTrollDoll extends HomestuckDoll {
     @override
@@ -18,6 +20,9 @@ class HomestuckTrollDoll extends HomestuckDoll {
     String folder = "images/Homestuck";
 
     HomestuckTrollDoll():super();
+
+    @override
+    Palette paletteSource = ReferenceColours.TROLL_PALETTE;
 
     @override
     Palette palette = new HomestuckTrollPalette()
