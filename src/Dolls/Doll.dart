@@ -6,6 +6,10 @@ import "dart:typed_data";
 import 'dart:convert';
 import "../includes/bytebuilder.dart";
 import "../includes/palette.dart";
+import "HomestuckDoll.dart";
+import 'HomestuckTrollDoll.dart';
+import "ConsortDoll.dart";
+import "DenizenDoll.dart";
 abstract class Doll {
     String folder;
     int renderingType = 0;
@@ -40,10 +44,10 @@ abstract class Doll {
         }
     }
 
+    //i am assuming type was already read at this point. Type, Exo is required.
     void initFromReader(ByteReader reader, Palette newP) {
         initLayers();
         int numFeatures = reader.readExpGolomb();
-        int type = reader.readByte(); //not gonna use, but confirms it's homestuck
         print("I think there are ${numFeatures} features");
 
         List<String> names = new List<String>.from(palette.names);
@@ -68,8 +72,8 @@ abstract class Doll {
     String toDataBytesX([ByteBuilder builder = null]) {
         if(builder == null) builder = new ByteBuilder();
         int length = layers.length + palette.names.length + 1;//one byte for doll type
-        builder.appendExpGolomb(length); //for length
         builder.appendByte(renderingType); //value of 1 means homestuck doll
+        builder.appendExpGolomb(length); //for length
 
 
         List<String> names = new List<String>.from(palette.names);
@@ -88,6 +92,31 @@ abstract class Doll {
         }
 
         return BASE64URL.encode(builder.toBuffer().asUint8List());
+    }
+
+
+    /* first part of any data string tells me what type of doll to load.*/
+    static Doll loadSpecificDoll(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte();
+        print("type is $type");
+
+        if(type == new HomestuckDoll().renderingType) {
+            return new HomestuckDoll.fromReader(reader);
+        }
+
+        if(type == new HomestuckTrollDoll().renderingType) {
+            return new HomestuckTrollDoll.fromReader(reader);
+        }
+
+        if(type == new ConsortDoll().renderingType) {
+            return new ConsortDoll.fromReader(reader);
+        }
+
+        if(type == new DenizenDoll().renderingType) {
+            return new DenizenDoll.fromReader(reader);
+        }
     }
 
 

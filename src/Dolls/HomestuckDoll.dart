@@ -69,9 +69,11 @@ class HomestuckDoll extends Doll {
     HomestuckDoll.fromDataString(String dataString){
         Uint8List thingy = BASE64URL.decode(dataString);
         ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be off before given to initFromReader
         initFromReader(reader, new HomestuckPalette());
     }
 
+    //assumes type byte is already gone
      HomestuckDoll.fromReader(ByteReader reader){
          initFromReader(reader,new HomestuckPalette());
      }

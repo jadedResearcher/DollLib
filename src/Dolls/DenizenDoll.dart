@@ -51,7 +51,13 @@ class DenizenDoll extends Doll{
   DenizenDoll.fromDataString(String dataString){
     Uint8List thingy = BASE64URL.decode(dataString);
     ByteReader reader = new ByteReader(thingy.buffer, 0);
+    int type = reader.readByte(); //not gonna use, but needs to be gone for reader
     initFromReader(reader, new DenizenPalette());
+  }
+
+  //assumes type byte is already gone
+  DenizenDoll.fromReader(ByteReader reader){
+    initFromReader(reader,new DenizenPalette());
   }
 
   @override
