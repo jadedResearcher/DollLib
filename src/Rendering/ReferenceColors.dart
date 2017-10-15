@@ -4,7 +4,7 @@ import "../Dolls/HomestuckDoll.dart";
 import "../Dolls/HomestuckTrollDoll.dart";
 import "dart:html";
 import 'dart:async';
-import "package:DollRenderer/src/Dolls/SpriteLayer.dart";
+import "../Dolls/SpriteLayer.dart";
 import "../includes/colour.dart";
 import "../includes/palette.dart";
 import "../Misc/random.dart";
