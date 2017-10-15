@@ -17,13 +17,26 @@ class Renderer {
 
     static  Future<bool>  drawDoll(CanvasElement canvas, Doll doll) async {
         //print("Drawing a doll");
-        CanvasElement buffer = getBufferCanvas(querySelector("#doll_template"));
+        CanvasElement buffer = new CanvasElement(width: doll.width, height: doll.height);
         for(SpriteLayer l in doll.layers) {
             bool res = await drawWhateverFuture(buffer, l.imgLocation);
         }
         //print("done drawing images");
         swapPalette(buffer, doll.paletteSource, doll.palette);
+        scaleCanvasForDoll(canvas, doll);
         copyTmpCanvasToRealCanvasAtPos(canvas, buffer, 0, 0);
+    }
+
+    //the doll should fit into the canvas. use largest size
+    static scaleCanvasForDoll(CanvasElement canvas, Doll doll) {
+        double ratio = 1.0;
+        if(doll.width > doll.height) {
+            ratio = canvas.width/doll.width;
+        }else {
+            ratio = canvas.height/doll.height;
+        }
+        print("ratio is: $ratio");
+        canvas.context2D.scale(ratio, ratio);
     }
 
 
