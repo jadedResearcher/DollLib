@@ -1,81 +1,81 @@
 SBURBSim Bundle Manifest
 
-scripts/DollLib/src/scripts/DollLib/src/images/Homestuck/Body/Body1
+images/Homestuck/Body/Body1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Body/Body2
+images/Homestuck/Body/Body2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Body/Body3
+images/Homestuck/Body/Body3
 
-scripts/DollLib/src/images/Homestuck/HairBack/HairBack1
+images/Homestuck/HairBack/HairBack1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/HairBack/HairBack2
+images/Homestuck/HairBack/HairBack2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/HairBack/HairBack3
+images/Homestuck/HairBack/HairBack3
 
-scripts/DollLib/src/images/Homestuck/HairTop/HairTop1
+images/Homestuck/HairTop/HairTop1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/HairTop/HairTop2
+images/Homestuck/HairTop/HairTop2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/HairTop/HairTop3
+images/Homestuck/HairTop/HairTop3
 
-scripts/DollLib/src/images/Homestuck/LeftEye/LeftEye
+images/Homestuck/LeftEye/LeftEye
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/LeftFin/LeftFin
+images/Homestuck/LeftFin/LeftFin
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/LeftHorn/LeftHorn1
+images/Homestuck/LeftHorn/LeftHorn1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/LeftHorn/LeftHorn2
+images/Homestuck/LeftHorn/LeftHorn2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/LeftHorn/LeftHorn3
+images/Homestuck/LeftHorn/LeftHorn3
 
-scripts/DollLib/src/images/Homestuck/Mouth/Mouth
+images/Homestuck/Mouth/Mouth
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/RightEye/RightEye
+images/Homestuck/RightEye/RightEye
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/Glasses/Glasses
+images/Homestuck/Glasses/Glasses
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/Consort/Consort
+images/Homestuck/Consort/Consort
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/RightFin/RightFin
+images/Homestuck/RightFin/RightFin
 \d+.png
 
-scripts/DollLib/src/images/Homestuck/RightHorn/RightHorn1
+images/Homestuck/RightHorn/RightHorn1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/RightHorn/RightHorn2
+images/Homestuck/RightHorn/RightHorn2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/RightHorn/RightHorn3
+images/Homestuck/RightHorn/RightHorn3
 
-scripts/DollLib/src/images/Homestuck/Symbol/Symbol1
+images/Homestuck/Symbol/Symbol1
 ([0-9]|[1-2][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Symbol/Symbol2
+images/Homestuck/Symbol/Symbol2
 ([3-5][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Symbol/Symbol3
+images/Homestuck/Symbol/Symbol3
 ([6-9][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Symbol/Symbol4
+images/Homestuck/Symbol/Symbol4
 (1[0-3][0-9])\.png
 
-scripts/DollLib/src/images/Homestuck/Symbol/Symbol5
+images/Homestuck/Symbol/Symbol5
 (1[4-6][0-9])\.png
 
 
-scripts/DollLib/src/images/Homestuck/Wings/Wings
+images/Homestuck/Wings/Wings
 \d+.png
