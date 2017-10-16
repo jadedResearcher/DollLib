@@ -12,6 +12,11 @@ class ConsortDoll extends Doll {
     String folder = "images/Homestuck";
 
     @override
+    int width = 400;
+    @override
+    int height = 220;
+
+    @override
     int renderingType =3;
 
     @override
