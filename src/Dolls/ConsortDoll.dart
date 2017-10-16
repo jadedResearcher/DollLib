@@ -8,7 +8,7 @@ import "../includes/bytebuilder.dart";
 import "../includes/palette.dart";
 import "../Rendering/ReferenceColors.dart";
 class ConsortDoll extends Doll {
-    int maxBody = 9;
+    int maxBody = 10;
     String folder = "images/Homestuck";
 
     @override
