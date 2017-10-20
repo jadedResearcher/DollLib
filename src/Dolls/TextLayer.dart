@@ -12,14 +12,14 @@ class TextLayer {
     String text;
     double topLeftX;
     double topLeftY;
-    int max_width;
+    int maxWidth;
     int fontSize;
     //ctx.fillStyle = "#000000";
     Colour fontColor;
     //ctx.font = "42px Times New Roman";
     String fontName;
 
-    TextLayer(String this.text, double this.topLeftX, double this.topLeftY, {this.fontSize: 12, this.fontColor: null, this.fontName: "Times New Roman"}) {
+    TextLayer(String this.text, double this.topLeftX, double this.topLeftY, {this.maxWidth: 100, this.fontSize: 12, this.fontColor: null, this.fontName: "Times New Roman"}) {
         if(fontColor == null) {
             fontColor = new Colour(0,0,0);
         }

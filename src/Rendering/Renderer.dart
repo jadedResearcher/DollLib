@@ -252,5 +252,39 @@ class Renderer {
     }
 
 
+    //http://stackoverflow.com/questions/5026961/html5-canvas-ctx-filltext-wont-do-line-breaks
+    static int wrap_text(CanvasRenderingContext2D ctx, String text, num x, num y, num lineHeight, int maxWidth, String textAlign) {
+        if (textAlign == null) textAlign = 'center';
+        ctx.textAlign = textAlign;
+        List<String> words = text.split(' ');
+        List<String> lines = <String>[];
+        int sliceFrom = 0;
+        for (int i = 0; i < words.length; i++) {
+            String chunk = words.sublist(sliceFrom, i).join(' ');
+            bool last = i == words.length - 1;
+            bool bigger = ctx
+                .measureText(chunk)
+                .width > maxWidth;
+            if (bigger) {
+                lines.add(words.sublist(sliceFrom, i).join(' '));
+                sliceFrom = i;
+            }
+            if (last) {
+                lines.add(words.sublist(sliceFrom, words.length).join(' '));
+                sliceFrom = i;
+            }
+        }
+        num offsetY = 0.0;
+        num offsetX = 0;
+        if (textAlign == 'center') offsetX = maxWidth ~/ 2;
+        for (int i = 0; i < lines.length; i++) {
+            ctx.fillText(lines[i], x + offsetX, y + offsetY);
+            offsetY = offsetY + lineHeight;
+        }
+        //need to return how many lines i created so that whatever called me knows where to put ITS next line.;
+        return lines.length;
+    }
+
+
 }
 
