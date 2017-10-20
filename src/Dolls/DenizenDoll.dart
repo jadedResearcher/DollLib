@@ -23,10 +23,10 @@ class DenizenDoll extends Doll{
   final int maxFace = 14; //holy shit, is tht really how many we have?
   final int maxBack = 11;
   final int maxMouth =14;
-  final int maxOther = 3;
+  final int maxOther = 9;
   final int maxBody = 5;
   final int maxCore = 1;
-  final int maxEyes = 8;
+  final int maxEyes = 18;
 
   @override
   Palette palette = new DenizenPalette()
