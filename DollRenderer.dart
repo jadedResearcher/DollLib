@@ -18,5 +18,6 @@ export "src/Misc/weighted_lists.dart";
 export "src/Rendering/ReferenceColors.dart";
 export "src/includes/colour.dart";
 export "src/includes/palette.dart";
+export "src/Dolls/TextLayer.dart";
 
 // TODO: Export any libraries intended for clients of this package.
