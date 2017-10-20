@@ -28,6 +28,26 @@ class Renderer {
     }
 
     //the doll should fit into the canvas. use largest size
+    static double scaleForSize(CanvasElement canvas, int width, int height) {
+        double ratio = 1.0;
+        if(width > height) {
+            ratio = canvas.width/width;
+        }else {
+            ratio = canvas.height/height;
+        }
+        print("ratio is: $ratio");
+        return ratio;
+    }
+
+    static drawToFit(CanvasElement destination, CanvasElement source,x,y) {
+        double ratio = scaleForSize(source, destination.width, destination.height);
+        int newWidth = (source.width / ratio).floor();
+        int newHeight = (source.height / ratio).floor();
+
+        destination.context2D.drawImageScaled(source, 0,y,newWidth,newHeight);
+    }
+
+    //the doll should fit into the canvas. use largest size
     static scaleCanvasForDoll(CanvasElement canvas, Doll doll) {
         double ratio = 1.0;
         if(doll.width > doll.height) {
@@ -35,7 +55,6 @@ class Renderer {
         }else {
             ratio = canvas.height/doll.height;
         }
-        print("ratio is: $ratio");
         canvas.context2D.scale(ratio, ratio);
     }
 
