@@ -30,20 +30,21 @@ class Renderer {
     //the doll should fit into the canvas. use largest size
     static double scaleForSize(CanvasElement canvas, int width, int height) {
         double ratio = 1.0;
-        if(width > height) {
-            ratio = canvas.width/width;
+        if(width < height) {
+            ratio = width/canvas.width;
         }else {
-            ratio = canvas.height/height;
+            ratio = height/canvas.height;
         }
         print("ratio is: $ratio");
         return ratio;
     }
 
     static drawToFit(CanvasElement destination, CanvasElement source,x,y) {
+        print("Drawing to fit width: ${destination.width}, height: ${destination.height}, native width is ${source.width} by ${source.height}");
         double ratio = scaleForSize(source, destination.width, destination.height);
-        int newWidth = (source.width / ratio).floor();
-        int newHeight = (source.height / ratio).floor();
-
+        int newWidth = (source.width * ratio).floor();
+        int newHeight = (source.height * ratio).floor();
+        print("New dimensions: ${newWidth}, height: ${newHeight}");
         destination.context2D.drawImageScaled(source, 0,y,newWidth,newHeight);
     }
 
@@ -294,7 +295,7 @@ class Renderer {
     static CanvasElement cropToCoordinates(CanvasElement canvas, int leftMostX, int rightMostX, int topMostY, int bottomMostY) {
         int width = rightMostX - leftMostX;
         int height = bottomMostY - topMostY;
-        print("old width is ${canvas.width} x is $leftMostX right x is $rightMostX width is: $width, height is $height");
+        //print("old width is ${canvas.width} x is $leftMostX right x is $rightMostX width is: $width, height is $height");
         CanvasElement ret = new CanvasElement(width: width, height: height);
         ret.context2D.drawImageToRect(canvas,new Rectangle(0,0,width,height), sourceRect: new Rectangle(leftMostX,topMostY,width,height));
         return ret;
