@@ -246,12 +246,11 @@ class Renderer {
     }
 
     static CanvasElement cropToVisible(CanvasElement canvas) {
-        //TODO left most should start at width when done testing
         int leftMostX = canvas.width; //if i find a pixel with an x value smaler than this, it is now leftMostX
         int rightMostX = 0; //if i find a pixel with an x value bigger than this, it is not rightMost X
         //or is it the other way around?
-        int topMostY = 0;
-        int bottomMostY = canvas.height;
+        int topMostY = canvas.height;
+        int bottomMostY = 0;
 
         ImageData img_data = canvas.context2D.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -261,6 +260,8 @@ class Renderer {
                 if(img_data.data[i+3] != 0) {
                     if(x < leftMostX) leftMostX = x;
                     if(x > rightMostX) rightMostX = x;
+                    if(y > bottomMostY) bottomMostY = y;
+                    if(y < topMostY) topMostY = y;
                 }
             }
 
