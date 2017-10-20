@@ -67,6 +67,17 @@ class Renderer {
         ctx.putImageData(img_data, 0, 0);
     }
 
+    static void drawBG(CanvasElement canvas, Colour color1, Colour color2) {
+        CanvasRenderingContext2D ctx = canvas.getContext("2d");
+
+        CanvasGradient grd = ctx.createLinearGradient(0, 0, 170, 0);
+        grd.addColorStop(0, color1.toStyleString());
+        grd.addColorStop(1, color2.toStyleString());
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
 
     //anything not transparent becomes a shade
     static void swapColors(CanvasElement canvas, Colour newc) {
