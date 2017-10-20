@@ -30,13 +30,18 @@ class TextLayer {
 
         element = new DivElement();
         element.setInnerHtml("$name:");
+        Element formWrapper = new DivElement();
+        formWrapper.className = "textAreaElement";
+
         TextAreaElement formElement = new TextAreaElement();
         formElement.value = text;
         formElement.onChange.listen((Event e) {
             print("I felt a change in ${formElement.value}");
             text = formElement.value;
         });
-        element.append(formElement);
+
+        formWrapper.append(formElement);
+        element.append(formWrapper);
 
     }
 

@@ -67,6 +67,17 @@ class Renderer {
         ctx.putImageData(img_data, 0, 0);
     }
 
+    static void drawBGRadialWithWidth(CanvasElement canvas, num startX, num endX, num width, Colour color1, Colour color2) {
+        CanvasRenderingContext2D ctx = canvas.getContext("2d");
+
+        CanvasGradient grd = ctx.createRadialGradient(width / 2, canvas.height / 2, 5, width, canvas.height, width);
+        grd.addColorStop(0, color1.toStyleString());
+        grd.addColorStop(1, color2.toStyleString());
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(startX, 0, endX, canvas.height);
+    }
+
     static void drawBG(CanvasElement canvas, Colour color1, Colour color2) {
         CanvasRenderingContext2D ctx = canvas.getContext("2d");
 
@@ -234,6 +245,42 @@ class Renderer {
         }
     }
 
+    static CanvasElement cropToVisible(CanvasElement canvas) {
+        //TODO left most should start at width when done testing
+        int leftMostX = canvas.width; //if i find a pixel with an x value smaler than this, it is now leftMostX
+        int rightMostX = 0; //if i find a pixel with an x value bigger than this, it is not rightMost X
+        //or is it the other way around?
+        int topMostY = 0;
+        int bottomMostY = canvas.height;
+
+        ImageData img_data = canvas.context2D.getImageData(0, 0, canvas.width, canvas.height);
+
+        for(int x = 0; x<canvas.width; x ++) {
+            for(int y = 0; y<canvas.height; y++) {
+                int i = (y * canvas.width + x) * 4;
+                if(img_data.data[i+3] != 0) {
+                    if(x < leftMostX) leftMostX = x;
+                    if(x > rightMostX) rightMostX = x;
+                }
+            }
+
+        }
+
+        return cropToCoordinates(canvas, leftMostX, rightMostX, topMostY, bottomMostY);
+
+    }
+
+    //https://stackoverflow.com/questions/45866873/cropping-an-html-canvas-to-the-width-height-of-its-visible-pixels-content
+    static CanvasElement cropToCoordinates(CanvasElement canvas, int leftMostX, int rightMostX, int topMostY, int bottomMostY) {
+        int width = rightMostX - leftMostX;
+        int height = bottomMostY - topMostY;
+        print("old width is ${canvas.width} x is $leftMostX right x is $rightMostX width is: $width, height is $height");
+        CanvasElement ret = new CanvasElement(width: width, height: height);
+        ret.context2D.drawImageToRect(canvas,new Rectangle(0,0,width,height), sourceRect: new Rectangle(leftMostX,topMostY,width,height));
+        return ret;
+    }
+
+
 
     static void addImageTagLoading(url){
         ////print(url);
@@ -288,3 +335,11 @@ class Renderer {
 
 }
 
+
+class Size2D {
+    int width;
+    int height;
+
+    Size2D(int this.width, int this.height);
+
+}
