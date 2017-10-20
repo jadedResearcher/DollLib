@@ -39,13 +39,15 @@ class Renderer {
         return ratio;
     }
 
-    static drawToFit(CanvasElement destination, CanvasElement source,x,y) {
-        print("Drawing to fit width: ${destination.width}, height: ${destination.height}, native width is ${source.width} by ${source.height}");
+    static drawToFitCentered(CanvasElement destination, CanvasElement source) {
+        //print("Drawing to fit width: ${destination.width}, height: ${destination.height}, native width is ${source.width} by ${source.height}");
         double ratio = scaleForSize(source, destination.width, destination.height);
         int newWidth = (source.width * ratio).floor();
         int newHeight = (source.height * ratio).floor();
-        print("New dimensions: ${newWidth}, height: ${newHeight}");
-        destination.context2D.drawImageScaled(source, 0,y,newWidth,newHeight);
+        //doesn't look right :(
+        int x = (destination.width/2 - source.width/2).round();
+        //print("New dimensions: ${newWidth}, height: ${newHeight}");
+        destination.context2D.drawImageScaled(source, 0,0,newWidth,newHeight);
     }
 
     //the doll should fit into the canvas. use largest size
