@@ -49,12 +49,15 @@ class SylveonSheet extends CharSheet {
 
     //want to be able to get layers independantly
   @override
-  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian];
+  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle];
 
   SylveonSheet(Doll doll):super(doll) {
-        name = new TextLayer("Name",nameForDoll(),60.0,70.0, fontSize: 18);
+        name = new TextLayer("Name",nameForDoll(),60.0,70.0, fontSize: 18, maxWidth: 235);
         age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,70.0, fontSize: 18);
         guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,70.0, fontSize: 18);
+        owner = new TextLayer("Name","AuthorBot",810.0,70.0, fontSize: 18);
+        handle = new TextLayer("Handle",handleForDoll(),70.0,85.0, fontSize: 18);
+
 
 
 
