@@ -156,6 +156,17 @@ abstract class CharSheet {
     }
 
 
+    String randomClass() {
+        List<String> ret = <String>["Knight","Seer","Bard","Heir","Maid","Rogue","Page","Thief","Sylph","Witch","Prince","Mage"];
+        return rand.pickFrom(ret);
+    }
+
+    //just random shit. 4 letters, then 6 letters.
+    String randomAspect() {
+        List<String> ret = <String>["Blood","Mind","Rage","Void","Time","Heart","Breath","Light","Space","Life","Hope","Doom"];
+        return rand.pickFrom(ret);
+    }
+
 
     //just random shit. 4 letters, then 6 letters.
      String humanName() {
@@ -167,17 +178,26 @@ abstract class CharSheet {
     //just generate random vaguely pronouncable combos of 6 letters.
      String trollName()
     {
-        List<String> letters = <String>["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        WeightedList<String> letters = new WeightedList<String>();
+        letters.addAll(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w"]);
+        letters.add("x",0.5);
+        letters.add("y",0.5);
+        letters.add("z",0.5);
+        WeightedList allLetters = new WeightedList.from(letters);
+
         List<String> vowels = <String>["a","e","i","o","u"];
-        String ret = "${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(vowels)}";
+        for(String v in vowels) {
+            allLetters.add(v, 20.0);
+        }
+        String ret = "${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(allLetters)}";
         //troll name is guaranted to have a vowel p frequently so it's pronuncable. small chance of double vowel.
         for(int i = 0; i<2; i++) {
-            ret += "${rand.pickFrom(letters)}${rand.pickFrom(vowels)}";
+            ret += "${rand.pickFrom(letters)}${rand.pickFrom(allLetters)}";
         }
         //last name
-        ret += " ${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(vowels)}";
+        ret += " ${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(allLetters)}";
         for(int i = 0; i<2; i++) {
-            ret += "${rand.pickFrom(letters)}${rand.pickFrom(vowels)}";
+            ret += "${rand.pickFrom(letters)}${rand.pickFrom(allLetters)}";
         }
 
         return ret;

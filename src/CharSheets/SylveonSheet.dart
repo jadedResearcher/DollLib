@@ -49,7 +49,7 @@ class SylveonSheet extends CharSheet {
 
     //want to be able to get layers independantly
   @override
-  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs];
+  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs,className, aspect];
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
@@ -69,7 +69,7 @@ class SylveonSheet extends CharSheet {
         textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: 18);
         gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: 18);
         specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: 18);
-        ancestor = new TextLayer("Strife Specibus: ","???",832.0,lineY, fontSize: 18);
+        ancestor = new TextLayer("Ancestor: ","???",832.0,lineY, fontSize: 18);
 
         lineY = 145.0;
         heart = new TextLayer("Heart Quadrant: ",randomHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
@@ -77,6 +77,12 @@ class SylveonSheet extends CharSheet {
         lineY = 172.0;
         diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
         clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: 18, maxWidth: 235);
+
+        lineY = 728.0;
+        className = new TextLayer("Class: ",randomClass(),119.0,lineY, fontSize: 18);
+
+        lineY = 746.0;
+        aspect = new TextLayer("Aspect: ",randomAspect(),127.0,lineY, fontSize: 18);
 
 
   }
