@@ -49,7 +49,7 @@ class SylveonSheet extends CharSheet {
 
     //want to be able to get layers independantly
   @override
-  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus];
+  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs];
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
@@ -57,18 +57,57 @@ class SylveonSheet extends CharSheet {
         age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,lineY, fontSize: 18);
         guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,lineY, fontSize: 18, maxWidth: 235);
         owner = new TextLayer("Name","AuthorBot",810.0,lineY, fontSize: 18);
+
         lineY = 86.0;
         handle = new TextLayer("Handle",handleForDoll(),70.0,lineY, fontSize: 18);
         heightLayer = new TextLayer("Height","???",342.0,lineY, fontSize: 18);
         weightLayer = new TextLayer("Weight","???",413.0,lineY, fontSize: 18);
         fetchModus = new TextLayer("Fetch Modus",randomFetchModus(),564.0,lineY, fontSize: 18);
         species = new TextLayer("Species",getDollType(),824.0,lineY, fontSize: 18);
+
         lineY = 102.0;
         textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: 18);
         gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: 18);
         specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: 18);
+        ancestor = new TextLayer("Strife Specibus: ","???",832.0,lineY, fontSize: 18);
+
+        lineY = 145.0;
+        heart = new TextLayer("Heart Quadrant: ",randomHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
+        spades = new TextLayer("Spades Quadrant: ",randomNotHeart(),322.0,lineY, fontSize: 18, maxWidth: 235);
+        lineY = 172.0;
+        diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
+        clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: 18, maxWidth: 235);
+
 
   }
+
+  String randomHeart() {
+      if(rand.nextBool()) {
+        return nameForDoll();
+      }else {
+        return "";
+      }
+  }
+
+    String randomNotHeart() {
+        if(doll is HomestuckTrollDoll) {
+            return randomHeart();
+        }else {
+            return "N/A";
+        }
+    }
+
+    String randomClubs() {
+        if(doll is HomestuckTrollDoll) {
+            if(rand.nextBool()) {
+                return "${nameForDoll()} & ${nameForDoll()}";
+            }else {
+                return "";
+            }
+        }else {
+            return "N/A";
+        }
+    }
 
 
 
