@@ -49,15 +49,26 @@ abstract class CharSheet {
 
     Element makeTextLoader() {
         Element ret = new DivElement();
-        for(TextLayer tl in textLayers) {
-            ret.append(tl.element);
-        }
+
+        ButtonElement button = new ButtonElement();
+        button.setInnerHtml("Load Text");
+
+        button.onClick.listen((Event e) {
+            print("redrawing after loading text.");
+            draw();
+        });
 
         for(BarLayer bl in barLayers) {
             ret.append(bl.element);
         }
-        
-        ButtonElement button = new ButtonElement();
+
+        for(TextLayer tl in textLayers) {
+            ret.append(tl.element);
+        }
+
+
+
+        button = new ButtonElement();
         button.setInnerHtml("Load Text");
 
         button.onClick.listen((Event e) {
@@ -73,7 +84,7 @@ abstract class CharSheet {
 
     Element makeTintSelector() {
         Element ret = new DivElement();
-        ret.setInnerHtml("Card Tint: ");
+        ret.setInnerHtml("Stat Color: ");
         InputElement colorPicker = new InputElement();
         colorPicker.type = "color";
         colorPicker.value = tint.toStyleString();

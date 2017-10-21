@@ -23,6 +23,23 @@ class SylveonSheet extends CharSheet {
 
     //but what if you don't want STRANGTH?
     BarLayer strength;
+    BarLayer stamina;
+    BarLayer agility;
+    BarLayer perception;
+    BarLayer accuracy;
+    BarLayer stealth;
+    BarLayer intelligence;
+    BarLayer imagination;
+    BarLayer psionics;
+    BarLayer occultLore;
+    BarLayer tactics;
+    BarLayer weaponSkill;
+    BarLayer persuasion;
+    BarLayer willpower;
+    BarLayer empathy;
+    BarLayer intimidation;
+    BarLayer expression;
+    BarLayer performance;
 
     TextLayer name;
     TextLayer age;
@@ -56,7 +73,7 @@ class SylveonSheet extends CharSheet {
     //want to be able to get layers independantly
   @override
   List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs,className, aspect,proto1, spriteName,proto2,consorts,denizen,land];
-  List<BarLayer> get barLayers => <BarLayer>[strength];
+  List<BarLayer> get barLayers => <BarLayer>[strength,stamina,agility,perception,accuracy,stealth,intelligence,imagination,psionics,occultLore,tactics,weaponSkill,persuasion,willpower,empathy,intimidation,expression,performance];
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
@@ -84,8 +101,39 @@ class SylveonSheet extends CharSheet {
         lineY = 172.0;
         diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
         clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: 18, maxWidth: 235);
-        
-        strength = new BarLayer("Strength", "${rand.nextInt(10)}",0.0,0.0);
+
+        double leftx = 57.0;
+        double rightx= 313.0;
+
+
+        strength = new BarLayer("Strength", "${rand.nextInt(10)}",leftx,228.0);
+        stamina = new BarLayer("Stamina", "${rand.nextInt(10)}",rightx,228.0);
+
+        agility = new BarLayer("Agility", "${rand.nextInt(10)}",leftx,282.0);
+        perception = new BarLayer("Perception", "${rand.nextInt(10)}",rightx,282.0);
+
+        accuracy = new BarLayer("Accuracy", "${rand.nextInt(10)}",leftx,332.0);
+        stealth = new BarLayer("Stealth", "${rand.nextInt(10)}",rightx,332.0);
+
+        intelligence = new BarLayer("Intelligence", "${rand.nextInt(10)}",leftx,398.0);
+        imagination = new BarLayer("Imagination", "${rand.nextInt(10)}",rightx,398.0);
+
+        psionics = new BarLayer("Psionics", "${rand.nextInt(10)}",leftx,450.0);
+        occultLore = new BarLayer("Occult Lore", "${rand.nextInt(10)}",rightx,450.0);
+
+
+        tactics = new BarLayer("Tactics", "${rand.nextInt(10)}",leftx,502.0);
+        weaponSkill = new BarLayer("Weapon Skill", "${rand.nextInt(10)}",rightx,502.0);
+
+        persuasion = new BarLayer("Persuasion", "${rand.nextInt(10)}",leftx,570.0);
+        willpower = new BarLayer("Will Power", "${rand.nextInt(10)}",rightx,570.0);
+
+        empathy = new BarLayer("Empathy", "${rand.nextInt(10)}",leftx,620.0);
+        intimidation = new BarLayer("Intimidation", "${rand.nextInt(10)}",rightx,620.0);
+
+        expression = new BarLayer("Expression", "${rand.nextInt(10)}",leftx,670.0);
+        performance = new BarLayer("Performance", "${rand.nextInt(10)}",rightx,670.0);
+
 
         lineY = 728.0;
         className = new TextLayer("Class: ",randomClass(),119.0,lineY, fontSize: 18);
@@ -105,6 +153,7 @@ class SylveonSheet extends CharSheet {
         //TODO: prospit/derse selector
         //TODO come up with custom object for stats, is all parts of stat at once, value between 0 and max value.
         //auto has range selector.
+      tint = doll.associatedColor;
 
 
 
@@ -189,13 +238,17 @@ class SylveonSheet extends CharSheet {
       }
 
       CanvasElement barCanvas = new CanvasElement(width: width, height: height);
+
       for(BarLayer barLayer in barLayers) {
+          print("Going to render ${barLayer.imgLoc}");
           ImageElement image = await Loader.getResource((barLayer.imgLoc));
-            ctx.drawImage(barCanvas, barLayer.topLeftX, barLayer.topLeftY);
+          print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
+          barCanvas.context2D.drawImage(image, barLayer.topLeftX, barLayer.topLeftY);
       }
       Palette p = new CharSheetPalette()
       ..aspect_light = tint;
       Renderer.swapPalette(barCanvas,ReferenceColours.CHAR_SHEET_PALETTE, p);
+      canvas.context2D.drawImage(barCanvas,0,0);
 
       if(saveLink == null) saveLink = new AnchorElement();
       saveLink.href = canvas.toDataUrl();

@@ -19,6 +19,8 @@ class BarLayer {
 
         NumberInputElement formElement = new NumberInputElement();
         formElement.value = value;
+        formElement.max = "$maxValue";
+        formElement.min = "0";
         formElement.onChange.listen((Event e) {
             print("I felt a change in ${formElement.value}");
             value = formElement.value;
