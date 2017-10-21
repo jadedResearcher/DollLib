@@ -133,5 +133,22 @@ abstract class Doll {
         }
     }
 
+    static Doll makeRandomDoll()  {
+        Random rand = new Random();
+        Doll doll;
+        double randNum = rand.nextDouble();
+
+        if(randNum > 0.75) {
+            doll = new HomestuckDoll();
+        }else if (randNum > 0.5) {
+            doll = new HomestuckTrollDoll();
+        } else if (randNum > 0.25) {
+            doll = new ConsortDoll();
+        }else {
+            doll = new DenizenDoll();
+        }
+        return doll;
+    }
+
 
 }
