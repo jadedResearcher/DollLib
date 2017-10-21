@@ -124,6 +124,14 @@ abstract class CharSheet {
 
     }
 
+    String getDollType() {
+        if(doll is HomestuckTrollDoll) return "Troll";
+        if(doll is HomestuckDoll) return "Human";
+        if(doll is ConsortDoll) return "Consort";
+        if(doll is DenizenDoll) return "Denizen";
+        return "???";
+    }
+
     String guardianForDoll(String name) {
         if(doll is HomestuckTrollDoll) return trollLusus();
         if(doll is HomestuckDoll) return humanRelative(name);

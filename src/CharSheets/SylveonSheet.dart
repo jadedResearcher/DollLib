@@ -49,19 +49,41 @@ class SylveonSheet extends CharSheet {
 
     //want to be able to get layers independantly
   @override
-  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle];
+  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus];
 
   SylveonSheet(Doll doll):super(doll) {
-        name = new TextLayer("Name",nameForDoll(),60.0,70.0, fontSize: 18, maxWidth: 235);
-        age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,70.0, fontSize: 18);
-        guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,70.0, fontSize: 18);
-        owner = new TextLayer("Name","AuthorBot",810.0,70.0, fontSize: 18);
-        handle = new TextLayer("Handle",handleForDoll(),70.0,85.0, fontSize: 18);
-
-
-
+        double lineY = 70.0;
+        name = new TextLayer("Name",nameForDoll(),60.0,lineY, fontSize: 18, maxWidth: 235);
+        age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,lineY, fontSize: 18);
+        guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,lineY, fontSize: 18, maxWidth: 235);
+        owner = new TextLayer("Name","AuthorBot",810.0,lineY, fontSize: 18);
+        lineY = 86.0;
+        handle = new TextLayer("Handle",handleForDoll(),70.0,lineY, fontSize: 18);
+        heightLayer = new TextLayer("Height","???",342.0,lineY, fontSize: 18);
+        weightLayer = new TextLayer("Weight","???",413.0,lineY, fontSize: 18);
+        fetchModus = new TextLayer("Fetch Modus",randomFetchModus(),564.0,lineY, fontSize: 18);
+        species = new TextLayer("Species",getDollType(),824.0,lineY, fontSize: 18);
+        lineY = 102.0;
+        textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: 18);
+        gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: 18);
+        specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: 18);
 
   }
+
+
+
+  String randomFetchModus() {
+    List<String> possibilities = <String>["Video Game","Investment","EXP","Computer","Phone","Hacker","Television","Array","HashSet","Stack","Queue","Git","Wallet","Linked List","Queuestack","Tree","Hash Map","Memory","Jenga","Pictionary","Recipe","Fibonacci Heap ","Puzzle","Message in a Bottle ","Tech-Hop","Encryption","Ouija","Miracle","Chastity ","8 Ball","Scratch and Sniff","Pogs","JuJu","Sweet Bro","Purse","Meme","Cards Against Humanity","LARP"];
+    return rand.pickFrom(possibilities);
+  }
+    String randomSpecibus() {
+        WeightedList<String> modifiers = new WeightedList<String>();
+        modifiers.add("",1.0);
+        modifiers.add("1/2",0.5);
+        modifiers.add("2x",0.5);
+        List<String> possibilities = <String>["hammer","needle","sword","rifle","spoon","fork","pistol","fist","gun","fncysnta","blade","puppet","flashlight","whip","lance","sickle","claw","makeup","chainsaw","cane","club","joker","3dent","trident","wand","bat","stick","harpoon","piano","instrument","craft","grenade","sceptre","ball","aerosol","bomb","bow","broom","bust","glasses","chain","pen","cleaver","knife","dagger","dart","crowbar","fan","fireext","glove","ax","hatchet","hose","iron","ladel","pot","lamp","peppermill","paddle","oar","pipe","candlestick","wrench","tool","saw","meme","pog","marble","plunger","rake","razor","rock","scissor","scythe","shoe","shotgun","stapler","office","trophy","umbrella","vacuum","woodwind","guitar","yoyo"];
+        return "${rand.pickFrom(modifiers)}${rand.pickFrom(possibilities)}";
+    }
 
     Future<CanvasElement>  drawDoll(Doll doll) async {
         CanvasElement monsterElement = new CanvasElement(width:375, height: 480);

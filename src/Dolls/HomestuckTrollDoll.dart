@@ -144,7 +144,6 @@ class HomestuckTrollDoll extends HomestuckDoll {
         palette.add(HomestuckTrollPalette._WING1, new Colour.fromStyleString(chosenBlood), true);
         palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value/2), true);
         palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);
-
     }
 
     @override

@@ -13,6 +13,7 @@ import "DenizenDoll.dart";
 import "../Rendering/ReferenceColors.dart";
 abstract class Doll {
     String folder;
+    Colour _associatedColor;
     int width = 400;
     int height = 300;
     int renderingType = 0;
@@ -21,6 +22,17 @@ abstract class Doll {
     Palette palette;
 
     Palette paletteSource = ReferenceColours.SPRITE_PALETTE;
+
+    Colour get associatedColor {
+        if(_associatedColor == null) {
+            if(palette is HomestuckPalette || palette is HomestuckTrollPalette) {
+                _associatedColor = (palette as HomestuckPalette).aspect_light;
+            }else {
+                _associatedColor = palette.first;
+            }
+        }
+        return _associatedColor;
+    }
 
     void initLayers();
     void randomize() {
