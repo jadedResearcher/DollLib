@@ -148,6 +148,33 @@ class HomestuckDoll extends Doll {
 
 }
 
+class CharSheetPalette extends Palette {
+    static String _ASPECT_LIGHT = "aspect1";
+    Colour get aspect_light => this[_ASPECT_LIGHT];
+
+    static Colour _handleInput(Object input) {
+        if (input is Colour) {
+            return input;
+        }
+        if (input is int) {
+            return new Colour.fromHex(input, input
+                .toRadixString(16)
+                .padLeft(6, "0")
+                .length > 6);
+        }
+        if (input is String) {
+            if (input.startsWith("#")) {
+                return new Colour.fromStyleString(input);
+            } else {
+                return new Colour.fromHexString(input);
+            }
+        }
+        throw "Invalid AspectPalette input: colour must be a Colour object, a valid colour int, or valid hex string (with or without leading #)";
+    }
+
+    void set aspect_light(dynamic c) => this.add(_ASPECT_LIGHT, _handleInput(c), true);
+}
+
 /// Convenience class for getting/setting aspect palettes
 class HomestuckPalette extends Palette {
     static String _ACCENT = "accent";

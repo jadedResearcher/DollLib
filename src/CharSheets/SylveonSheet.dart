@@ -1,7 +1,10 @@
 import "../../DollRenderer.dart";
 import "CharSheet.dart";
 import 'dart:async';
+import "BarLayer.dart";
 import 'dart:html';
+import "../loader/loader.dart";
+
 /*
 Based on the char sheet by Sylveon on discord
 https://linkedsylveon.tumblr.com/
@@ -17,6 +20,9 @@ class SylveonSheet extends CharSheet {
 
     @override
     int type = 1;
+
+    //but what if you don't want STRANGTH?
+    BarLayer strength;
 
     TextLayer name;
     TextLayer age;
@@ -50,6 +56,7 @@ class SylveonSheet extends CharSheet {
     //want to be able to get layers independantly
   @override
   List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs,className, aspect,proto1, spriteName,proto2,consorts,denizen,land];
+  List<BarLayer> get barLayers => <BarLayer>[strength];
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
@@ -77,6 +84,8 @@ class SylveonSheet extends CharSheet {
         lineY = 172.0;
         diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
         clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: 18, maxWidth: 235);
+        
+        strength = new BarLayer("Strength", "${rand.nextInt(10)}",0.0,0.0);
 
         lineY = 728.0;
         className = new TextLayer("Class: ",randomClass(),119.0,lineY, fontSize: 18);
@@ -178,6 +187,15 @@ class SylveonSheet extends CharSheet {
           ctx.font = textLayer.font;
           Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
       }
+
+      CanvasElement barCanvas = new CanvasElement(width: width, height: height);
+      for(BarLayer barLayer in barLayers) {
+          ImageElement image = await Loader.getResource((barLayer.imgLoc));
+            ctx.drawImage(barCanvas, barLayer.topLeftX, barLayer.topLeftY);
+      }
+      Palette p = new CharSheetPalette()
+      ..aspect_light = tint;
+      Renderer.swapPalette(barCanvas,ReferenceColours.CHAR_SHEET_PALETTE, p);
 
       if(saveLink == null) saveLink = new AnchorElement();
       saveLink.href = canvas.toDataUrl();

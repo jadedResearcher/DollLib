@@ -1,6 +1,7 @@
 import "../../DollRenderer.dart";
 import 'dart:async';
 import 'dart:html';
+import "BarLayer.dart";
 /*
 In addition to providing a way for ppl to share and visualize their chars,
 I could use variations on this to set up chars for a particular sim.
@@ -18,6 +19,7 @@ abstract class CharSheet {
     Random rand;
     Doll doll;
     List<TextLayer> get textLayers;
+    List<BarLayer> get barLayers;
     CanvasElement canvas;
     Colour tint;
     AnchorElement saveLink;
@@ -26,6 +28,7 @@ abstract class CharSheet {
         rand = new Random();
         tint = new Colour(rand.nextInt(255),rand.nextInt(255), rand.nextInt(255));
     }
+
 
     Element makeDollLoader() {
         Element ret = new DivElement();
@@ -49,6 +52,11 @@ abstract class CharSheet {
         for(TextLayer tl in textLayers) {
             ret.append(tl.element);
         }
+
+        for(BarLayer bl in barLayers) {
+            ret.append(bl.element);
+        }
+        
         ButtonElement button = new ButtonElement();
         button.setInnerHtml("Load Text");
 

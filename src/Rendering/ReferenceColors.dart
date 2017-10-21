@@ -25,9 +25,14 @@ abstract class ReferenceColours {
     static Colour ECHELADDER = new Colour.fromHex(0x4A92F7);
     static Colour BLOOD_PUDDLE = new Colour.fromHex(0xFFFC00);
     static Colour BLOODY_FACE = new Colour.fromHex(0x440A7F);
+    static Colour SYMBOL = new Colour.fromStyleString('#FEFD49');
 
     static Colour HAIR = new Colour.fromHex(0x313131);
     static Colour HAIR_ACCESSORY = new Colour.fromHex(0x202020);
+
+    static CharSheetPalette CHAR_SHEET_PALETTE = new CharSheetPalette()
+        ..aspect_light = '#FEFD49';
+
 
     static HomestuckPalette SPRITE_PALETTE = new HomestuckPalette()
         ..aspect_light = '#FEFD49' //eyes
