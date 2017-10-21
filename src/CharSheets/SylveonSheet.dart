@@ -4,8 +4,7 @@ import 'dart:async';
 import 'dart:html';
 /*
 Based on the char sheet by Sylveon on discord
-TODO: find out how they want to be credited.
-
+https://linkedsylveon.tumblr.com/
  */
 
 class SylveonSheet extends CharSheet {
@@ -27,12 +26,12 @@ class SylveonSheet extends CharSheet {
 
   SylveonSheet(Doll doll):super(doll) {
         name = nameForDoll();
-        nameLayer = new TextLayer("Name",name,35.0,28.0, fontSize: 18);
+        nameLayer = new TextLayer("Name",name,60.0,70.0, fontSize: 18);
 
   }
 
     Future<CanvasElement>  drawDoll(Doll doll) async {
-        CanvasElement monsterElement = new CanvasElement(width: (256).round(), height: (208).round());
+        CanvasElement monsterElement = new CanvasElement(width:375, height: 480);
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);
 
@@ -46,10 +45,14 @@ class SylveonSheet extends CharSheet {
   Future<CanvasElement> draw() async {
       if(canvas == null) canvas = new CanvasElement(width: width, height: height);
       CanvasElement sheetElement = await drawSheetTemplate();
+      CanvasElement dollElement = await drawDoll(doll);
+      //Renderer.drawBG(dollElement, ReferenceColours.RED, ReferenceColours.RED);
+
 
       canvas.context2D.clearRect(0,0,width,height);
 
       canvas.context2D.drawImage(sheetElement, 0, 0);
+      canvas.context2D.drawImage(dollElement,590, 180);
 
 
       CanvasRenderingContext2D ctx = canvas.context2D;

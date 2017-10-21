@@ -126,7 +126,7 @@ abstract class CharSheet {
     //just random shit. 4 letters, then 6 letters.
      String humanName() {
          List<String> firstNames = <String>["John","Dave","Fred","Rose","Dirk","Ruby","Roxy","Romy","Jade","Jane","Jake","Jill","Jack","Dale","Burt","Bess","Beth","Jimm","Joey","Jude","Jann","Jenn","Geof", "Andy","Amii","Chris","Abby", "Abel","Adam","Alex","Anna","Bill","Brad","Buck","Carl","Chad","Cody","Dick","Rich","Dora","Ella","Evan","Emil","Eric","Erin","Finn","Glen","Greg","Hank","Hugo","Ivan","Jean","Josh","Kent","Kyle","Lars","Levi","Lois","Lola","Luke","Mark","Mary","Neal","Nora","Opal","Otto","Pete","Paul","Rosa","Ruth","Ryan","Scot","Sean","Skip","Toby","Todd","Tony","Troy","Vern","Vick","Wade","Walt","Will","Zack","Zeke","Zoey","Phil"];
-         List<String> lastNames = <String>["Cipher","Egbert","Lalonde","Harley","Crocker","Roberts","Brockman","Stephenson","Fox","McClure","Baker","Wilson","Parker","White"];
+         List<String> lastNames = <String>["English","Cipher","Egbert","Lalonde","Harley","Crocker","Roberts","Brockman","Stephenson","Fox","McClure","Baker","Wilson","Parker","White"];
         return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
     }
 
