@@ -18,15 +18,45 @@ class SylveonSheet extends CharSheet {
     @override
     int type = 1;
 
-    String name;
-    TextLayer nameLayer;
+    TextLayer name;
+    TextLayer age;
+    TextLayer guardian;
+    TextLayer owner;
+    TextLayer handle;
+    TextLayer heightLayer;
+    TextLayer weight;
+    TextLayer fetchModus;
+    TextLayer species;
+    TextLayer textColor;
+    TextLayer gender;
+    TextLayer specibus;
+    TextLayer ancestor;
+    TextLayer weightLayer;
+    TextLayer heart;
+    TextLayer diamonds;
+    TextLayer clubs;
+    TextLayer spades;
+    TextLayer className;
+    TextLayer aspect;
+    TextLayer spriteName;
+    TextLayer proto1;
+    TextLayer proto2;
+    TextLayer consorts;
+    TextLayer denizen;
+    TextLayer land;
+    //TODO checkboxes for prospit and derse (can pick both)
+    //TODO drop range selectors for stats
 
+    //want to be able to get layers independantly
   @override
-  List<TextLayer> get textLayers => <TextLayer>[nameLayer];
+  List<TextLayer> get textLayers => <TextLayer>[name,age,guardian];
 
   SylveonSheet(Doll doll):super(doll) {
-        name = nameForDoll();
-        nameLayer = new TextLayer("Name",name,60.0,70.0, fontSize: 18);
+        name = new TextLayer("Name",nameForDoll(),60.0,70.0, fontSize: 18);
+        age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,70.0, fontSize: 18);
+        guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,70.0, fontSize: 18);
+
+
 
   }
 

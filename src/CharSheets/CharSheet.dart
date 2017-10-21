@@ -117,11 +117,30 @@ abstract class CharSheet {
         throw("ABSTRACT DOESNT DO THIS");
     }
 
+    String guardianForDoll(String name) {
+        if(doll is HomestuckTrollDoll) return trollLusus();
+        if(doll is HomestuckDoll) return humanRelative(name);
+        return randomAsFuckName();
+    }
     String nameForDoll() {
         if(doll is HomestuckTrollDoll) return trollName();
         if(doll is HomestuckDoll) return humanName();
         return randomAsFuckName();
     }
+
+    String trollLusus() {
+        List<String> firstNames = <String>["Ram","Nut","Thief","March","Feather","Slither","Claw","Tooth","Swim","Meow","Woof","Sand","Mud","Water","Hoof","Muscle","Rage","Dig","Waddle","Run"];
+        List<String> lastNames = <String>["Creature","Beast","Bug"];
+        return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
+    }
+
+    String humanRelative(String name) {
+        List<String> titles = <String>["Mom","Dad","Pa","Grandpa","Grandma","Mother","Father","Bro","Sis","Aunt","Uncle","Cousin","Poppop", "Pop","Daddy","Mommy","Aunty"];
+        List<String> names = name.split(" ");
+        return "${rand.pickFrom(titles)} ${names[1]}";
+    }
+
+
 
     //just random shit. 4 letters, then 6 letters.
      String humanName() {
