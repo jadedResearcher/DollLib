@@ -13,6 +13,9 @@ TODO: Worry about this in the future.
 abstract class CharSheet {
     //actual image name of sheet should be type num.
     String folder = "images/CharSheets";
+    String fontName = "Courier New";
+    String emphasis = "bold";
+    int fontSize = 14;
     int type = 0;
     int width = 0;
     int height = 0;

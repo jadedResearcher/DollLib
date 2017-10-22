@@ -79,30 +79,30 @@ class SylveonSheet extends CharSheet {
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
-        name = new TextLayer("Name",nameForDoll(),60.0,lineY, fontSize: 18, maxWidth: 235);
-        age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,lineY, fontSize: 18);
-        guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,lineY, fontSize: 18, maxWidth: 235);
-        owner = new TextLayer("creator","AuthorBot",810.0,lineY, fontSize: 18);
+        name = new TextLayer("Name",nameForDoll(),60.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
+        age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
+        owner = new TextLayer("creator","AuthorBot",810.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 
         lineY = 86.0;
-        handle = new TextLayer("Handle",handleForDoll(),70.0,lineY, fontSize: 18);
-        heightLayer = new TextLayer("Height","???",342.0,lineY, fontSize: 18);
-        weightLayer = new TextLayer("Weight","???",413.0,lineY, fontSize: 18);
-        fetchModus = new TextLayer("Fetch Modus",randomFetchModus(),564.0,lineY, fontSize: 18);
-        species = new TextLayer("Species",getDollType(),824.0,lineY, fontSize: 18);
+        handle = new TextLayer("Handle",handleForDoll(),70.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        heightLayer = new TextLayer("Height","???",342.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        weightLayer = new TextLayer("Weight","???",413.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        fetchModus = new TextLayer("Fetch Modus",randomFetchModus(),564.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        species = new TextLayer("Species",getDollType(),824.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 
         lineY = 102.0;
-        textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: 18);
-        gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: 18);
-        specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: 18);
-        ancestor = new TextLayer("Ancestor: ","???",832.0,lineY, fontSize: 18);
+        textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        ancestor = new TextLayer("Ancestor: ","???",832.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 
         lineY = 145.0;
-        heart = new TextLayer("Heart Quadrant: ",randomHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
-        spades = new TextLayer("Spades Quadrant: ",randomNotHeart(),322.0,lineY, fontSize: 18, maxWidth: 235);
+        heart = new TextLayer("Heart Quadrant: ",randomHeart(),48.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
+        spades = new TextLayer("Spades Quadrant: ",randomNotHeart(),322.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
         lineY = 172.0;
-        diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: 18, maxWidth: 235);
-        clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: 18, maxWidth: 235);
+        diamonds = new TextLayer("Diamond Quadrant: ",randomNotHeart(),48.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
+        clubs = new TextLayer("Club Quadrant: ",randomClubs(),322.0,lineY, fontSize: fontSize, maxWidth: 235, fontName: fontName, emphasis: emphasis);
 
         double leftx = 57.0;
         double rightx= 313.0;
@@ -138,14 +138,14 @@ class SylveonSheet extends CharSheet {
 
 
         lineY = 728.0;
-        className = new TextLayer("Class: ",randomClass(),119.0,lineY, fontSize: 18);
-        spriteName = new TextLayer("SpriteName: ","???",334.0,lineY, fontSize: 18);
+        className = new TextLayer("Class: ",randomClass(),119.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        spriteName = new TextLayer("SpriteName: ","???",334.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 
         lineY = 746.0;
-        aspect = new TextLayer("Aspect: ",randomAspect(),127.0,lineY, fontSize: 18);
-        proto1 = new TextLayer("Prototype1: ","???",335.0,lineY, fontSize: 18);
-        proto2 = new TextLayer("Prototype2: ","???",335.0,762.0, fontSize: 18);
-        consorts = new TextLayer("Consorts: ","???",312.0,778.0, fontSize: 18);
+        aspect = new TextLayer("Aspect: ",randomAspect(),127.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        proto1 = new TextLayer("Prototype1: ","???",335.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        proto2 = new TextLayer("Prototype2: ","???",335.0,762.0, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        consorts = new TextLayer("Consorts: ","???",312.0,778.0, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 
         bool moon = rand.nextBool();
         prospit = new CheckLayer("Prospit", "${moon ? 0:1}",89.0,749.0);
@@ -153,8 +153,8 @@ class SylveonSheet extends CharSheet {
 
 
         lineY = 794.0;
-        land = new TextLayer("Land: ","???",142.0,lineY, fontSize: 18);
-        denizen = new TextLayer("Denizen: ","???",413.0,lineY, fontSize: 18);
+        land = new TextLayer("Land: ","???",142.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        denizen = new TextLayer("Denizen: ","???",413.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
         tint = doll.associatedColor;
   }
 
