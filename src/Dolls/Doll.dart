@@ -151,12 +151,16 @@ abstract class Doll {
         double randNum = rand.nextDouble();
 
         if(randNum > 0.75) {
+            print('kid doll');
             doll = new HomestuckDoll();
         }else if (randNum > 0.5) {
+            print("troll doll");
             doll = new HomestuckTrollDoll();
         } else if (randNum > 0.25) {
+            print("consort doll");
             doll = new ConsortDoll();
         }else {
+            print("denizen doll");
             doll = new DenizenDoll();
         }
         //doll = new HomestuckTrollDoll(); //hardcoded for testing
