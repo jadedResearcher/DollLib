@@ -155,14 +155,7 @@ class SylveonSheet extends CharSheet {
         lineY = 794.0;
         land = new TextLayer("Land: ","???",142.0,lineY, fontSize: 18);
         denizen = new TextLayer("Denizen: ","???",413.0,lineY, fontSize: 18);
-
-        //TODO symbol in symbol box
-      tint = doll.associatedColor;
-
-
-
-
-
+        tint = doll.associatedColor;
   }
 
   String randomHeart() {
@@ -219,11 +212,35 @@ class SylveonSheet extends CharSheet {
         return monsterElement;
     }
 
+    Future<CanvasElement> drawSymbol() async {
+        CanvasElement cardElement = new CanvasElement(width: width, height: height);
+
+        for(SpriteLayer layer in doll.layers) {
+            if(layer.imgNameBase.contains("Symbol")) {
+               // print("found a symbol ${layer.imgLocation}");
+                await Renderer.drawWhateverFuture(cardElement, layer.imgLocation);
+                Renderer.swapPalette(cardElement, doll.paletteSource, doll.palette);
+            }
+        }
+        cardElement = Renderer.cropToVisible(cardElement);
+        //Renderer.drawBG(cardElement, ReferenceColours.RED, ReferenceColours.RED);
+        CanvasElement ret = new CanvasElement(width: 66, height: 66);
+
+        //print("after cropping card element is ${cardElement.width} by ${cardElement.height}");
+
+        Renderer.drawToFitCentered(ret, cardElement);
+
+        return ret;
+    }
+
+
+
   @override
   Future<CanvasElement> draw() async {
       if(canvas == null) canvas = new CanvasElement(width: width, height: height);
       CanvasElement sheetElement = await drawSheetTemplate();
       CanvasElement dollElement = await drawDoll(doll);
+      CanvasElement symbolElement = await drawSymbol();
       //Renderer.drawBG(dollElement, ReferenceColours.RED, ReferenceColours.RED);
 
 
@@ -231,6 +248,7 @@ class SylveonSheet extends CharSheet {
 
       canvas.context2D.drawImage(sheetElement, 0, 0);
       canvas.context2D.drawImage(dollElement,590, 180);
+      canvas.context2D.drawImage(symbolElement,582, 702);
 
 
       CanvasRenderingContext2D ctx = canvas.context2D;
@@ -244,9 +262,9 @@ class SylveonSheet extends CharSheet {
       CanvasElement barCanvas = new CanvasElement(width: width, height: height);
 
       for(BarLayer barLayer in barLayers) {
-          print("Going to render ${barLayer.imgLoc}");
+          //print("Going to render ${barLayer.imgLoc}");
           ImageElement image = await Loader.getResource((barLayer.imgLoc));
-          print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
+          //print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
           barCanvas.context2D.drawImage(image, barLayer.topLeftX, barLayer.topLeftY);
       }
       Palette p = new CharSheetPalette()

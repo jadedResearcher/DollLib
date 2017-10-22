@@ -159,7 +159,7 @@ abstract class Doll {
         }else {
             doll = new DenizenDoll();
         }
-        //doll = new HomestuckTrollDoll(); //hardcoded for testing
+        doll = new HomestuckTrollDoll(); //hardcoded for testing
         return doll;
     }
 
