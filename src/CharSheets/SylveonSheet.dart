@@ -82,7 +82,7 @@ class SylveonSheet extends CharSheet {
         name = new TextLayer("Name",nameForDoll(),60.0,lineY, fontSize: 18, maxWidth: 235);
         age = new TextLayer("Age","${rand.nextInt(7)+3}",350.0,lineY, fontSize: 18);
         guardian = new TextLayer("Age",guardianForDoll(name.text),540.0,lineY, fontSize: 18, maxWidth: 235);
-        owner = new TextLayer("Name","AuthorBot",810.0,lineY, fontSize: 18);
+        owner = new TextLayer("creator","AuthorBot",810.0,lineY, fontSize: 18);
 
         lineY = 86.0;
         handle = new TextLayer("Handle",handleForDoll(),70.0,lineY, fontSize: 18);

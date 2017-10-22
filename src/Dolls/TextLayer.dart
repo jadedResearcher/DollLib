@@ -29,8 +29,9 @@ class TextLayer {
         }
 
         element = new DivElement();
-        element.setInnerHtml("$name:");
         Element formWrapper = new DivElement();
+        formWrapper.setInnerHtml("$name:");
+
         formWrapper.className = "textAreaElement";
 
         TextAreaElement formElement = new TextAreaElement();
@@ -40,8 +41,9 @@ class TextLayer {
             text = formElement.value;
         });
 
-        formWrapper.append(formElement);
+
         element.append(formWrapper);
+        element.append(formElement);
 
     }
 

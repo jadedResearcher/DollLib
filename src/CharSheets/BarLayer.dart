@@ -13,9 +13,10 @@ class BarLayer {
     String get imgLoc => "$folder/$barName${value}.png";
     BarLayer(this.name, this.value, this.topLeftX, this.topLeftY, [this.maxValue]) {
         element = new DivElement();
-        element.setInnerHtml("$name:");
         Element formWrapper = new DivElement();
         formWrapper.className = "textAreaElement";
+        formWrapper.setInnerHtml("$name:");
+
 
         NumberInputElement formElement = new NumberInputElement();
         formElement.value = value;
@@ -26,8 +27,9 @@ class BarLayer {
             value = formElement.value;
         });
 
-        formWrapper.append(formElement);
         element.append(formWrapper);
+
+        element.append(formElement);
     }
 }
 
