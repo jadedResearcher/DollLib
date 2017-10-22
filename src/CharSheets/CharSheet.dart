@@ -224,10 +224,18 @@ abstract class CharSheet {
     }
 
     String randomAsFuckName() {
-        List<String> firstNames = <String>["Nic","Lil","Liv","Charles","Meowsers","Casey","Fred","Kid","Meowgon","Fluffy","Meredith","Bill","Ted","Frank","Flan","Squeezykins"];
-        List<String> lastNames = <String>["Cage","Sebastion","Taylor","Dutton","von Wigglebottom","von Salamancer","Savage","Rock","Spangler","Fluffybutton","the Third, esquire.","S Preston","Logan","the Shippest","Clowder","Squeezykins","Boi"];
+        List<String> titles = <String> ["Captain","Baron","The Esteemed","Mr.","Mrs.","Mdms.","Count","Countess","Clerk","President","Pounceler","Counciler","Minister","Ambassador","Admiral", "Rear Admiral","Commander","Dr.","Sir"];
+        List<String> firstNames = <String>["Bubbles","Nic","Lil","Liv","Charles","Meowsers","Casey","Fred","Kid","Meowgon","Fluffy","Meredith","Bill","Ted","Frank","Flan","Squeezykins","Spot","Squeakems","Hissy","Scaley","Glubglub","Mutie","Clattersworth","Bonebone","Nibbles","Fossilbee","Skulligan","Jack","Nigel","Dazzle","Fancy","Pounce"];
+        List<String> lastNames = <String>["Cage","Sebastion","Taylor","Dutton","von Wigglebottom","von Salamancer","Savage","Rock","Spangler","Fluffybutton","the Third, esquire.","S Preston","Logan","the Shippest","Clowder","Squeezykins","Boi","Oldington the Third","Malone","Ribs","Noir","Sandwich"];
+        double randNum = rand.nextDouble();
+        if(randNum > .6) {
+            return "${rand.pickFrom(titles)} ${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
 
-        return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
+        }else if (randNum > .3) {
+            return "${rand.pickFrom(titles)} ${rand.pickFrom(lastNames)}";
+        }else {
+            return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
+        }
     }
 
 
