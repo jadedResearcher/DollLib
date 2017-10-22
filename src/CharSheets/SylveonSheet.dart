@@ -212,6 +212,30 @@ class SylveonSheet extends CharSheet {
         return monsterElement;
     }
 
+    Future<CanvasElement>  drawText() async {
+      CanvasElement tmp = new CanvasElement(width: width, height: height);
+      CanvasRenderingContext2D ctx = tmp.context2D;
+      for(TextLayer textLayer in textLayers) {
+          ctx.fillStyle = textLayer.fillStyle;
+          ctx.font = textLayer.font;
+          Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
+      }
+
+      CanvasElement barCanvas = new CanvasElement(width: width, height: height);
+
+      for(BarLayer barLayer in barLayers) {
+          //print("Going to render ${barLayer.imgLoc}");
+          ImageElement image = await Loader.getResource((barLayer.imgLoc));
+          //print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
+          barCanvas.context2D.drawImage(image, barLayer.topLeftX, barLayer.topLeftY);
+      }
+      Palette p = new CharSheetPalette()
+      ..aspect_light = tint;
+      Renderer.swapPalette(barCanvas,ReferenceColours.CHAR_SHEET_PALETTE, p);
+      tmp.context2D.drawImage(barCanvas,0,0);
+      return tmp;
+    }
+
     Future<CanvasElement> drawSymbol() async {
         CanvasElement cardElement = new CanvasElement(width: width, height: height);
 
@@ -245,36 +269,16 @@ class SylveonSheet extends CharSheet {
       CanvasElement sheetElement = await drawSheetTemplate();
       CanvasElement dollElement = await drawDoll(doll);
       CanvasElement symbolElement = await drawSymbol();
+      CanvasElement textCanvas = await drawText();
       //Renderer.drawBG(dollElement, ReferenceColours.RED, ReferenceColours.RED);
 
 
       canvas.context2D.clearRect(0,0,width,height);
 
       canvas.context2D.drawImage(sheetElement, 0, 0);
+      canvas.context2D.drawImage(textCanvas, 0, 0);
       canvas.context2D.drawImage(dollElement,590, 180);
       if(symbolElement != null) canvas.context2D.drawImage(symbolElement,582, 702);
-
-
-      CanvasRenderingContext2D ctx = canvas.context2D;
-
-      for(TextLayer textLayer in textLayers) {
-          ctx.fillStyle = textLayer.fillStyle;
-          ctx.font = textLayer.font;
-          Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
-      }
-
-      CanvasElement barCanvas = new CanvasElement(width: width, height: height);
-
-      for(BarLayer barLayer in barLayers) {
-          //print("Going to render ${barLayer.imgLoc}");
-          ImageElement image = await Loader.getResource((barLayer.imgLoc));
-          //print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
-          barCanvas.context2D.drawImage(image, barLayer.topLeftX, barLayer.topLeftY);
-      }
-      Palette p = new CharSheetPalette()
-      ..aspect_light = tint;
-      Renderer.swapPalette(barCanvas,ReferenceColours.CHAR_SHEET_PALETTE, p);
-      canvas.context2D.drawImage(barCanvas,0,0);
 
       if(saveLink == null) saveLink = new AnchorElement();
       saveLink.href = canvas.toDataUrl();

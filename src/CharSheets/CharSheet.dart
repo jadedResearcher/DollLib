@@ -132,7 +132,6 @@ abstract class CharSheet {
 
 
 
-
     Future<CanvasElement> draw() async {
         throw("ABSTRACT DOESNT DO THIS");
     }
