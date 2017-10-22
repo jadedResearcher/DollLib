@@ -13,7 +13,7 @@ import "../Rendering/ReferenceColors.dart";
 class HomestuckTrollDoll extends HomestuckDoll {
     @override
     int renderingType =2;
-    int maxHorn = 97;
+    int maxHorn = 101;
     int maxFin = 1;
     int maxWing = 13;
     @override
