@@ -30,3 +30,13 @@ class BarLayer {
         element.append(formWrapper);
     }
 }
+
+class CheckLayer extends BarLayer {
+    @override
+    int maxValue = 1;
+    String barName = "check";
+  CheckLayer(String name, String value, double topLeftX, double topLeftY) : super(name, value, topLeftX, topLeftY);
+
+
+
+}

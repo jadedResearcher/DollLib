@@ -57,6 +57,7 @@ abstract class CharSheet {
             print("redrawing after loading text.");
             draw();
         });
+        ret.append(button);
 
         for(BarLayer bl in barLayers) {
             ret.append(bl.element);

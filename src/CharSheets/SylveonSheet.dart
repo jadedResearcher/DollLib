@@ -40,6 +40,8 @@ class SylveonSheet extends CharSheet {
     BarLayer intimidation;
     BarLayer expression;
     BarLayer performance;
+    CheckLayer prospit;
+    CheckLayer derse;
 
     TextLayer name;
     TextLayer age;
@@ -73,7 +75,7 @@ class SylveonSheet extends CharSheet {
     //want to be able to get layers independantly
   @override
   List<TextLayer> get textLayers => <TextLayer>[name,age,guardian,owner,handle, heightLayer, weightLayer,fetchModus,species,textColor,gender,specibus,ancestor,heart, spades, diamonds, clubs,className, aspect,proto1, spriteName,proto2,consorts,denizen,land];
-  List<BarLayer> get barLayers => <BarLayer>[strength,stamina,agility,perception,accuracy,stealth,intelligence,imagination,psionics,occultLore,tactics,weaponSkill,persuasion,willpower,empathy,intimidation,expression,performance];
+  List<BarLayer> get barLayers => <BarLayer>[strength,stamina,agility,perception,accuracy,stealth,intelligence,imagination,psionics,occultLore,tactics,weaponSkill,persuasion,willpower,empathy,intimidation,expression,performance,prospit,derse];
 
   SylveonSheet(Doll doll):super(doll) {
         double lineY = 70.0;
@@ -145,14 +147,16 @@ class SylveonSheet extends CharSheet {
         proto2 = new TextLayer("Prototype2: ","???",335.0,762.0, fontSize: 18);
         consorts = new TextLayer("Consorts: ","???",312.0,778.0, fontSize: 18);
 
+        bool moon = rand.nextBool();
+        prospit = new CheckLayer("Prospit", "${moon ? 0:1}",89.0,749.0);
+        derse = new CheckLayer("Derse", "${moon ? 1:0}",89.0,766.0);
+
+
         lineY = 794.0;
         land = new TextLayer("Land: ","???",142.0,lineY, fontSize: 18);
         denizen = new TextLayer("Denizen: ","???",413.0,lineY, fontSize: 18);
 
         //TODO symbol in symbol box
-        //TODO: prospit/derse selector
-        //TODO come up with custom object for stats, is all parts of stat at once, value between 0 and max value.
-        //auto has range selector.
       tint = doll.associatedColor;
 
 
