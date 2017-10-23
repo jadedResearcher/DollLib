@@ -14,7 +14,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
     @override
     int renderingType =2;
     int maxHorn = 101;
-    int maxFin = 1;
+    int maxFin = 2;
     int maxWing = 13;
     @override
     String folder = "images/Homestuck";
