@@ -52,7 +52,7 @@ class Renderer {
         //4 byte color array
 
         for (int i = 0; i < img_data.data.length; i += 4) {
-            if (img_data.data[i + 3] > 50) {
+            if (img_data.data[i + 3] > 0) {
                 num brightness = 0.34 * img_data.data[i] + 0.5 * img_data.data[i + 1] + 0.16 * img_data.data[i + 2];
                 int b = 5+(brightness/10).round();
                 img_data.data[i] = b;
