@@ -7,6 +7,8 @@ import "../Dolls/SpriteLayer.dart";
 import "../includes/colour.dart";
 import "../includes/palette.dart";
 import "../Misc/random.dart";
+import "dart:math" as Math;
+
 import "../loader/loader.dart";
 import "../Dolls/ConsortDoll.dart";
 
@@ -22,10 +24,97 @@ class Renderer {
             bool res = await drawWhateverFuture(buffer, l.imgLocation);
         }
         //print("done drawing images");
+
         swapPalette(buffer, doll.paletteSource, doll.palette);
         scaleCanvasForDoll(canvas, doll);
         copyTmpCanvasToRealCanvasAtPos(canvas, buffer, 0, 0);
+
     }
+
+    static  Future<bool>  drawDollEmbossed(CanvasElement canvas, Doll doll) async {
+        //print("Drawing a doll");
+        CanvasElement buffer = new CanvasElement(width: doll.width, height: doll.height);
+        for(SpriteLayer l in doll.layers) {
+            bool res = await drawWhateverFuture(buffer, l.imgLocation);
+        }
+        //print("done drawing images");
+
+        grayscale(buffer);
+        emboss(buffer);
+        scaleCanvasForDoll(canvas, doll);
+        copyTmpCanvasToRealCanvasAtPos(canvas, buffer, 0, 0);
+
+    }
+
+    static void grayscale(CanvasElement canvas) {
+        CanvasRenderingContext2D ctx = canvas.context2D;
+        ImageData img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        //4 byte color array
+
+        for (int i = 0; i < img_data.data.length; i += 4) {
+            if (img_data.data[i + 3] > 50) {
+                num brightness = 0.34 * img_data.data[i] + 0.5 * img_data.data[i + 1] + 0.16 * img_data.data[i + 2];
+                int b = 5+(brightness/10).round();
+                img_data.data[i] = b;
+                img_data.data[i+1] = b;
+                img_data.data[i+2] = b;
+            }
+        }
+        ctx.putImageData(img_data, 0, 0);
+
+    }
+
+    static void emboss(CanvasElement canvas) {
+        bool opaque = false;
+        CanvasRenderingContext2D ctx = canvas.getContext('2d');
+        ImageData pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        List<int> weights = <int>[ -3, 2, 0, -3, 2, 2, 0, 2, 3];
+        int side = (Math.sqrt(weights.length)).round();
+        int halfSide = (side ~/ 2);
+        List<int> src = pixels.data;
+        int sw = pixels.width;
+        int sh = pixels.height;
+        // pad output by the convolution matrix
+        int w = sw;
+        int h = sh;
+        ImageData output = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        List<int> dst = output.data;
+        // go through the destination image pixels
+        int alphaFac = opaque ? 1 : 0;
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                int sy = y;
+                int sx = x;
+                int dstOff = (y * w + x) * 4;
+                // calculate the weighed sum of the source image pixels that
+                // fall under the convolution matrix
+                int r = 0,
+                    g = 0,
+                    b = 0,
+                    a = 0;
+                for (int cy = 0; cy < side; cy++) {
+                    for (int cx = 0; cx < side; cx++) {
+                        int scy = sy + cy - halfSide;
+                        int scx = sx + cx - halfSide;
+                        if (scy >= 0 && scy < sh && scx >= 0 && scx < sw) {
+                            int srcOff = (scy * sw + scx) * 4;
+                            int wt = weights[cy * side + cx];
+                            r += src[srcOff] * wt;
+                            g += src[srcOff + 1] * wt;
+                            b += src[srcOff + 2] * wt;
+                            a += src[srcOff + 3] * wt;
+                        }
+                    }
+                }
+                dst[dstOff] = r;
+                dst[dstOff + 1] = g;
+                dst[dstOff + 2] = b;
+                dst[dstOff + 3] = a + alphaFac * (255 - a);
+            }
+        }
+        canvas.context2D.putImageData(output, 0, 0);
+    }
+
 
     //the doll should fit into the canvas. use largest size
     static double scaleForSize(CanvasElement canvas, int width, int height) {
