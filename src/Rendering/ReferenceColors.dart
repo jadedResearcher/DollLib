@@ -303,6 +303,34 @@ abstract class ReferenceColours {
         ..pants_light = '#004CB2'
         ..pants_dark = '#003E91';
 
+    static HomestuckPalette SKETCH = new HomestuckPalette()
+        ..accent = "#ffffff"
+        ..aspect_light = '#000000'
+        ..aspect_dark = '#000000'
+        ..shoe_light = '#ffffff'
+        ..shoe_dark = '#000000'
+        ..cloak_light = '#000000'
+        ..cloak_mid = '#ffffff'
+        ..cloak_dark = '#000000'
+        ..shirt_light = '#ffffff'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#ffffff'
+        ..pants_dark = '#000000';
+
+    static HomestuckPalette INK = new HomestuckPalette()
+        ..accent = "#000000"
+        ..aspect_light = '#ffffff'
+        ..aspect_dark = '#ffffff'
+        ..shoe_light = '#000000'
+        ..shoe_dark = '#ffffff'
+        ..cloak_light = '#ffffff'
+        ..cloak_mid = '#000000'
+        ..cloak_dark = '#ffffff'
+        ..shirt_light = '#000000'
+        ..shirt_dark = '#ffffff'
+        ..pants_light = '#000000'
+        ..pants_dark = '#ffffff';
+
     static Map<String, Palette> _paletteList;
 
 
@@ -325,6 +353,8 @@ abstract class ReferenceColours {
             _paletteList["Robot"] = ROBOT_PALETTE;
             _paletteList["Prospit"] = PROSPIT_PALETTE;
             _paletteList["Derse"] = DERSE_PALETTE;
+            _paletteList["Sketch"] = SKETCH;
+            _paletteList["Ink"] = INK;
         }
 
         return _paletteList;
