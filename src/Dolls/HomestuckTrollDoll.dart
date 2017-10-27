@@ -13,7 +13,7 @@ import "../Rendering/ReferenceColors.dart";
 class HomestuckTrollDoll extends HomestuckDoll {
     @override
     int renderingType =2;
-    int maxHorn = 101;
+    int maxHorn = 102;
     int maxFin = 2;
     int maxWing = 13;
     @override
@@ -36,10 +36,10 @@ class HomestuckTrollDoll extends HomestuckDoll {
         ..cloak_dark = '#898989'
         ..shirt_light = '#111111'
         ..shirt_dark = '#000000'
-        ..pants_light = '#C6C6C6'
+        ..pants_light = '#4b4b4b'
         ..eye_white_left = '#ffba29'
         ..eye_white_right = '#ffba29'
-        ..pants_dark = '#ADADAD'
+        ..pants_dark = '#3a3a3a'
         ..hair_accent = '#aa0000'
         ..hair_main = '#000000'
         ..skin = '#C4C4C4';
@@ -136,11 +136,9 @@ class HomestuckTrollDoll extends HomestuckDoll {
         palette.add(HomestuckTrollPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
         palette.add(HomestuckTrollPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
         palette.add(HomestuckTrollPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
-        palette.add(HomestuckTrollPalette._CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
+        palette.add(HomestuckTrollPalette._CLOAK_LIGHT, new Colour.from(h.aspect_light), true);
+        palette.add(HomestuckTrollPalette._CLOAK_DARK, new Colour.from(h.aspect_dark),true);
         palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
-        palette.add(HomestuckTrollPalette._PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
         palette.add(HomestuckTrollPalette._WING1, new Colour.fromStyleString(chosenBlood), true);
         palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value/2), true);
         palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);
