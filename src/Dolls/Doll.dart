@@ -72,7 +72,7 @@ abstract class Doll {
         initLayers();
         int numFeatures = reader.readExpGolomb();
         print("I think there are ${numFeatures} features");
-        int featuresRead = 0;
+        int featuresRead = 2; //for exo and doll type
 
         List<String> names = new List<String>.from(palette.names);
         names.sort();
@@ -90,9 +90,13 @@ abstract class Doll {
         //layer is last so can add new layers.
         for(SpriteLayer l in dataOrderLayers) {
             //older strings with less layers
-            if(featuresRead < numFeatures) l.imgNumber = reader.readByte();
+            if(featuresRead < numFeatures) {
+                l.imgNumber = reader.readByte();
+            }else {
+                l.imgNumber = 0; //don't have.
+            }
             print("loading layer ${l.name}. Value: ${l.imgNumber} bytesRead: $featuresRead  numFeatures: $numFeatures");
-            if(l.imgNumber > l.maxImageNumber) l.imgNumber = l.maxImageNumber;
+            if(l.imgNumber > l.maxImageNumber) l.imgNumber = 0;
             featuresRead += 1;
 
         }
