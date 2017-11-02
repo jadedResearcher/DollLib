@@ -66,10 +66,12 @@ abstract class Doll {
         initLayers();
         int numFeatures = reader.readExpGolomb();
         print("I think there are ${numFeatures} features");
+        int bytesRead = 0;
 
         List<String> names = new List<String>.from(palette.names);
         names.sort();
         for(String name in names) {
+            bytesRead +=3;
             Colour newColor = new Colour(reader.readByte(),reader.readByte(),reader.readByte());
             newP.add(name, newColor, true);
         }
@@ -82,7 +84,10 @@ abstract class Doll {
         //layer is last so can add new layers.
         for(SpriteLayer l in layers) {
             print("loading layer ${l.name}");
-            l.imgNumber = reader.readByte();
+            //older strings with less layers
+            if(bytesRead < numFeatures) l.imgNumber = reader.readByte();
+            bytesRead += 1;
+
         }
     }
 

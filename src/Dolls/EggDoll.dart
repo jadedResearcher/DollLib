@@ -34,6 +34,8 @@ class EggDoll extends HomestuckDoll {
         layers.add(new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye));
         layers.add(new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass));
         layers.add(hairTop);
+        layers.add(new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2));
+
     }
 
 

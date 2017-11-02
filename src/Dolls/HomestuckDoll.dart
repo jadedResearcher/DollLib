@@ -17,7 +17,8 @@ class HomestuckDoll extends Doll {
     final int maxEye =56;
     final int maxMouth = 49;
     final int maxSymbol = 220;
-    final int maxGlass = 31;
+    final int maxGlass = 39;
+    final int maxGlass2 = 45;
 
 
     @override
@@ -64,6 +65,7 @@ class HomestuckDoll extends Doll {
         layers.add(new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye));
         layers.add(new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass));
         layers.add(hairTop);
+        layers.add(new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2));
     }
 
     HomestuckDoll.fromDataString(String dataString){
