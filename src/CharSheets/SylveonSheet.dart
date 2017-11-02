@@ -240,7 +240,7 @@ class SylveonSheet extends CharSheet {
         CanvasElement cardElement = new CanvasElement(width: width, height: height);
 
         bool foundSymbol = false;
-        for (SpriteLayer layer in doll.layers) {
+        for (SpriteLayer layer in doll.renderingOrderLayers) {
             if (layer.imgNameBase.contains("Symbol")) {
                 // print("found a symbol ${layer.imgLocation}");
                 foundSymbol = true;

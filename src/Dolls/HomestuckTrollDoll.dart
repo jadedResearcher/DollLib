@@ -16,8 +16,27 @@ class HomestuckTrollDoll extends HomestuckDoll {
     int maxHorn = 102;
     int maxFin = 2;
     int maxWing = 13;
+
+    SpriteLayer leftHorn;
+    SpriteLayer rightHorn;
+    SpriteLayer leftFin;
+    SpriteLayer rightFin;
+    SpriteLayer wings;
+
     @override
     String folder = "images/Homestuck";
+
+    @override
+    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[wings, hairBack, leftFin, body, symbol, mouth, leftEye, rightEye, glasses, hairTop, rightFin, glasses2,rightHorn,leftHorn];
+
+
+    @override
+    List<SpriteLayer>  get dataOrderLayers {
+        List<SpriteLayer> ret = super.dataOrderLayers;
+        //this way theoretically you can load a troll as a human or vice versa
+        ret.addAll(<SpriteLayer>[leftHorn, rightHorn,leftFin,rightFin,wings]);
+        return ret;
+    }
 
     HomestuckTrollDoll():super();
 
@@ -48,31 +67,17 @@ class HomestuckTrollDoll extends HomestuckDoll {
     void initLayers()
 
     {
-        SpriteLayer hairTop = new SpriteLayer("Hair","$folder/HairTop/", 1, maxHair);
-        SpriteLayer hairBack = new SpriteLayer("Hair","$folder/HairBack/", 1, maxHair, <SpriteLayer>[hairTop]);
-        hairTop.syncedWith.add(hairBack);
-        hairBack.slave = true; //can't be selected on it's own
+        super.initLayers();
+        //only do what is special to me here.
 
-        SpriteLayer finLeft = new SpriteLayer("Fin","$folder/LeftFin/", 1, maxFin);
-        SpriteLayer finRight = new SpriteLayer("Fin","$folder/RightFin/", 1, maxFin, <SpriteLayer>[finLeft]);
-        finLeft.syncedWith.add(finRight);
-        finRight.slave = true; //can't be selected on it's own
+        leftFin = new SpriteLayer("Fin","$folder/LeftFin/", 1, maxFin);
+        rightFin = new SpriteLayer("Fin","$folder/RightFin/", 1, maxFin, <SpriteLayer>[leftFin]);
+        leftFin.syncedWith.add(rightFin);
+        rightFin.slave = true; //can't be selected on it's own
 
-        layers.clear();
-        layers.add(new SpriteLayer("Wings","$folder/Wings/", 0, maxWing));
-        layers.add(hairBack);
-        layers.add(finRight);
-        layers.add(new SpriteLayer("Body","$folder/Body/", 1, maxBody));
-        layers.add(new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol));
-        layers.add(new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth));
-        layers.add(new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye));
-        layers.add(new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye));
-        layers.add(new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass));
-        layers.add(hairTop);
-        layers.add(new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2));
-        layers.add(finLeft);
-        layers.add(new SpriteLayer("LeftHorn","$folder/LeftHorn/", 1, maxHorn));
-        layers.add(new SpriteLayer("RightHorn","$folder/RightHorn/", 1, maxHorn));
+        wings = new SpriteLayer("Wings","$folder/Wings/", 0, maxWing);
+        leftHorn  =new SpriteLayer("LeftHorn","$folder/LeftHorn/", 1, maxHorn);
+        rightHorn = new SpriteLayer("RightHorn","$folder/RightHorn/", 1, maxHorn);
 
     }
 
@@ -97,7 +102,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
         List<String> bloodColors = <String>["#A10000", "#a25203", "#a1a100", "#658200", "#416600", "#078446", "#008282", "#004182", "#0021cb", "#631db4", "#610061", "#99004d"];
 
         String chosenBlood = rand.pickFrom(bloodColors);
-        for(SpriteLayer l in layers) {
+        for(SpriteLayer l in renderingOrderLayers) {
             //don't have wings normally
             if(!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber+1);
             //keep eyes synced unless player decides otherwise
@@ -154,7 +159,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
         List<String> bloodColors = <String>["#A10000", "#a25203", "#a1a100", "#658200", "#416600", "#078446", "#008282", "#004182", "#0021cb", "#631db4", "#610061", "#99004d"];
 
         String chosenBlood = rand.pickFrom(bloodColors);
-        for(SpriteLayer l in layers) {
+        for(SpriteLayer l in renderingOrderLayers) {
             //don't have wings normally
             if(!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber+1);
             //keep eyes synced unless player decides otherwise

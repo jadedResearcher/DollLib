@@ -28,6 +28,19 @@ class DenizenDoll extends Doll{
   final int maxCore = 1;
   final int maxEyes = 18;
 
+  SpriteLayer face;
+  SpriteLayer back;
+  SpriteLayer mouth;
+  SpriteLayer other;
+  SpriteLayer body;
+  SpriteLayer core;
+  SpriteLayer eyes;
+
+  @override
+  List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[back,core,body,face,mouth,eyes,other];
+  @override
+  List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[face,back,mouth,other,body,core,eyes];
+
   @override
   Palette palette = new DenizenPalette()
     ..accent = '#FF9B00'
@@ -71,30 +84,13 @@ class DenizenDoll extends Doll{
 
     {
 
-      layers.clear();
-      /*final int maxFace = 74; //holy shit, is tht really how many we have?
-  final int maxBack = 86;
-  final int maxMouth =29;
-  final int maxOther = 28;
-  final int maxBody = 73;
-  final int maxCore = 26;
-  final int maxEyes = 26;*/
-
-      /*back bits go in the very very back
-then comes the core body
-then the body bits
-then the aspects
-then the mouths(edited)
-then the eyes
-then lastly the other bits.
-*/
-      layers.add(new SpriteLayer("Back","$folder/Back/", 1, maxBack));
-      layers.add(new SpriteLayer("Core","$folder/Core/", 1, maxCore));
-      layers.add(new SpriteLayer("Body","$folder/Body/", 1, maxBody));
-      layers.add(new SpriteLayer("AspectFace","$folder/AspectFace/", 1, maxFace));
-      layers.add(new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth));
-      layers.add(new SpriteLayer("Eyes","$folder/Eyes/", 1, maxEyes));
-      layers.add(new SpriteLayer("Other","$folder/Other/", 1, maxOther));
+      back = new SpriteLayer("Back","$folder/Back/", 1, maxBack);
+      core = new SpriteLayer("Core","$folder/Core/", 1, maxCore);
+      body = new SpriteLayer("Body","$folder/Body/", 1, maxBody);
+      face = new SpriteLayer("AspectFace","$folder/AspectFace/", 1, maxFace);
+      mouth = new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth);
+      eyes = new SpriteLayer("Eyes","$folder/Eyes/", 1, maxEyes);
+      other = new SpriteLayer("Other","$folder/Other/", 1, maxOther);
 
     }
   }

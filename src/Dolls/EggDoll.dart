@@ -19,22 +19,10 @@ class EggDoll extends HomestuckDoll {
     void initLayers()
 
     {
-        SpriteLayer hairTop = new SpriteLayer("Hair","$folder/HairTop/", 1, maxHair);
-        SpriteLayer hairBack = new SpriteLayer("Hair","$folder/HairBack/", 1, maxHair, <SpriteLayer>[hairTop]);
-        hairTop.syncedWith.add(hairBack);
-        hairBack.slave = true; //can't be selected on it's own
+        super.initLayers();
+        //only one thing different
+        body = new SpriteLayer("Body","$folder/Egg/", 1, maxBody);
 
-
-        layers.clear();
-        layers.add(hairBack);
-        layers.add(new SpriteLayer("Body","$folder/Egg/", 1, maxBody));
-        layers.add(new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol));
-        layers.add(new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth));
-        layers.add(new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye));
-        layers.add(new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye));
-        layers.add(new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass));
-        layers.add(hairTop);
-        layers.add(new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2));
 
     }
 

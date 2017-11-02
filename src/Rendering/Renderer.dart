@@ -20,7 +20,7 @@ class Renderer {
     static  Future<bool>  drawDoll(CanvasElement canvas, Doll doll) async {
         //print("Drawing a doll");
         CanvasElement buffer = new CanvasElement(width: doll.width, height: doll.height);
-        for(SpriteLayer l in doll.layers) {
+        for(SpriteLayer l in doll.renderingOrderLayers) {
             bool res = await drawWhateverFuture(buffer, l.imgLocation);
         }
         //print("done drawing images");
@@ -34,7 +34,7 @@ class Renderer {
     static  Future<bool>  drawDollEmbossed(CanvasElement canvas, Doll doll) async {
         //print("Drawing a doll");
         CanvasElement buffer = new CanvasElement(width: doll.width, height: doll.height);
-        for(SpriteLayer l in doll.layers) {
+        for(SpriteLayer l in doll.renderingOrderLayers) {
             bool res = await drawWhateverFuture(buffer, l.imgLocation);
         }
         //print("done drawing images");

@@ -17,8 +17,14 @@ abstract class Doll {
     int width = 400;
     int height = 300;
     int renderingType = 0;
+
+    //IMPORTANT  if i want save strings to not break if new rendering order, then rendering order and load order must be different things.
+
     ///in rendering order.
-    List<SpriteLayer> layers = new List<SpriteLayer>();
+    List<SpriteLayer>  get renderingOrderLayers => new List<SpriteLayer>();
+    //what order do we save load these. things humans have first, then trolls, then new layers so you don't break save data strings
+    List<SpriteLayer>  get dataOrderLayers => new List<SpriteLayer>();
+
     Palette palette;
 
     Palette paletteSource = ReferenceColours.SPRITE_PALETTE;
@@ -51,7 +57,7 @@ abstract class Doll {
     void randomizeNotColors() {
         Random rand = new Random();
         int firstEye = -100;
-        for(SpriteLayer l in layers) {
+        for(SpriteLayer l in renderingOrderLayers) {
             l.imgNumber = rand.nextInt(l.maxImageNumber+1);
             //keep eyes synced unless player decides otherwise
             if(firstEye > 0 && l.imgNameBase.contains("Eye")) l.imgNumber = firstEye;
@@ -66,12 +72,12 @@ abstract class Doll {
         initLayers();
         int numFeatures = reader.readExpGolomb();
         print("I think there are ${numFeatures} features");
-        int bytesRead = 0;
+        int featuresRead = 0;
 
         List<String> names = new List<String>.from(palette.names);
         names.sort();
         for(String name in names) {
-            bytesRead +=3;
+            featuresRead +=1;
             Colour newColor = new Colour(reader.readByte(),reader.readByte(),reader.readByte());
             newP.add(name, newColor, true);
         }
@@ -82,18 +88,19 @@ abstract class Doll {
         }
 
         //layer is last so can add new layers.
-        for(SpriteLayer l in layers) {
-            print("loading layer ${l.name}");
+        for(SpriteLayer l in dataOrderLayers) {
             //older strings with less layers
-            if(bytesRead < numFeatures) l.imgNumber = reader.readByte();
-            bytesRead += 1;
+            if(featuresRead < numFeatures) l.imgNumber = reader.readByte();
+            print("loading layer ${l.name}. Value: ${l.imgNumber} bytesRead: $featuresRead  numFeatures: $numFeatures");
+            if(l.imgNumber > l.maxImageNumber) l.imgNumber = l.maxImageNumber;
+            featuresRead += 1;
 
         }
     }
 
     String toDataBytesX([ByteBuilder builder = null]) {
         if(builder == null) builder = new ByteBuilder();
-        int length = layers.length + palette.names.length + 1;//one byte for doll type
+        int length = dataOrderLayers.length + palette.names.length + 1;//one byte for doll type
         builder.appendByte(renderingType); //value of 1 means homestuck doll
         builder.appendExpGolomb(length); //for length
 
@@ -108,7 +115,7 @@ abstract class Doll {
         }
 
         //layer is last so can add new layers
-        for(SpriteLayer l in layers) {
+        for(SpriteLayer l in dataOrderLayers) {
             //print("adding ${l.imgNameBase} to data string builder.");
             builder.appendByte(l.imgNumber);
         }

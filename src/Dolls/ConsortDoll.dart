@@ -11,6 +11,13 @@ class ConsortDoll extends Doll {
     int maxBody = 18;
     String folder = "images/Homestuck";
 
+    SpriteLayer body;
+
+    @override
+    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[body];
+    @override
+    List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[body];
+
 
     @override
     int width = 400;
@@ -51,15 +58,13 @@ class ConsortDoll extends Doll {
 
     @override
     void initLayers() {
-        layers.clear();
-
-        layers.add(new SpriteLayer("Body", "$folder/Consort/", 1, maxBody));
+        body = new SpriteLayer("Body", "$folder/Consort/", 1, maxBody);
     }
 
     @override
     void randomize() {
         Random rand = new Random();
-        for (SpriteLayer l in layers) {
+        for (SpriteLayer l in renderingOrderLayers) {
             l.imgNumber = rand.nextInt(l.maxImageNumber + 1);
         }
         randomizeColors();
@@ -82,7 +87,7 @@ class ConsortDoll extends Doll {
     @override
     void randomizeNotColors() {
         Random rand = new Random();
-        for (SpriteLayer l in layers) {
+        for (SpriteLayer l in renderingOrderLayers) {
             l.imgNumber = rand.nextInt(l.maxImageNumber + 1);
         }
     }

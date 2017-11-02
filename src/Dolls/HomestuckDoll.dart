@@ -20,6 +20,24 @@ class HomestuckDoll extends Doll {
     final int maxGlass = 39;
     final int maxGlass2 = 45;
 
+    SpriteLayer body;
+    SpriteLayer hairTop;
+    SpriteLayer hairBack;
+    SpriteLayer leftEye;
+    SpriteLayer rightEye;
+    SpriteLayer mouth;
+    SpriteLayer symbol;
+    SpriteLayer glasses;
+    SpriteLayer glasses2;
+
+
+    @override
+    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[hairBack, body, symbol, mouth, leftEye, rightEye, glasses, hairTop, glasses2];
+
+    @override
+    List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[body, hairTop, hairBack, leftEye, rightEye, mouth, symbol, glasses, glasses2];
+
+
 
     @override
     Palette palette = new HomestuckPalette()
@@ -51,21 +69,18 @@ class HomestuckDoll extends Doll {
     void initLayers()
 
     {
-        SpriteLayer hairTop = new SpriteLayer("Hair","$folder/HairTop/", 1, maxHair);
-        SpriteLayer hairBack = new SpriteLayer("Hair","$folder/HairBack/", 1, maxHair, <SpriteLayer>[hairTop]);
+        hairTop = new SpriteLayer("Hair","$folder/HairTop/", 1, maxHair);
+        hairBack = new SpriteLayer("Hair","$folder/HairBack/", 1, maxHair, <SpriteLayer>[hairTop]);
         hairTop.syncedWith.add(hairBack);
         hairBack.slave = true; //can't be selected on it's own
-        layers.clear();
 
-        layers.add(hairBack);
-        layers.add(new SpriteLayer("Body","$folder/Body/", 1, maxBody));
-        layers.add(new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol));
-        layers.add(new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth));
-        layers.add(new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye));
-        layers.add(new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye));
-        layers.add(new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass));
-        layers.add(hairTop);
-        layers.add(new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2));
+        body = new SpriteLayer("Body","$folder/Body/", 1, maxBody);
+        symbol = new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol);
+        mouth = new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth);
+        leftEye = new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye);
+        rightEye = new SpriteLayer("RightEye","$folder/RightEye/", 1, maxEye);
+        glasses = new SpriteLayer("Glasses","$folder/Glasses/", 1, maxGlass);
+        glasses2 = new SpriteLayer("Glasses2","$folder/Glasses2/", 0, maxGlass2);
     }
 
     HomestuckDoll.fromDataString(String dataString){
@@ -86,7 +101,7 @@ class HomestuckDoll extends Doll {
     void randomize() {
         Random rand = new Random();
         int firstEye = -100;
-        for(SpriteLayer l in layers) {
+        for(SpriteLayer l in renderingOrderLayers) {
             l.imgNumber = rand.nextInt(l.maxImageNumber+1);
             //keep eyes synced unless player decides otherwise
             if(firstEye > 0 && l.imgNameBase.contains("Eye")) l.imgNumber = firstEye;
@@ -136,7 +151,7 @@ class HomestuckDoll extends Doll {
      void randomizeNotColors() {
          Random rand = new Random();
          int firstEye = -100;
-         for(SpriteLayer l in layers) {
+         for(SpriteLayer l in renderingOrderLayers) {
              l.imgNumber = rand.nextInt(l.maxImageNumber+1);
              //keep eyes synced unless player decides otherwise
              if(firstEye > 0 && l.imgNameBase.contains("Eye")) l.imgNumber = firstEye;
