@@ -95,6 +95,13 @@ abstract class Doll {
         }
     }
 
+
+    void setPalette(Palette chosen) {
+        for(String name in chosen.names) {
+            palette.add(name, chosen[name],true);
+        }
+    }
+
     String toDataBytesX([ByteBuilder builder = null]) {
         if(builder == null) builder = new ByteBuilder();
         int length = dataOrderLayers.length + palette.names.length + 1;//one byte for doll type
