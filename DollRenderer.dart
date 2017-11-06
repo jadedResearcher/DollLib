@@ -8,6 +8,8 @@ library DollRenderer;
 
 export "src/Dolls/HomestuckDoll.dart";
 export "src/Dolls/HomestuckTrollDoll.dart";
+export "src/Dolls/DadDoll.dart";
+
 export "src/Dolls/EggDoll.dart";
 export "src/Dolls/TrollEggDoll.dart";
 

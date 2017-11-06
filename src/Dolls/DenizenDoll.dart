@@ -20,7 +20,7 @@ class DenizenDoll extends Doll{
 
   @override
   String folder = "images/Homestuck/Denizen";
-  final int maxFace = 14; //holy shit, is tht really how many we have?
+  final int maxFace = 14;
   final int maxBack = 11;
   final int maxMouth =14;
   final int maxOther = 9;

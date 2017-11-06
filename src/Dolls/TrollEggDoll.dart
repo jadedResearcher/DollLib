@@ -13,6 +13,9 @@ import "../Rendering/ReferenceColors.dart";
 class TrollEggDoll extends HomestuckTrollDoll {
 
     @override
+    int renderingType =5;
+
+    @override
     final int maxBody = 13;
 
     @override

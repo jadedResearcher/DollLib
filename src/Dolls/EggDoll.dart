@@ -13,6 +13,9 @@ import "../Rendering/ReferenceColors.dart";
 class EggDoll extends HomestuckDoll {
 
     @override
+    int renderingType =6;
+
+    @override
     final int maxBody = 13;
 
     @override
