@@ -90,7 +90,7 @@ abstract class Doll {
         //layer is last so can add new layers.
         for(SpriteLayer l in dataOrderLayers) {
             //older strings with less layers
-            if(featuresRead < numFeatures) {
+            if(featuresRead <= numFeatures) {
                 l.imgNumber = reader.readByte();
             }else {
                 l.imgNumber = 0; //don't have.
