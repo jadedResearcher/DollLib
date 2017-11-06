@@ -176,7 +176,6 @@ abstract class Doll {
         dolls.add(new TrollEggDoll(), 0.05);
         dolls.add(new DadDoll());
         //doll = new HomestuckTrollDoll(); //hardcoded for testing
-        return new DadDoll();
         return rand.pickFrom(dolls);
     }
 
