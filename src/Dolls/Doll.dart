@@ -152,6 +152,10 @@ abstract class Doll {
         if(type == new DenizenDoll().renderingType) {
             return new DenizenDoll.fromReader(reader);
         }
+
+        if(type == new DadDoll().renderingType) {
+            return new DadDoll.fromReader(reader);
+        }
     }
 
     static Doll makeRandomDoll()  {
