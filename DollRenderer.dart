@@ -16,7 +16,11 @@ export "src/Dolls/TrollEggDoll.dart";
 export "src/Dolls/ConsortDoll.dart";
 export "src/Dolls/Doll.dart";
 export "src/Dolls/DenizenDoll.dart";
+export "src/Dolls/QueenDoll.dart";
+
 export "src/Dolls/SpriteLayer.dart";
+export "src/Dolls/NamedSpriteLayer.dart";
+
 export "src/Rendering/Renderer.dart";
 export "src/Misc/random.dart";
 export "src/Misc/weighted_lists.dart";

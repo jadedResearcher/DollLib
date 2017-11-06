@@ -10,6 +10,7 @@ import "../includes/palette.dart";
 import "../Misc/random.dart";
 import "../loader/loader.dart";
 import "../Dolls/ConsortDoll.dart";
+import "../Dolls/QueenDoll.dart";
 abstract class ReferenceColours {
     static Colour WHITE = new Colour.fromHex(0xFFFFFF);
     static Colour BLACK = new Colour.fromHex(0x000000);
@@ -32,6 +33,10 @@ abstract class ReferenceColours {
 
     static CharSheetPalette CHAR_SHEET_PALETTE = new CharSheetPalette()
         ..aspect_light = '#FEFD49';
+
+    static QueenPalette QUEEN_PALETTE = new QueenPalette()
+        ..carapace = '#000000'
+        ..cracks = "ffffff";
 
 
     static HomestuckPalette SPRITE_PALETTE = new HomestuckPalette()

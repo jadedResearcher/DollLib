@@ -25,7 +25,7 @@ class Renderer {
         }
         //print("done drawing images");
 
-        swapPalette(buffer, doll.paletteSource, doll.palette);
+        if(doll.palette.isNotEmpty) swapPalette(buffer, doll.paletteSource, doll.palette);
         scaleCanvasForDoll(canvas, doll);
         copyTmpCanvasToRealCanvasAtPos(canvas, buffer, 0, 0);
 
