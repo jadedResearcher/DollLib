@@ -157,11 +157,13 @@ abstract class CharSheet {
     String guardianForDoll(String name) {
         if(doll is HomestuckTrollDoll) return trollLusus();
         if(doll is HomestuckDoll) return humanRelative(name);
+        if(doll is DadDoll) return humanRelative(name);
         return randomAsFuckName();
     }
     String nameForDoll() {
         if(doll is HomestuckTrollDoll) return trollName();
         if(doll is HomestuckDoll) return humanName();
+        if(doll is DadDoll) return dadName();
         return randomAsFuckName();
     }
 
@@ -169,6 +171,12 @@ abstract class CharSheet {
         List<String> firstNames = <String>["Ram","Nut","Thief","March","Feather","Slither","Claw","Tooth","Swim","Meow","Woof","Sand","Mud","Water","Hoof","Muscle","Rage","Dig","Waddle","Run"];
         List<String> lastNames = <String>["Creature","Beast","Bug"];
         return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
+    }
+
+    String dadName() {
+        return "${"Dad"} ${humanLastName()}";
+
+
     }
 
     String humanRelative(String name) {
@@ -189,12 +197,16 @@ abstract class CharSheet {
         return rand.pickFrom(ret);
     }
 
+    String humanLastName() {
+        List<String> lastNames = <String>["English","Cipher","Egbert","Lalonde","Harley","Crocker","Roberts","Brockman","Stephenson","Fox","McClure","Baker","Wilson","Parker","White","Noir","Roberts","Smith","Smithson","Jackson","Bother","Jamison","Williams","Johnson","Anderson","Jones","Brown","Davis","Miller","Wilson","Moore","Taylor","Thomas","Harris","Martin","Thompson","Garcia","Martinez","Rodriguez","Clark","Lewis","Lee","Walker","Hall","Allen","Young","Hernandez","King","Wright","Lopez","Hill","Scott","Green","Carson","Nelson","Gonzalez","Carter","Mitchell","Perez","Roberts","Turner","Phillips","Campbell","Evans","Edwards","Stewart","Cook","Murphy"];
+        return rand.pickFrom(lastNames);
+
+    }
 
     //just random shit. 4 letters, then 6 letters.
      String humanName() {
          List<String> firstNames = <String>["John","Dave","Fred","Rose","Dirk","Ruby","Roxy","Romy","Jade","Jane","Jake","Jill","Jack","Dale","Burt","Bess","Beth","Jimm","Joey","Jude","Jann","Jenn","Geof", "Andy","Amii","Chris","Abby", "Abel","Adam","Alex","Anna","Bill","Brad","Buck","Carl","Chad","Cody","Dick","Rich","Dora","Ella","Evan","Emil","Eric","Erin","Finn","Glen","Greg","Hank","Hugo","Ivan","Jean","Josh","Kent","Kyle","Lars","Levi","Lois","Lola","Luke","Mark","Mary","Neal","Nora","Opal","Otto","Pete","Paul","Rosa","Ruth","Ryan","Scot","Sean","Skip","Toby","Todd","Tony","Troy","Vern","Vick","Wade","Walt","Will","Zack","Zeke","Zoey","Phil"];
-         List<String> lastNames = <String>["English","Cipher","Egbert","Lalonde","Harley","Crocker","Roberts","Brockman","Stephenson","Fox","McClure","Baker","Wilson","Parker","White","Noir","Roberts","Smith","Smithson","Jackson","Bother","Jamison","Williams","Johnson","Anderson","Jones","Brown","Davis","Miller","Wilson","Moore","Taylor","Thomas","Harris","Martin","Thompson","Garcia","Martinez","Rodriguez","Clark","Lewis","Lee","Walker","Hall","Allen","Young","Hernandez","King","Wright","Lopez","Hill","Scott","Green","Carson","Nelson","Gonzalez","Carter","Mitchell","Perez","Roberts","Turner","Phillips","Campbell","Evans","Edwards","Stewart","Cook","Murphy"];
-        return "${rand.pickFrom(firstNames)} ${rand.pickFrom(lastNames)}";
+        return "${rand.pickFrom(firstNames)} ${humanLastName()}";
     }
 
     //just generate random vaguely pronouncable combos of 6 letters.

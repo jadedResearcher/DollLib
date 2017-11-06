@@ -1,16 +1,9 @@
-import "../Misc/random.dart";
-import "../includes/colour.dart";
-import "../Dolls/Doll.dart";
 import "SpriteLayer.dart";
 import "dart:typed_data";
 import 'dart:convert';
 import "../includes/bytebuilder.dart";
-import "../includes/palette.dart";
-import "HomestuckDoll.dart";
-import 'HomestuckTrollDoll.dart';
-import "ConsortDoll.dart";
-import "DenizenDoll.dart";
-import "../Rendering/ReferenceColors.dart";
+
+import "../../DollRenderer.dart";
 abstract class Doll {
     String folder;
     Colour _associatedColor;
@@ -163,24 +156,17 @@ abstract class Doll {
 
     static Doll makeRandomDoll()  {
         Random rand = new Random();
-        Doll doll;
-        double randNum = rand.nextDouble();
-
-        if(randNum > 0.75) {
-            print('kid doll');
-            doll = new HomestuckDoll();
-        }else if (randNum > 0.5) {
-            print("troll doll");
-            doll = new HomestuckTrollDoll();
-        } else if (randNum > 0.25) {
-            print("consort doll");
-            doll = new ConsortDoll();
-        }else {
-            print("denizen doll");
-            doll = new DenizenDoll();
-        }
+        WeightedList<Doll> dolls = new WeightedList<Doll>();
+        dolls.add(new HomestuckDoll());
+        dolls.add(new HomestuckTrollDoll());
+        dolls.add(new ConsortDoll());
+        dolls.add(new DenizenDoll());
+        dolls.add(new EggDoll(),0.05);
+        dolls.add(new TrollEggDoll(), 0.05);
+        dolls.add(new DadDoll());
         //doll = new HomestuckTrollDoll(); //hardcoded for testing
-        return doll;
+        return new DadDoll();
+        return rand.pickFrom(dolls);
     }
 
 

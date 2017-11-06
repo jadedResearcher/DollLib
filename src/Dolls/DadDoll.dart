@@ -67,6 +67,12 @@ class DadDoll extends Doll {
         randomize();
     }
 
+    //dads like grey
+    @override
+    Colour get associatedColor {
+        return new Colour(100,100,100);
+    }
+
     @override
     void randomizeColors() {
         Random rand = new Random();
