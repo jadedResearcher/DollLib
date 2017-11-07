@@ -1,6 +1,6 @@
 import "../Misc/random.dart";
 import "../includes/colour.dart";
-import "../Dolls/Doll.dart";
+import "../Dolls/NamedLayerDoll.dart";
 import "NamedSpriteLayer.dart";
 import "SpriteLayer.dart";
 
@@ -33,7 +33,7 @@ yup, all i need to do is extend sprite layer.  good past jr. best friend.
 will also need to figure out how to do the drop downs.
  */
 
- class QueenDoll extends Doll{
+ class QueenDoll extends NamedLayerDoll{
 
      //noice, Sn8wman's number is the rendering type on accident.
      @override
@@ -62,6 +62,9 @@ will also need to figure out how to do the drop downs.
      ..carapace = '#000000'
      ..cracks = '#ffffff';
 
+     @override
+     List<String> possibleParts = <String>["Bird","Bug","Buggy_As_Fuck_Retro_Game","Butler", "Cat", "Chihuahua","Chinchilla","Clippy","Cow","Cowboy","Doctor","Dutton","Fly","Game_Bro","Game_Grl","Gerbil","Github","Golfer","Google","Horse","Husky","Internet_Troll","Kid_Rock","Librarian","Llama","Mosquito","Nic_Cage","Penguin","Pitbull","Pomeranian","Pony","Praying_Mantis","Rabbit","Robot","Sleuth","Sloth","Tissue","Web_Comic_Creator"];
+
      QueenDoll() {
          initLayers();
          randomize();
@@ -72,11 +75,28 @@ will also need to figure out how to do the drop downs.
    @override
   void initLayers() {
     // TODO: implement initLayers. first is body
+       layers.clear();
        layers.add(new NamedSpriteLayer("Body","$folder/", 0, 0));
        layers.add(new NamedSpriteLayer("Crown","$folder/", 0, 0));
+  }
 
-       //TODO instead add random amount of layers
-       layers.add(new NamedSpriteLayer("Google","$folder/Parts/", 0, 0));
+    @override
+     void randomizeNotColors() {
+         Random rand = new Random();
+         initLayers();
+         //how many players?
+         int numLayers = rand.nextInt(10) + 2;
+         for(int i = 0; i< numLayers; i++) {
+            addLayerNamed(rand.pickFrom(possibleParts));
+         }
+
+
+     }
+
+
+
+  void addLayerNamed(String name) {
+      layers.add(new NamedSpriteLayer(name,"$folder/Parts/", 0, 0));
   }
 
      @override

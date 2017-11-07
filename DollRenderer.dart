@@ -15,6 +15,7 @@ export "src/Dolls/TrollEggDoll.dart";
 
 export "src/Dolls/ConsortDoll.dart";
 export "src/Dolls/Doll.dart";
+export "src/Dolls/NamedLayerDoll.dart";
 export "src/Dolls/DenizenDoll.dart";
 export "src/Dolls/QueenDoll.dart";
 
