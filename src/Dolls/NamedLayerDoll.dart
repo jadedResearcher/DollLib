@@ -32,8 +32,10 @@ abstract class NamedLayerDoll extends Doll {
             palette.add(name, newP[name], true);
         }
 
-        for(int i = 0; i< (numFeatures-featuresRead); i++) {
+        for(int i = 1; i< (numFeatures-featuresRead); i++) {
             int imgNumber = reader.readByte();
+            print("reading layer feature $i ,its $imgNumber");
+
             addLayerNamed(possibleParts[imgNumber]);
         }
 
@@ -57,8 +59,11 @@ abstract class NamedLayerDoll extends Doll {
 
         //layer is last so can add new layers
         for(SpriteLayer l in layers) {
-            //print("adding ${l.imgNameBase} to data string builder.");
-            builder.appendByte(possibleParts.indexOf(l.name));
+            int number = possibleParts.indexOf(l.name);
+            if(number>=0) {
+                print("adding${l.name}/ ${number} to data string builder.");
+                builder.appendByte(number);
+            }
         }
 
         return BASE64URL.encode(builder.toBuffer().asUint8List());
