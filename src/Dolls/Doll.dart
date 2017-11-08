@@ -163,6 +163,10 @@ abstract class Doll {
         if(type == new DadDoll().renderingType) {
             return new DadDoll.fromReader(reader);
         }
+
+        if(type == new QueenDoll().renderingType) {
+            return new QueenDoll.fromReader(reader);
+        }
     }
 
     static Doll makeRandomDoll()  {
@@ -172,6 +176,7 @@ abstract class Doll {
         dolls.add(new HomestuckTrollDoll());
         dolls.add(new ConsortDoll());
         dolls.add(new DenizenDoll());
+        dolls.add(new QueenDoll());
         dolls.add(new EggDoll(),0.05);
         dolls.add(new TrollEggDoll(), 0.05);
         dolls.add(new DadDoll());
