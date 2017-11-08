@@ -49,7 +49,6 @@ will also need to figure out how to do the drop downs.
      @override
      int height = 513;
 
-     List<NamedSpriteLayer> layers = new List<NamedSpriteLayer>();
 
      @override
      List<SpriteLayer>  get renderingOrderLayers => layers;
@@ -76,8 +75,8 @@ will also need to figure out how to do the drop downs.
   void initLayers() {
     // TODO: implement initLayers. first is body
        layers.clear();
-       layers.add(new NamedSpriteLayer("Body","$folder/", 0, 0));
-       layers.add(new NamedSpriteLayer("Crown","$folder/", 0, 0));
+       layers.add(new NamedSpriteLayer(<String>[],"Body","$folder/", 0, 0));
+       layers.add(new NamedSpriteLayer(<String>[],"Crown","$folder/", 0, 0));
   }
 
     @override
@@ -85,7 +84,7 @@ will also need to figure out how to do the drop downs.
          Random rand = new Random();
          initLayers();
          //how many players?
-         int numLayers = rand.nextInt(10) + 2;
+         int numLayers = rand.nextInt(4) + 2;
          for(int i = 0; i< numLayers; i++) {
             addLayerNamed(rand.pickFrom(possibleParts));
          }
@@ -95,9 +94,7 @@ will also need to figure out how to do the drop downs.
 
 
 
-  void addLayerNamed(String name) {
-      layers.add(new NamedSpriteLayer(name,"$folder/Parts/", 0, 0));
-  }
+
 
      @override
      void randomizeColors() {
@@ -130,7 +127,10 @@ will also need to figure out how to do the drop downs.
          //TODO make a custom one of these that allows multiple layers
          initFromReader(reader,new Palette());
      }
-}
+
+
+
+ }
 
 
 
