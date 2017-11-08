@@ -12,13 +12,13 @@ class HomestuckDoll extends Doll {
     int renderingType =1;
     @override
     String folder = "images/Homestuck";
-    final int maxBody = 107; //75 is currently colored wrong
-    final int maxHair = 99;
-    final int maxEye =56;
+    final int maxBody = 109; //75 is currently colored wrong
+    final int maxHair = 101;
+    final int maxEye =57;
     final int maxMouth = 49;
-    final int maxSymbol = 220;
-    final int maxGlass = 39;
-    final int maxGlass2 = 45;
+    final int maxSymbol = 223;
+    final int maxGlass = 41;
+    final int maxGlass2 = 47;
 
     SpriteLayer body;
     SpriteLayer hairTop;

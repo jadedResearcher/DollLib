@@ -22,10 +22,10 @@ class DadDoll extends Doll {
     @override
     String folder = "images/Homestuck/Dad";
 
-    final int maxHat = 10;
-    final int maxNose = 6;
-    final int maxShirt = 4;
-    final int maxPants = 3;
+    final int maxHat = 14;
+    final int maxNose = 10;
+    final int maxShirt = 6;
+    final int maxPants = 8;
     final int maxBase = 0;
 
     SpriteLayer hat;

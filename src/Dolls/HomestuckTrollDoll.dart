@@ -14,7 +14,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
     @override
     int renderingType =2;
     int maxHorn = 102;
-    int maxFin = 2;
+    int maxFin = 18;
     int maxWing = 13;
 
     SpriteLayer leftHorn;
