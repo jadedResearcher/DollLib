@@ -16,6 +16,7 @@ class TextLayer {
     double topLeftX;
     double topLeftY;
     int maxWidth;
+    int maxHeight;
     int fontSize;
     String emphasis = "";
     //ctx.fillStyle = "#000000";
@@ -23,7 +24,7 @@ class TextLayer {
     //ctx.font = "42px Times New Roman";
     String fontName;
 
-    TextLayer(String this.name, String this.text, double this.topLeftX, double this.topLeftY, {this.emphasis: "", this.maxWidth: 100, this.fontSize: 12, this.fontColor: null, this.fontName: "Times New Roman"}) {
+    TextLayer(String this.name, String this.text, double this.topLeftX, double this.topLeftY, {this.emphasis: "", this.maxWidth: 100, this.maxHeight: 75,this.fontSize: 12, this.fontColor: null, this.fontName: "Times New Roman"}) {
         if(fontColor == null) {
             fontColor = new Colour(0,0,0);
         }
