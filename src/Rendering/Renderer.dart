@@ -134,9 +134,10 @@ class Renderer {
         int newWidth = (source.width * ratio).floor();
         int newHeight = (source.height * ratio).floor();
         //doesn't look right :(
-        int x = (destination.width/2 - source.width/2).round();
+        //int x = (destination.width/2 - source.width/2).round();
+        int x = (destination.width/2 - newWidth/2).round();
         //print("New dimensions: ${newWidth}, height: ${newHeight}");
-        destination.context2D.drawImageScaled(source, 0,0,newWidth,newHeight);
+        destination.context2D.drawImageScaled(source, x,0,newWidth,newHeight);
     }
 
     //the doll should fit into the canvas. use largest size
