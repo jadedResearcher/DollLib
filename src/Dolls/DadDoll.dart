@@ -25,7 +25,7 @@ class DadDoll extends Doll {
     final int maxHat = 14;
     final int maxNose = 10;
     final int maxShirt = 6;
-    final int maxPants = 8;
+    final int maxPants = 10;
     final int maxBase = 0;
 
     SpriteLayer hat;
