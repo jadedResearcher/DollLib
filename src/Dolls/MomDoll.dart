@@ -125,7 +125,7 @@ class MomDoll extends Doll {
         initFromReader(reader, new MomPalette());
     }
 
-    //assumes type byte is already gone
+    //assumes type byte is already gone, don't forget to add line to Doll.dart
     MomDoll.fromReader(ByteReader reader){
         initFromReader(reader,new MomPalette());
     }

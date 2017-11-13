@@ -167,6 +167,10 @@ abstract class Doll {
         if(type == new QueenDoll().renderingType) {
             return new QueenDoll.fromReader(reader);
         }
+
+        if(type == new MomDoll().renderingType) {
+            return new MomDoll.fromReader(reader);
+        }
     }
 
     static Doll makeRandomDoll()  {
