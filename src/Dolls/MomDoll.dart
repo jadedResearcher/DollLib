@@ -102,10 +102,10 @@ class MomDoll extends Doll {
     @override
     void initLayers() {
         base = new SpriteLayer("Base","$folder/Base/", 0, maxBase);
-        outfit = new SpriteLayer("Hat","$folder/Outfit/", 1, maxOutfit);
-        mouth = new SpriteLayer("Nose","$folder/Mouth/", 1, maxMouth);
-        drink = new SpriteLayer("Shirt","$folder/Drink/", 1, maxDrink);
-        hair = new SpriteLayer("Pants","$folder/Hair/", 1, maxHair);
+        outfit = new SpriteLayer("Outfit","$folder/Outfit/", 1, maxOutfit);
+        mouth = new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth);
+        drink = new SpriteLayer("Drink","$folder/Drink/", 1, maxDrink);
+        hair = new SpriteLayer("Hair","$folder/Hair/", 1, maxHair);
     }
 
 
