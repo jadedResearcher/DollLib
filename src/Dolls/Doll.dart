@@ -180,6 +180,7 @@ abstract class Doll {
         dolls.add(new EggDoll(),0.05);
         dolls.add(new TrollEggDoll(), 0.05);
         dolls.add(new DadDoll());
+        dolls.add(new MomDoll());
         //doll = new HomestuckTrollDoll(); //hardcoded for testing
         return rand.pickFrom(dolls);
     }

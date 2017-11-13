@@ -9,6 +9,8 @@ library DollRenderer;
 export "src/Dolls/HomestuckDoll.dart";
 export "src/Dolls/HomestuckTrollDoll.dart";
 export "src/Dolls/DadDoll.dart";
+export "src/Dolls/MomDoll.dart";
+
 export "src/loader/loader.dart";
 
 export "src/Dolls/EggDoll.dart";

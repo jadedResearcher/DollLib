@@ -157,13 +157,14 @@ abstract class CharSheet {
     String guardianForDoll(String name) {
         if(doll is HomestuckTrollDoll) return trollLusus();
         if(doll is HomestuckDoll) return humanRelative(name);
-        if(doll is DadDoll) return humanRelative(name);
+        if(doll is DadDoll || doll is MomDoll) return humanRelative(name);
         return randomAsFuckName();
     }
     String nameForDoll() {
         if(doll is HomestuckTrollDoll) return trollName();
         if(doll is HomestuckDoll) return humanName();
         if(doll is DadDoll) return dadName();
+        if(doll is MomDoll) return momName();
         return randomAsFuckName();
     }
 
@@ -175,8 +176,10 @@ abstract class CharSheet {
 
     String dadName() {
         return "${"Dad"} ${humanLastName()}";
+    }
 
-
+    String momName() {
+        return "${"Mom"} ${humanLastName()}";
     }
 
     String humanRelative(String name) {
