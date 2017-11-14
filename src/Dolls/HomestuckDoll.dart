@@ -74,7 +74,7 @@ class HomestuckDoll extends Doll {
         hairTop.syncedWith.add(hairBack);
         hairBack.slave = true; //can't be selected on it's own
 
-        body = new SpriteLayer("Body","$folder/Body/", 1, maxBody);
+        body = new SpriteLayer("Body","$folder/Body/", 0, maxBody);
         symbol = new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol);
         mouth = new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth);
         leftEye = new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye);
@@ -111,41 +111,41 @@ class HomestuckDoll extends Doll {
         }
 
         HomestuckPalette h = palette as HomestuckPalette;
-        palette.add(HomestuckPalette._ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._ASPECT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ASPECT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
 
-        palette.add(HomestuckPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
-        palette.add(HomestuckPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
-        palette.add(HomestuckPalette._CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
-        palette.add(HomestuckPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
-        palette.add(HomestuckPalette._SHIRT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._SHIRT_DARK, new Colour(h.shirt_light.red, h.shirt_light.green, h.shirt_light.blue)..setHSV(h.shirt_light.hue, h.shirt_light.saturation, h.shirt_light.value/2), true);
-        palette.add(HomestuckPalette._PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
-        palette.add(HomestuckPalette._HAIR_ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._HAIR_MAIN, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
+        palette.add(HomestuckPalette.SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
+        palette.add(HomestuckPalette.CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
+        palette.add(HomestuckPalette.CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
+        palette.add(HomestuckPalette.SHIRT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.SHIRT_DARK, new Colour(h.shirt_light.red, h.shirt_light.green, h.shirt_light.blue)..setHSV(h.shirt_light.hue, h.shirt_light.saturation, h.shirt_light.value/2), true);
+        palette.add(HomestuckPalette.PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
+        palette.add(HomestuckPalette.HAIR_ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.HAIR_MAIN, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
     }
 
     void randomizeColors() {
         Random rand = new Random();
         HomestuckPalette h = palette as HomestuckPalette;
-        palette.add(HomestuckPalette._ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._ASPECT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ASPECT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
 
-        palette.add(HomestuckPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
-        palette.add(HomestuckPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
-        palette.add(HomestuckPalette._CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
-        palette.add(HomestuckPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
-        palette.add(HomestuckPalette._SHIRT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._SHIRT_DARK, new Colour(h.shirt_light.red, h.shirt_light.green, h.shirt_light.blue)..setHSV(h.shirt_light.hue, h.shirt_light.saturation, h.shirt_light.value/2), true);
-        palette.add(HomestuckPalette._PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
-        palette.add(HomestuckPalette._HAIR_ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette._HAIR_MAIN, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
+        palette.add(HomestuckPalette.SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
+        palette.add(HomestuckPalette.CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
+        palette.add(HomestuckPalette.CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
+        palette.add(HomestuckPalette.SHIRT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.SHIRT_DARK, new Colour(h.shirt_light.red, h.shirt_light.green, h.shirt_light.blue)..setHSV(h.shirt_light.hue, h.shirt_light.saturation, h.shirt_light.value/2), true);
+        palette.add(HomestuckPalette.PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
+        palette.add(HomestuckPalette.HAIR_ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+        palette.add(HomestuckPalette.HAIR_MAIN, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
 
     }
      void randomizeNotColors() {
@@ -156,7 +156,7 @@ class HomestuckDoll extends Doll {
              //keep eyes synced unless player decides otherwise
              if(firstEye > 0 && l.imgNameBase.contains("Eye")) l.imgNumber = firstEye;
              if(firstEye < 0 && l.imgNameBase.contains("Eye")) firstEye = l.imgNumber;
-             if(l.imgNumber == 0) l.imgNumber = 1;
+             if(l.imgNumber == 0 && l != body) l.imgNumber = 1;
              if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
          }
      }
@@ -194,23 +194,23 @@ class CharSheetPalette extends Palette {
 
 /// Convenience class for getting/setting aspect palettes
 class HomestuckPalette extends Palette {
-    static String _ACCENT = "accent";
-    static String _ASPECT_LIGHT = "aspect1";
-    static String _ASPECT_DARK = "aspect2";
-    static String _SHOE_LIGHT = "shoe1";
-    static String _SHOE_DARK = "shoe2";
-    static String _CLOAK_LIGHT = "cloak1";
-    static String _CLOAK_MID = "cloak2";
-    static String _CLOAK_DARK = "cloak3";
-    static String _SHIRT_LIGHT = "shirt1";
-    static String _SHIRT_DARK = "shirt2";
-    static String _PANTS_LIGHT = "pants1";
-    static String _PANTS_DARK = "pants2";
-    static String _HAIR_MAIN = "hairMain";
-    static String _HAIR_ACCENT = "hairAccent";
-    static String _EYE_WHITE_LEFT = "eyeWhitesLeft";
-    static String _EYE_WHITE_RIGHT = "eyeWhitesRight";
-    static String _SKIN = "skin";
+    static String ACCENT = "accent";
+    static String ASPECT_LIGHT = "aspect1";
+    static String ASPECT_DARK = "aspect2";
+    static String SHOE_LIGHT = "shoe1";
+    static String SHOE_DARK = "shoe2";
+    static String CLOAK_LIGHT = "cloak1";
+    static String CLOAK_MID = "cloak2";
+    static String CLOAK_DARK = "cloak3";
+    static String SHIRT_LIGHT = "shirt1";
+    static String SHIRT_DARK = "shirt2";
+    static String PANTS_LIGHT = "pants1";
+    static String PANTS_DARK = "pants2";
+    static String HAIR_MAIN = "hairMain";
+    static String HAIR_ACCENT = "hairAccent";
+    static String EYE_WHITE_LEFT = "eyeWhitesLeft";
+    static String EYE_WHITE_RIGHT = "eyeWhitesRight";
+    static String SKIN = "skin";
 
     static Colour _handleInput(Object input) {
         if (input is Colour) {
@@ -232,75 +232,75 @@ class HomestuckPalette extends Palette {
         throw "Invalid AspectPalette input: colour must be a Colour object, a valid colour int, or valid hex string (with or without leading #)";
     }
 
-    Colour get text => this[_ACCENT];
+    Colour get text => this[ACCENT];
 
-    Colour get accent => this[_ACCENT];
+    Colour get accent => this[ACCENT];
 
-    void set accent(dynamic c) => this.add(_ACCENT, _handleInput(c), true);
+    void set accent(dynamic c) => this.add(ACCENT, _handleInput(c), true);
 
-    Colour get aspect_light => this[_ASPECT_LIGHT];
+    Colour get aspect_light => this[ASPECT_LIGHT];
 
-    void set aspect_light(dynamic c) => this.add(_ASPECT_LIGHT, _handleInput(c), true);
+    void set aspect_light(dynamic c) => this.add(ASPECT_LIGHT, _handleInput(c), true);
 
-    Colour get aspect_dark => this[_ASPECT_DARK];
+    Colour get aspect_dark => this[ASPECT_DARK];
 
-    void set aspect_dark(dynamic c) => this.add(_ASPECT_DARK, _handleInput(c), true);
+    void set aspect_dark(dynamic c) => this.add(ASPECT_DARK, _handleInput(c), true);
 
-    Colour get shoe_light => this[_SHOE_LIGHT];
+    Colour get shoe_light => this[SHOE_LIGHT];
 
-    void set shoe_light(dynamic c) => this.add(_SHOE_LIGHT, _handleInput(c), true);
+    void set shoe_light(dynamic c) => this.add(SHOE_LIGHT, _handleInput(c), true);
 
-    Colour get shoe_dark => this[_SHOE_DARK];
+    Colour get shoe_dark => this[SHOE_DARK];
 
-    void set shoe_dark(dynamic c) => this.add(_SHOE_DARK, _handleInput(c), true);
+    void set shoe_dark(dynamic c) => this.add(SHOE_DARK, _handleInput(c), true);
 
-    Colour get cloak_light => this[_CLOAK_LIGHT];
+    Colour get cloak_light => this[CLOAK_LIGHT];
 
-    void set cloak_light(dynamic c) => this.add(_CLOAK_LIGHT, _handleInput(c), true);
+    void set cloak_light(dynamic c) => this.add(CLOAK_LIGHT, _handleInput(c), true);
 
-    Colour get cloak_mid => this[_CLOAK_MID];
+    Colour get cloak_mid => this[CLOAK_MID];
 
-    void set cloak_mid(dynamic c) => this.add(_CLOAK_MID, _handleInput(c), true);
+    void set cloak_mid(dynamic c) => this.add(CLOAK_MID, _handleInput(c), true);
 
-    Colour get cloak_dark => this[_CLOAK_DARK];
+    Colour get cloak_dark => this[CLOAK_DARK];
 
-    void set cloak_dark(dynamic c) => this.add(_CLOAK_DARK, _handleInput(c), true);
+    void set cloak_dark(dynamic c) => this.add(CLOAK_DARK, _handleInput(c), true);
 
-    Colour get shirt_light => this[_SHIRT_LIGHT];
+    Colour get shirt_light => this[SHIRT_LIGHT];
 
-    void set shirt_light(dynamic c) => this.add(_SHIRT_LIGHT, _handleInput(c), true);
+    void set shirt_light(dynamic c) => this.add(SHIRT_LIGHT, _handleInput(c), true);
 
-    Colour get shirt_dark => this[_SHIRT_DARK];
+    Colour get shirt_dark => this[SHIRT_DARK];
 
-    void set shirt_dark(dynamic c) => this.add(_SHIRT_DARK, _handleInput(c), true);
+    void set shirt_dark(dynamic c) => this.add(SHIRT_DARK, _handleInput(c), true);
 
-    Colour get pants_light => this[_PANTS_LIGHT];
+    Colour get pants_light => this[PANTS_LIGHT];
 
-    void set pants_light(dynamic c) => this.add(_PANTS_LIGHT, _handleInput(c), true);
+    void set pants_light(dynamic c) => this.add(PANTS_LIGHT, _handleInput(c), true);
 
-    Colour get pants_dark => this[_PANTS_DARK];
+    Colour get pants_dark => this[PANTS_DARK];
 
-    void set pants_dark(dynamic c) => this.add(_PANTS_DARK, _handleInput(c), true);
+    void set pants_dark(dynamic c) => this.add(PANTS_DARK, _handleInput(c), true);
 
-    Colour get hair_main => this[_HAIR_MAIN];
+    Colour get hair_main => this[HAIR_MAIN];
 
-    void set hair_main(dynamic c) => this.add(_HAIR_MAIN, _handleInput(c), true);
+    void set hair_main(dynamic c) => this.add(HAIR_MAIN, _handleInput(c), true);
 
-    Colour get hair_accent => this[_HAIR_ACCENT];
+    Colour get hair_accent => this[HAIR_ACCENT];
 
-    void set hair_accent(dynamic c) => this.add(_HAIR_ACCENT, _handleInput(c), true);
+    void set hair_accent(dynamic c) => this.add(HAIR_ACCENT, _handleInput(c), true);
 
-    Colour get eye_white_left => this[_EYE_WHITE_LEFT];
+    Colour get eye_white_left => this[EYE_WHITE_LEFT];
 
-    void set eye_white_left(dynamic c) => this.add(_EYE_WHITE_LEFT, _handleInput(c), true);
+    void set eye_white_left(dynamic c) => this.add(EYE_WHITE_LEFT, _handleInput(c), true);
 
-    Colour get eye_white_right => this[_EYE_WHITE_RIGHT];
+    Colour get eye_white_right => this[EYE_WHITE_RIGHT];
 
-    void set eye_white_right(dynamic c) => this.add(_EYE_WHITE_RIGHT, _handleInput(c), true);
+    void set eye_white_right(dynamic c) => this.add(EYE_WHITE_RIGHT, _handleInput(c), true);
 
-    Colour get skin => this[_SKIN];
+    Colour get skin => this[SKIN];
 
-    void set skin(dynamic c) => this.add(_SKIN, _handleInput(c), true);
+    void set skin(dynamic c) => this.add(SKIN, _handleInput(c), true);
 }
 
 
