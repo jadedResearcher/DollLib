@@ -190,7 +190,7 @@ abstract class Doll {
         dolls.add(new DadDoll(),0.3);
         dolls.add(new BroDoll(),0.3);
         dolls.add(new MomDoll(),0.3);
-        return new BroDoll(); //hardcoded for testing
+        //return new BroDoll(); //hardcoded for testing
         return rand.pickFrom(dolls);
     }
 
