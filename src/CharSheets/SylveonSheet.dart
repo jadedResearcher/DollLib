@@ -93,7 +93,7 @@ class SylveonSheet extends CharSheet {
 
         lineY = 102.0;
         textColor = new TextLayer("Text Color: ",doll.associatedColor.toStyleString(),132.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
-        gender = new TextLayer("Text Color: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
+        gender = new TextLayer("Gender: ",rand.pickFrom(<String>["F","M","???"]),373.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
         specibus = new TextLayer("Strife Specibus: ",randomSpecibus(),596.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
         ancestor = new TextLayer("Ancestor: ","???",832.0,lineY, fontSize: fontSize, fontName: fontName, emphasis: emphasis);
 

@@ -171,6 +171,10 @@ abstract class Doll {
         if(type == new MomDoll().renderingType) {
             return new MomDoll.fromReader(reader);
         }
+
+        if(type == new BroDoll().renderingType) {
+            return new BroDoll.fromReader(reader);
+        }
     }
 
     static Doll makeRandomDoll()  {
@@ -178,14 +182,15 @@ abstract class Doll {
         WeightedList<Doll> dolls = new WeightedList<Doll>();
         dolls.add(new HomestuckDoll());
         dolls.add(new HomestuckTrollDoll());
-        dolls.add(new ConsortDoll());
-        dolls.add(new DenizenDoll());
-        dolls.add(new QueenDoll());
+        dolls.add(new ConsortDoll(),0.3);
+        dolls.add(new DenizenDoll(),0.3);
+        dolls.add(new QueenDoll(),0.3);
         dolls.add(new EggDoll(),0.05);
         dolls.add(new TrollEggDoll(), 0.05);
-        dolls.add(new DadDoll());
-        dolls.add(new MomDoll());
-        //doll = new HomestuckTrollDoll(); //hardcoded for testing
+        dolls.add(new DadDoll(),0.3);
+        dolls.add(new BroDoll(),0.3);
+        dolls.add(new MomDoll(),0.3);
+        return new BroDoll(); //hardcoded for testing
         return rand.pickFrom(dolls);
     }
 

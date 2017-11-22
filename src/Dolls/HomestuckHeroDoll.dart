@@ -21,7 +21,7 @@ class HomestuckHeroDoll extends HomestuckDoll {
     @override
     String folder = "images/Homestuck";
     @override
-    final int maxBody = 1;
+    final int maxBody = 3;
 
 
     @override

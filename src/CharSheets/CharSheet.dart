@@ -164,6 +164,7 @@ abstract class CharSheet {
         if(doll is HomestuckTrollDoll) return trollName();
         if(doll is HomestuckDoll) return humanName();
         if(doll is DadDoll) return dadName();
+        if(doll is BroDoll) return broName();
         if(doll is MomDoll) return momName();
         return randomAsFuckName();
     }
@@ -176,6 +177,10 @@ abstract class CharSheet {
 
     String dadName() {
         return "${"Dad"} ${humanLastName()}";
+    }
+
+    String broName() {
+        return "${"Bro"} ${humanLastName()}";
     }
 
     String momName() {
