@@ -88,7 +88,7 @@ abstract class CharSheet {
 
     Element makeTintSelector() {
         Element ret = new DivElement();
-        ret.setInnerHtml("Stat Color: ");
+        ret.setInnerHtml("Color: ");
         InputElement colorPicker = new InputElement();
         colorPicker.type = "color";
         colorPicker.value = tint.toStyleString();
