@@ -231,19 +231,42 @@ abstract class CharSheet {
         for(String v in vowels) {
             allLetters.add(v, 20.0);
         }
-        String ret = "${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(allLetters)}";
+        //sets of two
+        WeightedList<String> sounds = new WeightedList<String>();
+        sounds.addAll(<String>["th","ck","sr","ch","ph","ss","st","ng","sr","zh","sh"]);
+        for(String first in letters) {
+            for(String second in vowels) {
+                sounds.add("$first$second");
+                sounds.add("$second$first", 0.5); //less common to start with vowel
+            }
+        }
+        String ret = "";
         //troll name is guaranted to have a vowel p frequently so it's pronuncable. small chance of double vowel.
-        for(int i = 0; i<2; i++) {
-            ret += "${rand.pickFrom(letters)}${rand.pickFrom(allLetters)}";
+        for(int i = 0; i<3; i++) {
+            ret += "${rand.pickFrom(sounds)}";
         }
         //last name
-        ret += " ${rand.pickFrom(letters).toUpperCase()}${rand.pickFrom(allLetters)}";
-        for(int i = 0; i<2; i++) {
-            ret += "${rand.pickFrom(letters)}${rand.pickFrom(allLetters)}";
+        ret += " ";
+        for(int i = 0; i<3; i++) {
+            ret += "${rand.pickFrom(sounds)}";
         }
 
+        return capitilizeEachWord(ret);
+    }
+
+    String capitilizeString(String s) {
+        return "${s[0].toUpperCase()}${s.substring(1)}";
+    }
+
+    String capitilizeEachWord(String s) {
+        List<String> words =  s.split(" ");
+        String ret = "";
+        for(String word in words) {
+            ret += " ${capitilizeString(word)}";
+        }
         return ret;
     }
+
 
     String randomAsFuckName() {
         List<String> titles = <String> ["Captain","Baron","The Esteemed","Mr.","Mrs.","Mdms.","Count","Countess","Clerk","President","Pounceler","Counciler","Minister","Ambassador","Admiral", "Rear Admiral","Commander","Dr.","Sir"];
