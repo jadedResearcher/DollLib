@@ -101,9 +101,12 @@ class TrollCallSheet extends CharSheet {
 
 
     Future<CanvasElement>  drawText() async {
+        Colour color = new Colour.from(tint)..setHSV(tint.hue, 0.2, 1.0 );
+
         CanvasElement tmp = new CanvasElement(width: width, height: height);
         CanvasRenderingContext2D ctx = tmp.context2D;
         for(TextLayer textLayer in textLayers) {
+            textLayer.fontColor = color;
             ctx.fillStyle = textLayer.fillStyle;
             ctx.font = textLayer.font;
             Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
