@@ -27,7 +27,7 @@ class TrollCallSheet extends CharSheet {
         String fact2String = randomFact();
         String fact3String = randomFact();
         Colour color = new Colour.from(tint)..setHSV(tint.hue, 0.2, 1.0 );
-        name = new TextLayer("Name",nameForDoll().toUpperCase(),345.0,470.0, fontSize: 66, maxWidth: 100, fontName: "trollcall", emphasis: emphasis,fontColor: color);
+        name = new TextLayer("Name",nameForDoll().toUpperCase(),345.0,470.0, fontSize: 60, maxWidth: 100, fontName: "trollcall", emphasis: emphasis,fontColor: color);
         fact1 = new TextLayer("Fact1",fact1String,370.0,130.0, fontSize: 25, maxWidth: 220, fontName: "trollcall", emphasis: emphasis,fontColor: color);
         fact2 = new TextLayer("Fact2",fact2String,370.0,210.0, fontSize: 25, maxWidth: 220, fontName: "trollcall", emphasis: emphasis,fontColor:color);
         fact3 = new TextLayer("Fact3",fact3String,370.0,290.0, fontSize: 25, maxWidth: 220, fontName: "trollcall", emphasis: emphasis,fontColor: color);
