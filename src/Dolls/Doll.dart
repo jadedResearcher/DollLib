@@ -1,6 +1,8 @@
 import "SpriteLayer.dart";
 import "dart:typed_data";
+import "dart:html";
 import 'dart:convert';
+import 'dart:async';
 import "../includes/bytebuilder.dart";
 
 import "../../DollRenderer.dart";
@@ -10,6 +12,7 @@ abstract class Doll {
     int width = 400;
     int height = 300;
     int renderingType = 0;
+    static String localStorageKey = "doll";
 
     //IMPORTANT  if i want save strings to not break if new rendering order, then rendering order and load order must be different things.
 
@@ -57,6 +60,19 @@ abstract class Doll {
             if(firstEye < 0 && l.imgNameBase.contains("Eye")) firstEye = l.imgNumber;
             if(l.imgNumber == 0) l.imgNumber = 1;
             if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
+        }
+    }
+
+    void save() {
+        int id = Doll.getFirstFreeID();
+        window.localStorage["${Doll.localStorageKey}$id"] = toDataBytesX();
+        window.alert("Saved Doll $id!");
+    }
+
+    static int getFirstFreeID() {
+        //fuck you if you want to store more than 1k dolls.
+        for(int i = 0; i<255; i++) {
+            if(!window.localStorage.containsKey("${Doll.localStorageKey}$i")) return i;
         }
     }
 
@@ -177,6 +193,20 @@ abstract class Doll {
         }
     }
 
+    static List<SavedDoll> loadAllFromLocalStorage() {
+        int last = 255; //don't care about first ree id cuz they can be deleted.
+        List<SavedDoll> ret = new List<SavedDoll>();
+        for(int i = 0; i< last; i++) {
+            String dataString = window.localStorage["${Doll.localStorageKey}$i"];
+
+            if(dataString != null) {
+                Doll doll = loadSpecificDoll(dataString);
+                ret.add(new SavedDoll(doll,i));
+            }
+        }
+        return ret;
+    }
+
     static Doll makeRandomDoll()  {
         Random rand = new Random();
         WeightedList<Doll> dolls = new WeightedList<Doll>();
@@ -192,6 +222,64 @@ abstract class Doll {
         dolls.add(new MomDoll(),0.3);
         //return new BroDoll(); //hardcoded for testing
         return rand.pickFrom(dolls);
+    }
+
+
+}
+
+
+
+
+
+class SavedDoll {
+    Doll doll;
+    int id;
+    CanvasElement canvas;
+    TextAreaElement textAreaElement;
+
+    SavedDoll(this.doll, this.id) {
+
+    }
+
+    void drawSelf(Element container, dynamic refreshMethod) {
+        Element bluh = new DivElement();
+        bluh.style.display = "inline-block";
+        container.append(bluh);
+        renderSelfToContainer(bluh);
+        renderDataUrlToContainer(bluh, refreshMethod);
+    }
+
+
+    Future<Null> renderSelfToContainer(Element container) async {
+        canvas = new CanvasElement(width: doll.width, height: doll.height);
+        container.append(canvas);
+        Renderer.drawDoll(canvas, doll);
+    }
+
+    Future<Null> renderDataUrlToContainer(Element container, dynamic refreshMethod) async {
+        Element bluh = new DivElement();
+        container.append(bluh);
+        textAreaElement = new TextAreaElement();
+        textAreaElement.setInnerHtml(doll.toDataBytesX());
+        bluh.append(textAreaElement);
+
+        ButtonElement copyButton = new ButtonElement();
+        bluh.append(copyButton);
+        copyButton.setInnerHtml("Copy Doll $id");
+        copyButton.onClick.listen((Event e) {
+            textAreaElement.select();
+            document.execCommand('copy');
+        });
+
+        ButtonElement deleteButton = new ButtonElement();
+        bluh.append(deleteButton);
+        deleteButton.setInnerHtml("Delete Doll $id");
+        deleteButton.onClick.listen((Event e) {
+            if(window.confirm("Are you sure you want to delete it???")) {
+                window.localStorage.remove("${Doll.localStorageKey}$id");
+                refreshMethod();
+            }
+        });
     }
 
 
