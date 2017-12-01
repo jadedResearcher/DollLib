@@ -33,7 +33,7 @@ class SpriteLayer {
         if(numbytes == 1) {
             builder.appendByte(imgNumber);
         }else {
-            //should first write the exo, then the number
+            //should first write the exo, then the numberm
             throw("not yet supported");
         }
     }
