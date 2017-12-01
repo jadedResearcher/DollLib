@@ -21,7 +21,8 @@ class SpriteLayer {
 
     bool changed = true; //generate descriptions when created, that will set it to false
 
-    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, {this.syncedWith:null, this.imgFormat:"png", this.numbytes: 1}) {
+    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, {this.syncedWith:null, this.imgFormat:"png"}) {
+        numbytes = (maxImageNumber/255).ceil();
         if(syncedWith == null) syncedWith = new List<SpriteLayer>();
     }
 
@@ -34,7 +35,7 @@ class SpriteLayer {
             builder.appendByte(imgNumber);
         }else {
             //should first write the exo, then the numberm
-            throw("not yet supported");
+            throw("not yet supported for ${numbytes} bytes, max is ${maxImageNumber}");
         }
     }
 
@@ -43,7 +44,7 @@ class SpriteLayer {
             imgNumber = reader.readByte();
         }else {
             //todo should first read the exo, then the number
-            throw("not yet supported");
+            throw("not yet supported for ${numbytes} bytes max is ${maxImageNumber}");
         }
     }
 

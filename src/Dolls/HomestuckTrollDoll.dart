@@ -133,7 +133,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
         int firstHorn = -100;
 
         canonSymbol.imgNumber = rand.nextInt(canonSymbol.maxImageNumber + 1);
-        canonSymbol.imgNumber = 72;
+       // canonSymbol.imgNumber = 72;
 
         String chosenBlood = chooseBlood(rand);
 
@@ -229,6 +229,8 @@ class HomestuckTrollDoll extends HomestuckDoll {
             }
             if (l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
         }
+        symbol.imgNumber = 0; //no more regular layer.
+
     }
 
     @override
