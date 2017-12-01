@@ -100,7 +100,8 @@ abstract class Doll {
         for(SpriteLayer l in dataOrderLayers) {
             //older strings with less layers
             if(featuresRead <= numFeatures) {
-                l.imgNumber = reader.readByte();
+                l.loadFromReader(reader); //handles knowing if it's 1 or more bytes
+                //l.imgNumber = reader.readByte();
             }else {
                 l.imgNumber = 0; //don't have.
             }
@@ -120,7 +121,11 @@ abstract class Doll {
 
     String toDataBytesX([ByteBuilder builder = null]) {
         if(builder == null) builder = new ByteBuilder();
-        int length = dataOrderLayers.length + palette.names.length + 1;//one byte for doll type
+        int length = palette.names.length + 1;//one byte for doll type
+
+        for(SpriteLayer layer in dataOrderLayers) {
+            length += layer.numbytes;
+        }
         builder.appendByte(renderingType); //value of 1 means homestuck doll
         builder.appendExpGolomb(length); //for length
 
@@ -137,7 +142,8 @@ abstract class Doll {
         //layer is last so can add new layers
         for(SpriteLayer l in dataOrderLayers) {
             //print("adding ${l.imgNameBase} to data string builder.");
-            builder.appendByte(l.imgNumber);
+            l.saveToBuilder(builder);
+            //builder.appendByte(l.imgNumber);
         }
 
         return BASE64URL.encode(builder.toBuffer().asUint8List());

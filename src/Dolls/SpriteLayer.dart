@@ -1,9 +1,14 @@
 import 'dart:math';
+import "../includes/bytebuilder.dart";
+import 'dart:convert';
+import "dart:typed_data";
+
 
 typedef void JROnClick();
 
-
+//one byte of data
 class SpriteLayer {
+    int numbytes = 1; //hardcoded to be 1 for this layer type
     String imgFormat;
     String imgNameBase;
     String name;
@@ -23,6 +28,26 @@ class SpriteLayer {
     String get imgLocation {
         return "$imgNameBase${imgNumber}.${imgFormat}";
     }
+
+    void saveToBuilder(ByteBuilder builder) {
+        if(numbytes == 1) {
+            builder.appendByte(imgNumber);
+        }else {
+            //should first write the exo, then the number
+            throw("not yet supported");
+        }
+    }
+
+    void loadFromReader(ByteReader reader) {
+        if(numbytes == 1) {
+            imgNumber = reader.readByte();
+        }else {
+            //todo should first read the exo, then the number
+            throw("not yet supported");
+        }
+    }
+
+
 
     int get imgNumber {
         return _imgNumber;
