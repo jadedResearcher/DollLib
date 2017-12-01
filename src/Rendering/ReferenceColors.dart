@@ -336,6 +336,204 @@ abstract class ReferenceColours {
         ..pants_light = '#000000'
         ..pants_dark = '#ffffff';
 
+
+
+    static HomestuckPalette FUSCHIA = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette VIOLET = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette PURPLE = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette INDIGO = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette CERULEAN = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette JADE = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette OLIVE = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette LIMEBLOOD = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette GOLD = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette BRONZE = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette BURGUNDY = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette TEAL = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+    static HomestuckPalette ANON = new HomestuckPalette()
+        ..accent = '#696969'
+        ..aspect_light = '#696969'
+        ..aspect_dark = '#888888'
+        ..shoe_light = '#555555'
+        ..shoe_dark = '#666666'
+        ..cloak_light = '#696969'
+        ..cloak_mid = '#999999'
+        ..cloak_dark = '#898989'
+        ..shirt_light = '#111111'
+        ..shirt_dark = '#000000'
+        ..pants_light = '#4b4b4b'
+        ..pants_dark = '#3a3a3a'
+        ..hair_accent = '#000000';
+
+
     static Map<String, Palette> _paletteList;
 
 
@@ -360,6 +558,19 @@ abstract class ReferenceColours {
             _paletteList["Derse"] = DERSE_PALETTE;
             _paletteList["Sketch"] = SKETCH;
             _paletteList["Ink"] = INK;
+            _paletteList["Burgundy"] = BURGUNDY;
+            _paletteList["Bronze"] = BRONZE;
+            _paletteList["Gold"] = GOLD;
+            _paletteList["Lime"] = LIMEBLOOD;
+            _paletteList["Olive"] = OLIVE;
+            _paletteList["Jade"] = JADE;
+            _paletteList["Teal"] = TEAL;
+            _paletteList["Cerulean"] = CERULEAN;
+            _paletteList["Indigo"] = INDIGO;
+            _paletteList["Purple"] = PURPLE;
+            _paletteList["Violet"] = VIOLET;
+            _paletteList["Fuschia"] = FUSCHIA;
+            _paletteList["Anon"] = ANON;
         }
 
         return _paletteList;
