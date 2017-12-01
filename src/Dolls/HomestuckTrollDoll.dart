@@ -15,7 +15,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
     int renderingType = 2;
     int maxHorn = 107;
     int maxFin = 18;
-    int maxCanonSymbol = 24; //288 eventually
+    int maxCanonSymbol = 48; //288 eventually
     int maxWing = 13;
 
     SpriteLayer leftHorn;
@@ -99,7 +99,30 @@ class HomestuckTrollDoll extends HomestuckDoll {
         String chosenBlood = rand.pickFrom(bloodColors);
         if(canonSymbol.imgNumber < 24) {
             chosenBlood = bloodColors[0];
+        }else if(canonSymbol.imgNumber < 24*2) {
+            chosenBlood = bloodColors[1];
+        }else if(canonSymbol.imgNumber < 24*3) {
+            chosenBlood = bloodColors[2];
+        }else if(canonSymbol.imgNumber < 24*4) {
+            chosenBlood = bloodColors[3];
+        }else if(canonSymbol.imgNumber < 24*5) {
+            chosenBlood = bloodColors[4];
+        }else if(canonSymbol.imgNumber < 24*6) {
+            chosenBlood = bloodColors[5];
+        }else if(canonSymbol.imgNumber < 24*7) {
+            chosenBlood = bloodColors[6];
+        }else if(canonSymbol.imgNumber < 24*8) {
+            chosenBlood = bloodColors[7];
+        }else if(canonSymbol.imgNumber < 24*9) {
+            chosenBlood = bloodColors[8];
+        }else if(canonSymbol.imgNumber < 24*10) {
+            chosenBlood = bloodColors[9];
+        }else if(canonSymbol.imgNumber < 24*11) {
+            chosenBlood = bloodColors[10];
+        }else if(canonSymbol.imgNumber < 24*12) {
+            chosenBlood = bloodColors[11];
         }
+        //it's just random if it somehow doesn't fit
         return chosenBlood;
     }
 
