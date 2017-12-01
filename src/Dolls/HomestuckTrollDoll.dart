@@ -17,7 +17,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
 
     int maxHorn = 107;
     int maxFin = 18;
-    int maxCanonSymbol = 96; //288 eventually
+    int maxCanonSymbol = 216; //288 eventually
     int maxWing = 13;
 
     SpriteLayer leftHorn;
@@ -135,7 +135,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
         int firstHorn = -100;
 
         canonSymbol.imgNumber = rand.nextInt(canonSymbol.maxImageNumber + 1);
-       // canonSymbol.imgNumber = 72;
+        canonSymbol.imgNumber = maxCanonSymbol;
 
         String chosenBlood = chooseBlood(rand);
 
