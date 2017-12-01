@@ -15,9 +15,11 @@ class HomestuckTrollDoll extends HomestuckDoll {
     int renderingType =2;
     int maxHorn = 107;
     int maxFin = 18;
+    int maxCanonSymbol = 24; //288 eventually
     int maxWing = 13;
 
     SpriteLayer leftHorn;
+    SpriteLayer canonSymbol; //can pick any color, but when randomized will be a canon color.
     SpriteLayer rightHorn;
     SpriteLayer leftFin;
     SpriteLayer rightFin;
@@ -27,14 +29,14 @@ class HomestuckTrollDoll extends HomestuckDoll {
     String folder = "images/Homestuck";
 
     @override
-    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, symbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2,rightHorn,leftHorn];
+    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, symbol, canonSymbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2,rightHorn,leftHorn];
 
 
     @override
     List<SpriteLayer>  get dataOrderLayers {
         List<SpriteLayer> ret = super.dataOrderLayers;
-        //this way theoretically you can load a troll as a human or vice versa
-        ret.addAll(<SpriteLayer>[leftHorn, rightHorn,leftFin,rightFin,wings]);
+        //this way theoretically you can load a troll as a human or vice versa, new shit on end
+        ret.addAll(<SpriteLayer>[leftHorn, rightHorn,leftFin,rightFin,wings,canonSymbol]);
         return ret;
     }
 
@@ -69,9 +71,9 @@ class HomestuckTrollDoll extends HomestuckDoll {
     {
         super.initLayers();
         //only do what is special to me here.
-
+        canonSymbol = new SpriteLayer("CanonSymbol","$folder/CanonSymbol/", 0, maxCanonSymbol);
         leftFin = new SpriteLayer("Fin","$folder/LeftFin/", 1, maxFin);
-        rightFin = new SpriteLayer("Fin","$folder/RightFin/", 1, maxFin, <SpriteLayer>[leftFin]);
+        rightFin = new SpriteLayer("Fin","$folder/RightFin/", 1, maxFin, syncedWith:<SpriteLayer>[leftFin]);
         leftFin.syncedWith.add(rightFin);
         rightFin.slave = true; //can't be selected on it's own
 
@@ -133,6 +135,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
             }
             if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
         }
+        symbol.imgNumber = 0; //no more regular layer.
 
         HomestuckTrollPalette h = palette as HomestuckTrollPalette;
 

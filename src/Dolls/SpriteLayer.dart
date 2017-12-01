@@ -21,7 +21,7 @@ class SpriteLayer {
 
     bool changed = true; //generate descriptions when created, that will set it to false
 
-    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, [this.syncedWith = null, this.imgFormat = "png"]) {
+    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, {this.syncedWith:null, this.imgFormat:"png", this.numbytes: 1}) {
         if(syncedWith == null) syncedWith = new List<SpriteLayer>();
     }
 
@@ -63,30 +63,4 @@ class SpriteLayer {
         }
     }
 
-}
-
-class ClickableSpriteLayer extends SpriteLayer {
-    //I need to know where i am in the canvas
-    double topLeftX;
-    double topLeftY;
-    double width;
-    double height;
-    JROnClick jrOnClick;
-
-    ClickableSpriteLayer(String name, String imgNameBase, int imgNumber,int maxImageNumber, this.topLeftX, this.topLeftY, this.width, this.height,  [List<SpriteLayer> syncedWith = null,String format = "png"]): super(name, imgNameBase, imgNumber,maxImageNumber,syncedWith,format) {
-        jrOnClick = incrementNumber;
-    }
-
-    bool wasClicked(double x, double y) {
-        print("Does ($x,$y) mean $imgNameBase was clicked?");
-        Rectangle rect = new Rectangle(topLeftX, topLeftY, width, height);
-        print("Rect is $rect");
-        return rect.containsPoint(new Point(x,y));
-    }
-
-    void incrementNumber() {
-        imgNumber ++;
-        if(imgNumber > maxImageNumber) imgNumber = 0;
-        print("incrementing $imgNameBase to $imgNumber");
-    }
 }

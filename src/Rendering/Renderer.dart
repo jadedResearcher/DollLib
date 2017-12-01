@@ -236,18 +236,6 @@ class Renderer {
     }
 
 
-
-    static void drawBoundingBox(CanvasElement canvas, ClickableSpriteLayer layer) {
-        //print("drawing bounding box for ${layer.imgNameBase}: ${layer.topLeftX}, ${layer.topLeftY}, ${layer.width}, ${layer.height}");
-        CanvasRenderingContext2D ctx = canvas.getContext('2d');
-        Random rand = new Random();
-        Colour color = new Colour.hsv(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
-        //new Colour.hsv(random 0-1, some random saturation 0-1, some random value 0-1),
-        ctx.fillStyle = color.toStyleString();
-        ctx.fillRect(layer.topLeftX, layer.topLeftY, layer.width, layer.height);
-        ctx.strokeRect(layer.topLeftX, layer.topLeftY, layer.width, layer.height);
-    }
-
     static void drawWhatever(CanvasElement canvas, String imageString) {
         print("Trying to draw $imageString");
         Loader.getResource(imageString).then((ImageElement loaded) {
