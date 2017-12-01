@@ -12,7 +12,7 @@ import "../Rendering/ReferenceColors.dart";
 
 class HomestuckTrollDoll extends HomestuckDoll {
     @override
-    int renderingType =2;
+    int renderingType = 2;
     int maxHorn = 107;
     int maxFin = 18;
     int maxCanonSymbol = 24; //288 eventually
@@ -29,18 +29,18 @@ class HomestuckTrollDoll extends HomestuckDoll {
     String folder = "images/Homestuck";
 
     @override
-    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, symbol, canonSymbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2,rightHorn,leftHorn];
+    List<SpriteLayer> get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, symbol, canonSymbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2, rightHorn, leftHorn];
 
 
     @override
-    List<SpriteLayer>  get dataOrderLayers {
+    List<SpriteLayer> get dataOrderLayers {
         List<SpriteLayer> ret = super.dataOrderLayers;
         //this way theoretically you can load a troll as a human or vice versa, new shit on end
-        ret.addAll(<SpriteLayer>[leftHorn, rightHorn,leftFin,rightFin,wings,canonSymbol]);
+        ret.addAll(<SpriteLayer>[leftHorn, rightHorn, leftFin, rightFin, wings, canonSymbol]);
         return ret;
     }
 
-    HomestuckTrollDoll():super();
+    HomestuckTrollDoll() :super();
 
     @override
     Palette paletteSource = ReferenceColours.TROLL_PALETTE;
@@ -66,21 +66,18 @@ class HomestuckTrollDoll extends HomestuckDoll {
         ..skin = '#C4C4C4';
 
     @override
-    void initLayers()
-
-    {
+    void initLayers() {
         super.initLayers();
         //only do what is special to me here.
-        canonSymbol = new SpriteLayer("CanonSymbol","$folder/CanonSymbol/", 0, maxCanonSymbol);
-        leftFin = new SpriteLayer("Fin","$folder/LeftFin/", 1, maxFin);
-        rightFin = new SpriteLayer("Fin","$folder/RightFin/", 1, maxFin, syncedWith:<SpriteLayer>[leftFin]);
+        canonSymbol = new SpriteLayer("CanonSymbol", "$folder/CanonSymbol/", 0, maxCanonSymbol);
+        leftFin = new SpriteLayer("Fin", "$folder/LeftFin/", 1, maxFin);
+        rightFin = new SpriteLayer("Fin", "$folder/RightFin/", 1, maxFin, syncedWith: <SpriteLayer>[leftFin]);
         leftFin.syncedWith.add(rightFin);
         rightFin.slave = true; //can't be selected on it's own
 
-        wings = new SpriteLayer("Wings","$folder/Wings/", 0, maxWing);
-        leftHorn  =new SpriteLayer("LeftHorn","$folder/LeftHorn/", 1, maxHorn);
-        rightHorn = new SpriteLayer("RightHorn","$folder/RightHorn/", 1, maxHorn);
-
+        wings = new SpriteLayer("Wings", "$folder/Wings/", 0, maxWing);
+        leftHorn = new SpriteLayer("LeftHorn", "$folder/LeftHorn/", 1, maxHorn);
+        rightHorn = new SpriteLayer("RightHorn", "$folder/RightHorn/", 1, maxHorn);
     }
 
 
@@ -93,7 +90,17 @@ class HomestuckTrollDoll extends HomestuckDoll {
 
     //assumes type byte is already gone
     HomestuckTrollDoll.fromReader(ByteReader reader){
-        initFromReader(reader,new HomestuckTrollPalette());
+        initFromReader(reader, new HomestuckTrollPalette());
+    }
+
+    String chooseBlood(Random rand) {
+        List<String> bloodColors = <String>["#A10000", "#a25203", "#a1a100", "#658200", "#416600", "#078446", "#008282", "#004182", "#0021cb", "#631db4", "#610061", "#99004d"];
+
+        String chosenBlood = rand.pickFrom(bloodColors);
+        if(canonSymbol.imgNumber < 24) {
+            chosenBlood = bloodColors[0];
+        }
+        return chosenBlood;
     }
 
     @override
@@ -101,45 +108,49 @@ class HomestuckTrollDoll extends HomestuckDoll {
         Random rand = new Random();
         int firstEye = -100;
         int firstHorn = -100;
-        List<String> bloodColors = <String>["#A10000", "#a25203", "#a1a100", "#658200", "#416600", "#078446", "#008282", "#004182", "#0021cb", "#631db4", "#610061", "#99004d"];
 
-        String chosenBlood = rand.pickFrom(bloodColors);
-        for(SpriteLayer l in renderingOrderLayers) {
-            //don't have wings normally
-            if(!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber+1);
-            //keep eyes synced unless player decides otherwise
-            if(l.imgNameBase.contains("Eye")) {
-                if(firstEye < 0) {
-                    firstEye = l.imgNumber;
-                }else {
-                    l.imgNumber = firstEye;
-                }
-            }
+        canonSymbol.imgNumber = rand.nextInt(canonSymbol.maxImageNumber + 1);
+        String chosenBlood = chooseBlood(rand);
 
-            if(l.imgNameBase.contains("Horn")) {
-                if(firstHorn < 0) {
-                    firstHorn = l.imgNumber;
-                }else {
-                    l.imgNumber = firstHorn;
-                }
-            }
 
-            if(l.imgNumber == 0 && !l.imgNameBase.contains("Fin")&& !l.imgNameBase.contains("Wings")) l.imgNumber = 1;
-            if(l.imgNameBase.contains("Fin")){
-                //"#610061", "#99004d"
-                if(chosenBlood == "#610061" || chosenBlood == "#99004d"){
-                    l.imgNumber = 1;
-                }else{
-                    l.imgNumber = 0;
+        for (SpriteLayer l in renderingOrderLayers) {
+            if (l == canonSymbol) {
+                //ignore already chosen so i could get blood color
+            } else {
+                //don't have wings normally
+                if (!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber + 1);
+                //keep eyes synced unless player decides otherwise
+                if (l.imgNameBase.contains("Eye")) {
+                    if (firstEye < 0) {
+                        firstEye = l.imgNumber;
+                    } else {
+                        l.imgNumber = firstEye;
+                    }
                 }
+
+                if (l.imgNameBase.contains("Horn")) {
+                    if (firstHorn < 0) {
+                        firstHorn = l.imgNumber;
+                    } else {
+                        l.imgNumber = firstHorn;
+                    }
+                }
+
+                if (l.imgNumber == 0 && !l.imgNameBase.contains("Fin") && !l.imgNameBase.contains("Wings")) l.imgNumber = 1;
+                if (l.imgNameBase.contains("Fin")) {
+                    //"#610061", "#99004d"
+                    if (chosenBlood == "#610061" || chosenBlood == "#99004d") {
+                        l.imgNumber = 1;
+                    } else {
+                        l.imgNumber = 0;
+                    }
+                }
+                if (l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
             }
-            if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
         }
         symbol.imgNumber = 0; //no more regular layer.
 
         HomestuckTrollPalette h = palette as HomestuckTrollPalette;
-
-
         palette.add(HomestuckTrollPalette._ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
         palette.add(HomestuckTrollPalette._ASPECT_LIGHT, new Colour.fromStyleString(chosenBlood), true);
 
@@ -151,8 +162,8 @@ class HomestuckTrollDoll extends HomestuckDoll {
         palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
         palette.add(HomestuckTrollPalette._WING1, new Colour.fromStyleString(chosenBlood), true);
         palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value/2), true);
-        palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);
-    }
+        palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);    }
+
 
     @override
     void randomizeNotColors() {
@@ -162,36 +173,36 @@ class HomestuckTrollDoll extends HomestuckDoll {
         List<String> bloodColors = <String>["#A10000", "#a25203", "#a1a100", "#658200", "#416600", "#078446", "#008282", "#004182", "#0021cb", "#631db4", "#610061", "#99004d"];
 
         String chosenBlood = rand.pickFrom(bloodColors);
-        for(SpriteLayer l in renderingOrderLayers) {
+        for (SpriteLayer l in renderingOrderLayers) {
             //don't have wings normally
-            if(!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber+1);
+            if (!l.imgNameBase.contains("Wings")) l.imgNumber = rand.nextInt(l.maxImageNumber + 1);
             //keep eyes synced unless player decides otherwise
-            if(l.imgNameBase.contains("Eye")) {
-                if(firstEye < 0) {
+            if (l.imgNameBase.contains("Eye")) {
+                if (firstEye < 0) {
                     firstEye = l.imgNumber;
-                }else {
+                } else {
                     l.imgNumber = firstEye;
                 }
             }
 
-            if(l.imgNameBase.contains("Horn")) {
-                if(firstHorn < 0) {
+            if (l.imgNameBase.contains("Horn")) {
+                if (firstHorn < 0) {
                     firstHorn = l.imgNumber;
-                }else {
+                } else {
                     l.imgNumber = firstHorn;
                 }
             }
 
-            if(l.imgNumber == 0 && !l.imgNameBase.contains("Fin")&& !l.imgNameBase.contains("Wings")) l.imgNumber = 1;
-            if(l.imgNameBase.contains("Fin")){
+            if (l.imgNumber == 0 && !l.imgNameBase.contains("Fin") && !l.imgNameBase.contains("Wings")) l.imgNumber = 1;
+            if (l.imgNameBase.contains("Fin")) {
                 //"#610061", "#99004d"
-                if(chosenBlood == "#610061" || chosenBlood == "#99004d"){
+                if (chosenBlood == "#610061" || chosenBlood == "#99004d") {
                     l.imgNumber = 1;
-                }else{
+                } else {
                     l.imgNumber = 0;
                 }
             }
-            if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
+            if (l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
         }
     }
 
@@ -207,24 +218,21 @@ class HomestuckTrollDoll extends HomestuckDoll {
         palette.add(HomestuckTrollPalette._ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
         palette.add(HomestuckTrollPalette._ASPECT_LIGHT, new Colour.fromStyleString(chosenBlood), true);
 
-        palette.add(HomestuckTrollPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
+        palette.add(HomestuckTrollPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value / 2), true);
         palette.add(HomestuckTrollPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
+        palette.add(HomestuckTrollPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value / 2), true);
         palette.add(HomestuckTrollPalette._CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
-        palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
+        palette.add(HomestuckTrollPalette._CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value / 2), true);
+        palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value * 3), true);
         palette.add(HomestuckTrollPalette._PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
+        palette.add(HomestuckTrollPalette._PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value / 2), true);
         palette.add(HomestuckTrollPalette._WING1, new Colour.fromStyleString(chosenBlood), true);
-        palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value/2), true);
+        palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value / 2), true);
         palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);
-
     }
 
 
 }
-
-
 
 
 /// Convenience class for getting/setting aspect palettes
