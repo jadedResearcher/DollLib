@@ -8,6 +8,8 @@ typedef void JROnClick();
 
 //one byte of data
 class SpriteLayer {
+    //if this isn't set will throw an error if you try to have multiple bytes
+    bool supportsMultiByte = false;
     int numbytes = 1; //hardcoded to be 1 for this layer type
     String imgFormat;
     String imgNameBase;
@@ -21,7 +23,7 @@ class SpriteLayer {
 
     bool changed = true; //generate descriptions when created, that will set it to false
 
-    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, {this.syncedWith:null, this.imgFormat:"png"}) {
+    SpriteLayer(this.name, this.imgNameBase, this._imgNumber, this.maxImageNumber, {this.supportsMultiByte = false, this.syncedWith:null, this.imgFormat:"png"}) {
         numbytes = (maxImageNumber/255).ceil();
         if(syncedWith == null) syncedWith = new List<SpriteLayer>();
     }
@@ -33,18 +35,22 @@ class SpriteLayer {
     void saveToBuilder(ByteBuilder builder) {
         if(numbytes == 1) {
             builder.appendByte(imgNumber);
-        }else {
+        }else if(!supportsMultiByte) {
             //should first write the exo, then the numberm
-            throw("not yet supported for ${numbytes} bytes, max is ${maxImageNumber}");
+            throw("not  supported for ${numbytes} bytes, max is ${maxImageNumber} is invalid");
+        }else {
+            throw ("todo");
         }
     }
 
     void loadFromReader(ByteReader reader) {
         if(numbytes == 1) {
             imgNumber = reader.readByte();
+        }else if(!supportsMultiByte) {
+            //should first write the exo, then the numberm
+            throw("not  supported for ${numbytes} bytes, max is ${maxImageNumber} is invalid");
         }else {
-            //todo should first read the exo, then the number
-            throw("not yet supported for ${numbytes} bytes max is ${maxImageNumber}");
+            throw ("todo");
         }
     }
 

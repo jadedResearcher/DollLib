@@ -13,9 +13,11 @@ import "../Rendering/ReferenceColors.dart";
 class HomestuckTrollDoll extends HomestuckDoll {
     @override
     int renderingType = 2;
+    //Don't go over 255 for any old layer unless you want to break shit. over 255 adds an exo.
+
     int maxHorn = 107;
     int maxFin = 18;
-    int maxCanonSymbol = 72; //288 eventually
+    int maxCanonSymbol = 96; //288 eventually
     int maxWing = 13;
 
     SpriteLayer leftHorn;
@@ -69,7 +71,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
     void initLayers() {
         super.initLayers();
         //only do what is special to me here.
-        canonSymbol = new SpriteLayer("CanonSymbol", "$folder/CanonSymbol/", 0, maxCanonSymbol);
+        canonSymbol = new SpriteLayer("CanonSymbol", "$folder/CanonSymbol/", 0, maxCanonSymbol, supportsMultiByte: true);
         leftFin = new SpriteLayer("Fin", "$folder/LeftFin/", 1, maxFin);
         rightFin = new SpriteLayer("Fin", "$folder/RightFin/", 1, maxFin, syncedWith: <SpriteLayer>[leftFin]);
         leftFin.syncedWith.add(rightFin);
