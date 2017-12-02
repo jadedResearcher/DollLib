@@ -51,6 +51,14 @@ class SpriteLayer {
         }
     }
 
+    void randomize() {
+        Random rand  = new Random();
+        imgNumber = rand.nextInt(maxImageNumber);
+        for(SpriteLayer l in syncedWith) {
+            l.imgNumber = imgNumber;
+        }
+    }
+
     void loadFromReader(ByteReader reader) {
         if(numbytes == 1 || numbytes == 0) {
             imgNumber = reader.readByte();
