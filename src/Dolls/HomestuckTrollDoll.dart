@@ -15,6 +15,9 @@ class HomestuckTrollDoll extends HomestuckDoll {
     int renderingType = 2;
     //Don't go over 255 for any old layer unless you want to break shit. over 255 adds an exo.
 
+    //these bodies look terrible with troll signs. if any of these use 47,48, or 49
+    List<int> bannedRandomBodies = <int>[5,11,14,43,50,59,65,66,67,70,72,75,74,98,100,101,102,106,107,109];
+    int defaultBody = 48;
     int maxHorn = 107;
     int maxFin = 18;
     int maxCanonSymbol = 288; //288 eventually
@@ -52,8 +55,8 @@ class HomestuckTrollDoll extends HomestuckDoll {
         ..accent = '#FF9B00'
         ..aspect_light = '#FF9B00'
         ..aspect_dark = '#FF8700'
-        ..shoe_light = '#7F7F7F'
-        ..shoe_dark = '#727272'
+        ..shoe_light = '#111111'
+        ..shoe_dark = '#333333'
         ..cloak_light = '#A3A3A3'
         ..cloak_mid = '#999999'
         ..cloak_dark = '#898989'
@@ -134,12 +137,10 @@ class HomestuckTrollDoll extends HomestuckDoll {
         int firstEye = -100;
         int firstHorn = -100;
 
-        canonSymbol.imgNumber = rand.nextInt(canonSymbol.maxImageNumber + 1);
+        canonSymbol.imgNumber = rand.nextInt(canonSymbol.maxImageNumber)+1; //don't be zero
         //canonSymbol.imgNumber = maxCanonSymbol;
 
         String chosenBlood = chooseBlood(rand);
-
-
         for (SpriteLayer l in renderingOrderLayers) {
             if (l == canonSymbol) {
                 //ignore already chosen so i could get blood color
@@ -176,14 +177,15 @@ class HomestuckTrollDoll extends HomestuckDoll {
             }
         }
         symbol.imgNumber = 0; //no more regular layer.
+        if(bannedRandomBodies.contains(body.imgNumber)) body.imgNumber = defaultBody;
 
         HomestuckTrollPalette h = palette as HomestuckTrollPalette;
         palette.add(HomestuckTrollPalette._ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
         palette.add(HomestuckTrollPalette._ASPECT_LIGHT, new Colour.fromStyleString(chosenBlood), true);
 
         palette.add(HomestuckTrollPalette._ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
-        palette.add(HomestuckTrollPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckTrollPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
+       // palette.add(HomestuckTrollPalette._SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+       // palette.add(HomestuckTrollPalette._SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
         palette.add(HomestuckTrollPalette._CLOAK_LIGHT, new Colour.from(h.aspect_light), true);
         palette.add(HomestuckTrollPalette._CLOAK_DARK, new Colour.from(h.aspect_dark),true);
         palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
@@ -232,7 +234,7 @@ class HomestuckTrollDoll extends HomestuckDoll {
             if (l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
         }
         symbol.imgNumber = 0; //no more regular layer.
-
+        if(bannedRandomBodies.contains(body.imgNumber)) body.imgNumber = defaultBody;
     }
 
     @override

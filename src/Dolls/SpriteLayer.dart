@@ -41,7 +41,7 @@ class SpriteLayer {
         }else {
             //first step, convert 4 byte signed integer into byte array
             //then store number of bytes, chopping off any excess beyond numBytes
-            //v2: can store shorts and can store ints. 
+            //v2: can store shorts and can store ints.
             if(numbytes == 2) {
                 builder.appendShort(imgNumber);
 
