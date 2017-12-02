@@ -33,7 +33,7 @@ class SpriteLayer {
     }
 
     void saveToBuilder(ByteBuilder builder) {
-        if(numbytes == 1) {
+        if(numbytes == 1 || numbytes == 0) {
             builder.appendByte(imgNumber);
         }else if(!supportsMultiByte) {
             //should first write the exo, then the numberm
