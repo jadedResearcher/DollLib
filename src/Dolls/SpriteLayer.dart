@@ -39,7 +39,15 @@ class SpriteLayer {
             //should first write the exo, then the numberm
             throw("not  supported for ${numbytes} bytes, max is ${maxImageNumber} is invalid");
         }else {
-            throw ("todo");
+            //first step, convert 4 byte signed integer into byte array
+            //then store number of bytes, chopping off any excess beyond numBytes
+            //v2: can store shorts and can store ints. 
+            if(numbytes == 2) {
+                builder.appendShort(imgNumber);
+
+            }else {
+                builder.appendInt32(imgNumber);
+            }
         }
     }
 
@@ -47,10 +55,13 @@ class SpriteLayer {
         if(numbytes == 1) {
             imgNumber = reader.readByte();
         }else if(!supportsMultiByte) {
-            //should first write the exo, then the numberm
             throw("not  supported for ${numbytes} bytes, max is ${maxImageNumber} is invalid");
         }else {
-            throw ("todo");
+            if(numbytes == 2) {
+                imgNumber = reader.readShort();
+            }else {
+                imgNumber = reader.readInt32();
+            }
         }
     }
 
