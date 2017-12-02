@@ -52,7 +52,7 @@ class SpriteLayer {
     }
 
     void loadFromReader(ByteReader reader) {
-        if(numbytes == 1) {
+        if(numbytes == 1 || numbytes == 0) {
             imgNumber = reader.readByte();
         }else if(!supportsMultiByte) {
             throw("not  supported for ${numbytes} bytes, max is ${maxImageNumber} is invalid");
