@@ -51,6 +51,14 @@ class ConsortDoll extends Doll {
         initFromReader(reader, new ConsortPalette());
     }
 
+    @override
+    void load(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+        initFromReader(reader, new ConsortPalette(), false);
+    }
+
     //assumes type byte is already gone
     ConsortDoll.fromReader(ByteReader reader){
         initFromReader(reader,new ConsortPalette());

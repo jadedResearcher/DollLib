@@ -30,4 +30,6 @@ class EggDoll extends HomestuckDoll {
     }
 
 
+
+
 }

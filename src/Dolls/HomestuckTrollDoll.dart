@@ -45,6 +45,14 @@ class HomestuckTrollDoll extends HomestuckDoll {
         return ret;
     }
 
+    @override
+    void load(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+        initFromReader(reader, new HomestuckTrollPalette(), false);
+    }
+
     HomestuckTrollDoll() :super();
 
     @override

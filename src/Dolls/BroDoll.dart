@@ -66,6 +66,14 @@ class BroDoll extends Doll {
         randomize();
     }
 
+    @override
+    void load(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+        initFromReader(reader, new BroPalette(), false);
+    }
+
     //moms like pastel pink
     @override
     Colour get associatedColor {

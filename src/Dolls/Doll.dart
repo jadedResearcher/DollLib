@@ -76,9 +76,19 @@ abstract class Doll {
         }
     }
 
+    void load(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+        initFromReader(reader, new Palette(), false);
+    }
+
     //i am assuming type was already read at this point. Type, Exo is required.
-    void initFromReader(ByteReader reader, Palette newP) {
-        initLayers();
+    void initFromReader(ByteReader reader, Palette newP, [bool layersNeedInit = true]) {
+        if(layersNeedInit) {
+            print("initalizing layers");
+            initLayers();
+        }
         int numFeatures = reader.readExpGolomb();
         print("I think there are ${numFeatures} features");
         int featuresRead = 2; //for exo and doll type

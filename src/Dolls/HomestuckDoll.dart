@@ -13,7 +13,7 @@ class HomestuckDoll extends Doll {
     @override
     String folder = "images/Homestuck";
     //Don't go over 255 for any old layer unless you want to break shit. over 255 adds an exo.
-    final int maxBody = 111;
+    final int maxBody = 112;
     final int maxHair = 102;
     final int maxEye =57;
     final int maxMouth = 49;
@@ -65,6 +65,14 @@ class HomestuckDoll extends Doll {
     HomestuckDoll() {
         initLayers();
         randomize();
+    }
+
+    @override
+    void load(String dataString) {
+        Uint8List thingy = BASE64URL.decode(dataString);
+        ByteReader reader = new ByteReader(thingy.buffer, 0);
+        int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+        initFromReader(reader, new HomestuckPalette(), false);
     }
 
     void initLayers()

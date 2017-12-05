@@ -14,7 +14,7 @@ abstract class NamedLayerDoll extends Doll {
 
     //i am assuming type was already read at this point. Type, Exo is required.
     @override
-    void initFromReader(ByteReader reader, Palette newP) {
+    void initFromReader(ByteReader reader, Palette newP, [bool layersNeedInit = true]) {
         initLayers(); //gets body/crown.
         int numFeatures = reader.readExpGolomb();
         print("I think there are ${numFeatures} features");

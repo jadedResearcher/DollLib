@@ -96,6 +96,14 @@ will also need to figure out how to do the drop downs.
 
      }
 
+     @override
+     void load(String dataString) {
+         Uint8List thingy = BASE64URL.decode(dataString);
+         ByteReader reader = new ByteReader(thingy.buffer, 0);
+         int type = reader.readByte(); //not gonna use, but needs to be gone for reader
+         initFromReader(reader, new QueenPalette(),false);
+     }
+
 
 
 
