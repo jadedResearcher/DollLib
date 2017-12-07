@@ -12,6 +12,7 @@ TODO: Worry about this in the future.
  */
 abstract class CharSheet {
     //actual image name of sheet should be type num.
+    bool hideDoll = false;
     String folder = "images/CharSheets";
     String fontName = "Courier New";
     String emphasis = "bold";
@@ -101,16 +102,28 @@ abstract class CharSheet {
         return ret;
     }
 
+    Element makeHideButton() {
+        Element ret = new DivElement();
+        CheckboxInputElement check = new CheckboxInputElement();
+        ret.text = "Show Doll";
+        check.checked = !hideDoll;
+        ret.append(check);
+        check.onChange.listen((e) {
+            hideDoll = !check.checked;
+            draw();
+        });
+        return ret;
+    }
 
     //draws a text area for each text element, one for the doll, and a color picker for tint.
     Element makeForm() {
         Element ret = new DivElement();
         ret.className = "cardForm";
         ret.append(makeDollLoader());
+        ret.append(makeHideButton());
         ret.append(makeTintSelector());
         ret.append(makeTextLoader());
         ret.append(makeSaveButton());
-
         return ret;
     }
 

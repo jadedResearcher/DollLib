@@ -21,6 +21,7 @@ class TrollCallSheet extends CharSheet {
     TextLayer fact2;
     TextLayer fact3;
 
+
     TrollCallSheet(Doll doll) : super(doll) {
         tint = doll.associatedColor;
         String fact1String = randomFact();
@@ -71,6 +72,7 @@ class TrollCallSheet extends CharSheet {
 
     Future<CanvasElement>  drawDoll(Doll doll) async {
         CanvasElement monsterElement = new CanvasElement(width:300, height: 450);
+        if(hideDoll) return monsterElement;
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);
         //Renderer.drawBG(monsterElement, ReferenceColours.RED, ReferenceColours.WHITE);
@@ -142,7 +144,7 @@ class TrollCallSheet extends CharSheet {
         canvas.context2D.clearRect(0,0,width,height);
         canvas.context2D.drawImage(sheetElement, 0, 0);
         canvas.context2D.drawImage(textCanvas, 0, 0);
-        canvas.context2D.drawImage(dollElement,50, 275);
+        if(!hideDoll)canvas.context2D.drawImage(dollElement,50, 275);
         if(symbolElement != null) canvas.context2D.drawImage(symbolElement,459, 610);
 
 

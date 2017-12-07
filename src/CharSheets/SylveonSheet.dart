@@ -203,6 +203,7 @@ class SylveonSheet extends CharSheet {
 
     Future<CanvasElement>  drawDoll(Doll doll) async {
         CanvasElement monsterElement = new CanvasElement(width:375, height: 480);
+        if(hideDoll) return monsterElement;
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);
 

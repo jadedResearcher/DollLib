@@ -9,15 +9,10 @@ import "../includes/palette.dart";
 import "../../DollRenderer.dart";
 
 
-class HomestuckHeroDoll extends HomestuckDoll {
+class HomestuckBabyDoll extends HomestuckDoll {
 
     @override
-    int height = 641;
-    @override
-    int width = 400;
-
-    @override
-    int renderingType =11;
+    int renderingType =12;
     @override
     String folder = "images/Homestuck";
     @override
@@ -46,9 +41,27 @@ class HomestuckHeroDoll extends HomestuckDoll {
 
 
 
-    HomestuckHeroDoll() {
+    HomestuckBabyDoll() {
         initLayers();
         randomize();
+    }
+
+    @override
+    void randomizeNotColors()
+
+    {
+        super.randomizeNotColors();
+        symbol.imgNumber = 0;
+
+    }
+
+    @override
+    void randomize()
+
+    {
+        super.randomize();
+        symbol.imgNumber = 0;
+
     }
 
     @override
@@ -56,11 +69,11 @@ class HomestuckHeroDoll extends HomestuckDoll {
 
     {
         super.initLayers();
-        body = new SpriteLayer("Body","$folder/HeroBody/", 0, maxBody);
+        body = new SpriteLayer("Body","$folder/Baby/", 0, maxBody);
 
     }
 
-    HomestuckHeroDoll.fromDataString(String dataString){
+    HomestuckBabyDoll.fromDataString(String dataString){
         Uint8List thingy = BASE64URL.decode(dataString);
         ByteReader reader = new ByteReader(thingy.buffer, 0);
         int type = reader.readByte(); //not gonna use, but needs to be off before given to initFromReader
@@ -68,7 +81,7 @@ class HomestuckHeroDoll extends HomestuckDoll {
     }
 
     //assumes type byte is already gone
-     HomestuckHeroDoll.fromReader(ByteReader reader){
+     HomestuckBabyDoll.fromReader(ByteReader reader){
          initFromReader(reader,new HomestuckPalette());
      }
 
