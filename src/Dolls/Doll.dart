@@ -207,6 +207,14 @@ abstract class Doll {
         if(type == new BroDoll().renderingType) {
             return new BroDoll.fromReader(reader);
         }
+
+        if(type == new HomestuckBabyDoll().renderingType) {
+            return new HomestuckBabyDoll.fromReader(reader);
+        }
+
+        if(type == new HomestuckGrubDoll().renderingType) {
+            return new HomestuckGrubDoll.fromReader(reader);
+        }
     }
 
     static List<SavedDoll> loadAllFromLocalStorage() {
@@ -233,6 +241,8 @@ abstract class Doll {
         dolls.add(new QueenDoll(),0.3);
         dolls.add(new EggDoll(),0.05);
         dolls.add(new TrollEggDoll(), 0.05);
+        dolls.add(new HomestuckBabyDoll(),0.1);
+        dolls.add(new HomestuckGrubDoll(), 0.1);
         dolls.add(new DadDoll(),0.3);
         dolls.add(new BroDoll(),0.3);
         dolls.add(new MomDoll(),0.3);
