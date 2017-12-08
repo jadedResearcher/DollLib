@@ -111,7 +111,7 @@ abstract class Doll {
             //older strings with less layers
             print("features read is $featuresRead and num features is $numFeatures");
 
-                if(featuresRead < numFeatures) {
+                if(featuresRead <= numFeatures) {
                 l.loadFromReader(reader); //handles knowing if it's 1 or more bytes
                 //l.imgNumber = reader.readByte();
             }else {
