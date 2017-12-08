@@ -14,14 +14,16 @@ class HomestuckDoll extends Doll {
     String folder = "images/Homestuck";
     //Don't go over 255 for any old layer unless you want to break shit. over 255 adds an exo.
     final int maxBody = 113;
-    final int maxHair = 103;
-    final int maxEye =57;
-    final int maxMouth = 60;
+    final int maxHair = 110;
+    final int maxEye = 60;
+    final int maxMouth = 52;
     final int maxSymbol = 226;
     final int maxGlass = 42;
     final int maxGlass2 = 48;
+    final int maxFacePaint = 24;
 
     SpriteLayer body;
+    SpriteLayer facePaint;
     SpriteLayer hairTop;
     SpriteLayer hairBack;
     SpriteLayer leftEye;
@@ -33,10 +35,10 @@ class HomestuckDoll extends Doll {
 
 
     @override
-    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[hairBack, body, symbol, mouth, leftEye, rightEye, glasses, hairTop, glasses2];
+    List<SpriteLayer>  get renderingOrderLayers => <SpriteLayer>[hairBack, body, facePaint,symbol, mouth, leftEye, rightEye, glasses, hairTop, glasses2];
 
     @override
-    List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[body, hairTop, hairBack, leftEye, rightEye, mouth, symbol, glasses, glasses2];
+    List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[body, hairTop, hairBack, leftEye, rightEye, mouth, symbol, glasses, glasses2,facePaint];
 
 
 
@@ -84,6 +86,8 @@ class HomestuckDoll extends Doll {
         hairBack.slave = true; //can't be selected on it's own
 
         body = new SpriteLayer("Body","$folder/Body/", 0, maxBody);
+        facePaint = new SpriteLayer("FacePaint","$folder/FacePaint/", 0, maxFacePaint);
+
         symbol = new SpriteLayer("Symbol","$folder/Symbol/", 1, maxSymbol);
         mouth = new SpriteLayer("Mouth","$folder/Mouth/", 1, maxMouth);
         leftEye = new SpriteLayer("LeftEye","$folder/LeftEye/", 1, maxEye);
@@ -117,6 +121,9 @@ class HomestuckDoll extends Doll {
             if(firstEye < 0 && l.imgNameBase.contains("Eye")) firstEye = l.imgNumber;
             if(l.imgNumber == 0) l.imgNumber = 1;
             if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
+        }
+        if(rand.nextDouble() > .2) {
+            facePaint.imgNumber = 0;
         }
 
         HomestuckPalette h = palette as HomestuckPalette;
@@ -167,6 +174,9 @@ class HomestuckDoll extends Doll {
              if(firstEye < 0 && l.imgNameBase.contains("Eye")) firstEye = l.imgNumber;
              if(l.imgNumber == 0 && l != body) l.imgNumber = 1;
              if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
+         }
+         if(rand.nextDouble() > .2) {
+             facePaint.imgNumber = 0;
          }
      }
 

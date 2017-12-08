@@ -109,10 +109,13 @@ abstract class Doll {
         //layer is last so can add new layers.
         for(SpriteLayer l in dataOrderLayers) {
             //older strings with less layers
-            if(featuresRead <= numFeatures) {
+            print("features read is $featuresRead and num features is $numFeatures");
+
+                if(featuresRead < numFeatures) {
                 l.loadFromReader(reader); //handles knowing if it's 1 or more bytes
                 //l.imgNumber = reader.readByte();
             }else {
+                print("skipping a feature i don't have in string");
                 l.imgNumber = 0; //don't have.
             }
             print("loading layer ${l.name}. Value: ${l.imgNumber} bytesRead: $featuresRead  numFeatures: $numFeatures");

@@ -40,6 +40,7 @@ abstract class ReferenceColours {
 
 
     static HomestuckPalette SPRITE_PALETTE = new HomestuckPalette()
+        ..accent = '#FF9B00'
         ..aspect_light = '#FEFD49' //eyes
         ..aspect_dark = '#FEC910'
         ..shoe_light = '#10E0FF'
@@ -58,6 +59,7 @@ abstract class ReferenceColours {
         ..skin = '#ffffff';
 
     static HomestuckTrollPalette TROLL_PALETTE = new HomestuckTrollPalette()
+        ..accent = '#FF9B00'
         ..aspect_light = '#FEFD49'
         ..aspect_dark = '#FEC910'
         ..wing1 = '#00FF2A'

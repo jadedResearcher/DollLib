@@ -32,6 +32,11 @@ class SpriteLayer {
         return "$imgNameBase${imgNumber}.${imgFormat}";
     }
 
+    @override
+    String toString() {
+        return name;
+    }
+
     void saveToBuilder(ByteBuilder builder) {
         if(numbytes == 1 || numbytes == 0) {
             builder.appendByte(imgNumber);

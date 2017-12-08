@@ -34,16 +34,13 @@ class HomestuckTrollDoll extends HomestuckDoll {
     String folder = "images/Homestuck";
 
     @override
-    List<SpriteLayer> get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, symbol, canonSymbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2, rightHorn, leftHorn];
+    List<SpriteLayer> get renderingOrderLayers => <SpriteLayer>[wings, hairBack, rightFin, body, facePaint, symbol, canonSymbol, mouth, leftEye, rightEye, glasses, hairTop, leftFin, glasses2, rightHorn, leftHorn];
 
 
     @override
-    List<SpriteLayer> get dataOrderLayers {
-        List<SpriteLayer> ret = super.dataOrderLayers;
-        //this way theoretically you can load a troll as a human or vice versa, new shit on end
-        ret.addAll(<SpriteLayer>[leftHorn, rightHorn, leftFin, rightFin, wings, canonSymbol]);
-        return ret;
-    }
+    List<SpriteLayer>  get dataOrderLayers => <SpriteLayer>[body, hairTop, hairBack, leftEye, rightEye, mouth, symbol, glasses, glasses2,leftHorn, rightHorn, leftFin, rightFin, wings, canonSymbol, facePaint];
+
+
 
     @override
     void load(String dataString) {
@@ -199,7 +196,12 @@ class HomestuckTrollDoll extends HomestuckDoll {
         palette.add(HomestuckTrollPalette._CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
         palette.add(HomestuckTrollPalette._WING1, new Colour.fromStyleString(chosenBlood), true);
         palette.add(HomestuckTrollPalette._WING2, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue)..setHSV(h.wing1.hue, h.wing1.saturation, h.wing1.value/2), true);
-        palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);    }
+        palette.add(HomestuckTrollPalette._HAIR_ACCENT, new Colour(h.wing1.red, h.wing1.green, h.wing1.blue), true);
+        if(rand.nextDouble() > .2) {
+            facePaint.imgNumber = 0;
+        }
+
+    }
 
 
     @override
@@ -243,6 +245,9 @@ class HomestuckTrollDoll extends HomestuckDoll {
         }
         symbol.imgNumber = 0; //no more regular layer.
         if(bannedRandomBodies.contains(body.imgNumber)) body.imgNumber = defaultBody;
+        if(rand.nextDouble() > .2) {
+            facePaint.imgNumber = 0;
+        }
     }
 
     @override
