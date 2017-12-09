@@ -9,5 +9,7 @@ library CharSheetLib;
 export "src/CharSheets/CharSheet.dart";
 export "src/CharSheets/SylveonSheet.dart";
 export "src/CharSheets/trollCallSheet.dart";
+export "src/CharSheets/Echeladder.dart";
+
 
 // TODO: Export any libraries intended for clients of this package.

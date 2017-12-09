@@ -102,32 +102,7 @@ class TrollCallSheet extends CharSheet {
     }
 
 
-    Future<CanvasElement>  drawText() async {
-        Colour color = new Colour.from(tint)..setHSV(tint.hue, 0.2, 1.0 );
 
-        CanvasElement tmp = new CanvasElement(width: width, height: height);
-        CanvasRenderingContext2D ctx = tmp.context2D;
-        for(TextLayer textLayer in textLayers) {
-            textLayer.fontColor = color;
-            ctx.fillStyle = textLayer.fillStyle;
-            ctx.font = textLayer.font;
-            Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
-        }
-
-        CanvasElement barCanvas = new CanvasElement(width: width, height: height);
-
-        for(BarLayer barLayer in barLayers) {
-            //print("Going to render ${barLayer.imgLoc}");
-            ImageElement image = await Loader.getResource((barLayer.imgLoc));
-            //print("image is $image, ${barLayer.topLeftX},${barLayer.topLeftY}");
-            barCanvas.context2D.drawImage(image, barLayer.topLeftX, barLayer.topLeftY);
-        }
-        Palette p = new CharSheetPalette()
-            ..aspect_light = tint;
-        Renderer.swapPalette(barCanvas,ReferenceColours.CHAR_SHEET_PALETTE, p);
-        tmp.context2D.drawImage(barCanvas,0,0);
-        return tmp;
-    }
 
 
     @override
