@@ -315,6 +315,8 @@ abstract class ReferenceColours {
         ..aspect_light = '#000000'
         ..aspect_dark = '#000000'
         ..shoe_light = '#ffffff'
+        ..hair_main = "#000000"
+        ..hair_accent = "#ffffff"
         ..shoe_dark = '#000000'
         ..cloak_light = '#000000'
         ..cloak_mid = '#ffffff'
@@ -326,6 +328,8 @@ abstract class ReferenceColours {
 
     static HomestuckPalette INK = new HomestuckPalette()
         ..accent = "#000000"
+        ..hair_main = "#ffffff"
+        ..hair_accent = "#000000"
         ..aspect_light = '#ffffff'
         ..aspect_dark = '#ffffff'
         ..shoe_light = '#000000'

@@ -6,6 +6,7 @@ import "dart:typed_data";
 import 'dart:convert';
 import "../includes/bytebuilder.dart";
 import "../includes/palette.dart";
+import "../Rendering/ReferenceColors.dart";
 
 class HomestuckDoll extends Doll {
     @override
@@ -112,39 +113,26 @@ class HomestuckDoll extends Doll {
 
 
     void randomize() {
-        Random rand = new Random();
-        int firstEye = -100;
-        for(SpriteLayer l in renderingOrderLayers) {
-            l.imgNumber = rand.nextInt(l.maxImageNumber+1);
-            //keep eyes synced unless player decides otherwise
-            if(firstEye > 0 && l.imgNameBase.contains("Eye")) l.imgNumber = firstEye;
-            if(firstEye < 0 && l.imgNameBase.contains("Eye")) firstEye = l.imgNumber;
-            if(l.imgNumber == 0) l.imgNumber = 1;
-            if(l.imgNameBase.contains("Glasses") && rand.nextDouble() > 0.35) l.imgNumber = 0;
-        }
-        if(rand.nextDouble() > .2) {
-            facePaint.imgNumber = 0;
-        }
-
-        HomestuckPalette h = palette as HomestuckPalette;
-        palette.add(HomestuckPalette.ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.ASPECT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-
-        palette.add(HomestuckPalette.ASPECT_DARK, new Colour(h.aspect_light.red, h.aspect_light.green, h.aspect_light.blue)..setHSV(h.aspect_light.hue, h.aspect_light.saturation, h.aspect_light.value/2), true);
-        palette.add(HomestuckPalette.SHOE_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.SHOE_DARK, new Colour(h.shoe_light.red, h.shoe_light.green, h.shoe_light.blue)..setHSV(h.shoe_light.hue, h.shoe_light.saturation, h.shoe_light.value/2), true);
-        palette.add(HomestuckPalette.CLOAK_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.CLOAK_DARK, new Colour(h.cloak_light.red, h.cloak_light.green, h.cloak_light.blue)..setHSV(h.cloak_light.hue, h.cloak_light.saturation, h.cloak_light.value/2), true);
-        palette.add(HomestuckPalette.CLOAK_MID, new Colour(h.cloak_dark.red, h.cloak_dark.green, h.cloak_dark.blue)..setHSV(h.cloak_dark.hue, h.cloak_dark.saturation, h.cloak_dark.value*3), true);
-        palette.add(HomestuckPalette.SHIRT_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.SHIRT_DARK, new Colour(h.shirt_light.red, h.shirt_light.green, h.shirt_light.blue)..setHSV(h.shirt_light.hue, h.shirt_light.saturation, h.shirt_light.value/2), true);
-        palette.add(HomestuckPalette.PANTS_LIGHT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.PANTS_DARK, new Colour(h.pants_light.red, h.pants_light.green, h.pants_light.blue)..setHSV(h.pants_light.hue, h.pants_light.saturation, h.pants_light.value/2), true);
-        palette.add(HomestuckPalette.HAIR_ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
-        palette.add(HomestuckPalette.HAIR_MAIN, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);
+         randomizeColors();
+         randomizeNotColors();
     }
 
     void randomizeColors() {
+        List<String> human_hair_colors = <String>["#68410a", "#fffffe", "#000000", "#000000", "#000000", "#f3f28d", "#cf6338", "#feffd7", "#fff3bd", "#724107", "#382207", "#ff5a00", "#3f1904", "#ffd46d", "#473200", "#91683c"];
+
+        Random rand = new Random();
+        HomestuckPalette h = palette as HomestuckPalette;
+        List<HomestuckPalette> paletteOptions = new List<HomestuckPalette>.from(ReferenceColours.paletteList.values);
+        HomestuckPalette newPallete = rand.pickFrom(paletteOptions);
+        if(newPallete == ReferenceColours.INK) {
+            tackyColors();
+        }else {
+            copyPalette(newPallete);
+        }
+        if(newPallete != ReferenceColours.SKETCH) h.add("hairMain",new Colour.fromStyleString(rand.pickFrom(human_hair_colors)),true);
+    }
+
+    void tackyColors() {
         Random rand = new Random();
         HomestuckPalette h = palette as HomestuckPalette;
         palette.add(HomestuckPalette.ACCENT, new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)), true);

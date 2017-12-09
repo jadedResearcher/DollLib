@@ -76,6 +76,12 @@ abstract class Doll {
         }
     }
 
+    void copyPalette(Palette newP) {
+        for(String name in newP.names) {
+            palette.add(name, newP[name], true);
+        }
+    }
+
     void load(String dataString) {
         Uint8List thingy = BASE64URL.decode(dataString);
         ByteReader reader = new ByteReader(thingy.buffer, 0);
