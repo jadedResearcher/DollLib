@@ -9,8 +9,8 @@ import "../loader/loader.dart";
 //and a section for boonies earned.
 //doll is on left.
 /*
-    TODO: why is color replacement not working?
-    write out text.
+
+    write out text. 16 layers.
     ability to customize all colors in echeladder pallete.
  */
 class Echeladder extends CharSheet {
