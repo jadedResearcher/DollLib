@@ -238,8 +238,10 @@ class Echeladder extends CharSheet {
             newColor.setHSV(newColor.hue, rand.nextDouble(0.5)+0.5, newColor.value);
             p.add(key, newColor, true);
         }
-        HomestuckPalette h = doll.palette as HomestuckPalette;
-        p.border = h.aspect_light;
+        if(doll is HomestuckDoll) {
+            HomestuckPalette h = doll.palette as HomestuckPalette;
+            p.border = h.aspect_light;
+        }
         for (String key in p.names) {
             palette.add(key, p[key], true);
         }
