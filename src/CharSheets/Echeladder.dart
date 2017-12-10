@@ -130,7 +130,62 @@ class Echeladder extends CharSheet {
   @override
   List<BarLayer> get barLayers => [];
 
+    @override
+    Element makeForm() {
+        Element ret = new DivElement();
+        ret.className = "cardForm";
+        ret.append(makeDollLoader());
+        ret.append(makeHideButton());
+        ret.append(makeTextLoader());
+        ret.append(makePaletteStuff());
+        ret.append(makeSaveButton());
+        return ret;
+    }
 
+     Element  makePaletteStuff() {
+        Element container = new DivElement();
+        container.style.padding = "10px";
+        List<String> names = new List<String>.from(palette.names);
+        //don't do for loop on keys, order is important
+        container.append(makeColorPicker(EcheladderPalette._BORDER, palette[EcheladderPalette._BORDER]));
+        container.append(makeColorPicker(EcheladderPalette._SIXTEEN, palette[EcheladderPalette._SIXTEEN]));
+        container.append(makeColorPicker(EcheladderPalette._FIFTEEN, palette[EcheladderPalette._FIFTEEN]));
+        container.append(makeColorPicker(EcheladderPalette._FOURTEEN, palette[EcheladderPalette._FOURTEEN]));
+        container.append(makeColorPicker(EcheladderPalette._THIRTEEN, palette[EcheladderPalette._THIRTEEN]));
+        container.append(makeColorPicker(EcheladderPalette._TWELVE, palette[EcheladderPalette._TWELVE]));
+        container.append(makeColorPicker(EcheladderPalette._ELEVEN, palette[EcheladderPalette._ELEVEN]));
+        container.append(makeColorPicker(EcheladderPalette._TEN, palette[EcheladderPalette._TEN]));
+        container.append(makeColorPicker(EcheladderPalette._NINE, palette[EcheladderPalette._NINE]));
+        container.append(makeColorPicker(EcheladderPalette._EIGHT, palette[EcheladderPalette._EIGHT]));
+        container.append(makeColorPicker(EcheladderPalette._SEVEN, palette[EcheladderPalette._SEVEN]));
+        container.append(makeColorPicker(EcheladderPalette._SIX, palette[EcheladderPalette._SIX]));
+        container.append(makeColorPicker(EcheladderPalette._FIFTH, palette[EcheladderPalette._FIFTH]));
+        container.append(makeColorPicker(EcheladderPalette._FOURTH, palette[EcheladderPalette._FOURTH]));
+        container.append(makeColorPicker(EcheladderPalette._THIRD, palette[EcheladderPalette._THIRD]));
+        container.append(makeColorPicker(EcheladderPalette._SECOND, palette[EcheladderPalette._SECOND]));
+        container.append(makeColorPicker(EcheladderPalette._FIRST, palette[EcheladderPalette._FIRST]));
+
+
+
+        return container;
+    }
+
+    Element makeColorPicker(String name, Colour color) {
+        Element container = new DivElement();
+        InputElement colorPicker = new InputElement();
+        colorPicker.type = "color";
+        colorPicker.value = color.toStyleString();
+        colorPicker.onChange.listen((Event e) {
+            color = new Colour.fromStyleString(colorPicker.value);
+            palette.add(name, color, true);
+            draw();
+        });
+        container.append(colorPicker);
+        SpanElement text = new SpanElement();
+        text.text = " $name";
+        container.append(text);
+        return container;
+    }
 
 
 
