@@ -56,11 +56,25 @@ class HomestuckGrubDoll extends HomestuckTrollDoll {
     }
 
     @override
+    void randomizeColors()
+
+    {
+        super.randomizeColors();
+        HomestuckPalette h = palette as HomestuckPalette;
+        h.add(HomestuckPalette.EYE_WHITE_LEFT, h.aspect_light,true);
+        h.add(HomestuckPalette.EYE_WHITE_RIGHT, h.aspect_light,true);
+
+    }
+
+    @override
     void randomize()
 
     {
         super.randomize();
         canonSymbol.imgNumber = 0;
+        HomestuckPalette h = palette as HomestuckPalette;
+        h.add(HomestuckPalette.EYE_WHITE_LEFT, h.aspect_light,true);
+        h.add(HomestuckPalette.EYE_WHITE_RIGHT, h.aspect_light,true);
 
     }
 

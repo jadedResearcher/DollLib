@@ -263,7 +263,7 @@ class Echeladder extends CharSheet {
         canvas.context2D.clearRect(0, 0, width, height);
         canvas.context2D.drawImage(sheetElement, echeladderStartX, echeladderStartY);
         canvas.context2D.drawImage(textCanvas, 0, 0);
-        if (!hideDoll) canvas.context2D.drawImage(dollElement, 50, 100);
+        if (!hideDoll) canvas.context2D.drawImage(dollElement, 75, 100);
 
         return canvas;
     }
