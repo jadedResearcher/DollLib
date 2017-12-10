@@ -85,8 +85,8 @@ abstract class CharSheet {
         return ret;
     }
 
-    Future<CanvasElement>  drawDoll(Doll doll, int width, int height) async {
-        CanvasElement monsterElement = new CanvasElement(width:width, height: height);
+    Future<CanvasElement>  drawDoll(Doll doll, int w, int h) async {
+        CanvasElement monsterElement = new CanvasElement(width:w, height: h);
         if(hideDoll) return monsterElement;
         CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
         await Renderer.drawDoll(dollCanvas, doll);

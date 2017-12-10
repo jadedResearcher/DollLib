@@ -17,6 +17,8 @@ import "../loader/loader.dart";
 class Echeladder extends CharSheet {
     int echeladderStartX = 300;
     int echeladderStartY = 0;
+    //also add procedural ones l8r
+    List<String> levels = <String>["Test1","Test2","Test3"];
 
     @override
     List<TextLayer> textLayers = new List<TextLayer>();
@@ -40,42 +42,47 @@ class Echeladder extends CharSheet {
 
     Echeladder(Doll doll) : super(doll) {
         randomizePalette();
-
+        initLevels();
         double x = echeladderStartX + 6.0;
         double y = echeladderStartY + 291.0;
-        textLayers.add(new TextLayer("one", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        Random rand = new Random();
+        textLayers.add(new TextLayer("one", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("two", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("two", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("three", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("three", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("four", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("four", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("five", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("five", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("six", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("six", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("seven", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("seven", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("eight", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("eight", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("nine", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("nine", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("ten", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("ten", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("eleven", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("eleven", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("twelve", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("twelve", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("thirteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("thirteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Fourteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Fourteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Fifteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Fifteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Sixteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Sixteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
 
         textLayers = new List<TextLayer>.from(textLayers.reversed);
+    }
+
+    void initLevels() {
+
     }
 
     @override
@@ -238,7 +245,7 @@ class Echeladder extends CharSheet {
         Renderer.swapPalette(sheetElement, paletteToReplace, palette);
 
 
-        CanvasElement dollElement = await drawDoll(doll, 200, 300);
+        CanvasElement dollElement = await drawDoll(doll, 200, 200);
         CanvasElement textCanvas = await drawText();
 
 
