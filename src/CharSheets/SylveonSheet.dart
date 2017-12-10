@@ -201,17 +201,6 @@ class SylveonSheet extends CharSheet {
         return "${rand.pickFrom(modifiers)}${rand.pickFrom(possibilities)}";
     }
 
-    Future<CanvasElement>  drawDoll(Doll doll) async {
-        CanvasElement monsterElement = new CanvasElement(width:375, height: 480);
-        if(hideDoll) return monsterElement;
-        CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
-        await Renderer.drawDoll(dollCanvas, doll);
-
-        dollCanvas = Renderer.cropToVisible(dollCanvas);
-
-        Renderer.drawToFitCentered(monsterElement, dollCanvas);
-        return monsterElement;
-    }
 
     Future<CanvasElement>  drawText() async {
       CanvasElement tmp = new CanvasElement(width: width, height: height);
@@ -268,7 +257,7 @@ class SylveonSheet extends CharSheet {
   Future<CanvasElement> draw() async {
       if(canvas == null) canvas = new CanvasElement(width: width, height: height);
       CanvasElement sheetElement = await drawSheetTemplate();
-      CanvasElement dollElement = await drawDoll(doll);
+      CanvasElement dollElement = await drawDoll(doll,375,480);
       CanvasElement symbolElement = await drawSymbol();
       CanvasElement textCanvas = await drawText();
       //Renderer.drawBG(dollElement, ReferenceColours.RED, ReferenceColours.RED);

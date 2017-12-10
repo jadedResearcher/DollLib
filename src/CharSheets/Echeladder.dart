@@ -15,7 +15,13 @@ import "../loader/loader.dart";
     font color is inverse of bg color.
  */
 class Echeladder extends CharSheet {
-  Echeladder(Doll doll) : super(doll);
+
+    TextLayer first;
+  Echeladder(Doll doll) : super(doll) {
+
+      first = new TextLayer("First","PLACEHOLDER",345.0,470.0, fontSize: 14, maxWidth: 100, fontName: "Courier New", emphasis: emphasis,fontColor: ReferenceColours.BLACK);
+
+  }
 
   @override
   int width = 500;
@@ -71,30 +77,35 @@ class Echeladder extends CharSheet {
 
   // TODO: implement textLayers
   @override
-  List<TextLayer> get textLayers => [];
+  List<TextLayer> get textLayers => [first];
 
-  Future<CanvasElement>  drawDoll(Doll doll) async {
-      CanvasElement monsterElement = new CanvasElement(width:200, height: 200);
-      if(hideDoll) return monsterElement;
-      CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
-      await Renderer.drawDoll(dollCanvas, doll);
-      //Renderer.drawBG(monsterElement, ReferenceColours.RED, ReferenceColours.WHITE);
 
-      dollCanvas = Renderer.cropToVisible(dollCanvas);
 
-      Renderer.drawToFitCentered(monsterElement, dollCanvas);
-      return monsterElement;
+  void randomizePalette() {
+      Random rand = new Random();
+      EcheladderPalette p = new EcheladderPalette();
+    for(String key in palette.names) {
+        Colour newColor = new Colour(rand.nextInt(255), rand.nextInt(255),rand.nextInt(255));
+        p.add(key, newColor, true);
+    }
+    HomestuckPalette h = doll.palette as HomestuckPalette;
+    p.border = h.aspect_light;
+      for(String key in p.names) {
+          palette.add(key, p[key], true);
+      }
+
   }
 
   @override
   Future<CanvasElement> draw() async {
+      randomizePalette();
       if(canvas == null) canvas = new CanvasElement(width: width, height: height);
       CanvasElement sheetElement = await drawSheetTemplate();
 
       Renderer.swapPalette(sheetElement, paletteToReplace, palette);
 
 
-      CanvasElement dollElement = await drawDoll(doll);
+      CanvasElement dollElement = await drawDoll(doll,200,300);
       CanvasElement textCanvas = await drawText();
 
 

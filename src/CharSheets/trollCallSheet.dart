@@ -70,18 +70,7 @@ class TrollCallSheet extends CharSheet {
     @override
     List<TextLayer> get textLayers => <TextLayer>[name,fact1,fact2,fact3]; //placeholder
 
-    Future<CanvasElement>  drawDoll(Doll doll) async {
-        CanvasElement monsterElement = new CanvasElement(width:300, height: 450);
-        if(hideDoll) return monsterElement;
-        CanvasElement dollCanvas = new CanvasElement(width: doll.width, height: doll.height);
-        await Renderer.drawDoll(dollCanvas, doll);
-        //Renderer.drawBG(monsterElement, ReferenceColours.RED, ReferenceColours.WHITE);
 
-        dollCanvas = Renderer.cropToVisible(dollCanvas);
-
-        Renderer.drawToFitCentered(monsterElement, dollCanvas);
-        return monsterElement;
-    }
 
     //obsessed with nouns. verbs a noun every single day.
     String randomFact() {
@@ -111,7 +100,7 @@ class TrollCallSheet extends CharSheet {
         CanvasElement sheetElement = await drawSheetTemplate();
         Renderer.swapColors(sheetElement, tint);
 
-        CanvasElement dollElement = await drawDoll(doll);
+        CanvasElement dollElement = await drawDoll(doll,300,450);
         CanvasElement textCanvas = await drawText();
         CanvasElement symbolElement = await drawSymbol();
 
