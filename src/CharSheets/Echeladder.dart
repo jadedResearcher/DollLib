@@ -46,7 +46,7 @@ class Echeladder extends CharSheet {
         double x = echeladderStartX + 6.0;
         double y = echeladderStartY + 291.0;
         Random rand = new Random();
-        int maxWidth = 188;
+        int maxWidth = 180;
         int maxHeight = 14;
         textLayers.add(new TextLayer("one", rand.pickFrom(levels), x, y, fontSize: 14, maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
@@ -84,11 +84,11 @@ class Echeladder extends CharSheet {
     }
 
     void initLevels() {
-        List<String> effects = <String>["asleep","legal","so totally illegal","illegal","extra legal","ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goaded", "enhanced", "murdered"];
-        List<String> nouns =<String> ["Baby","Grub","Bro","Mom","royalty","Queen","guardian","parent","Dad","opponent","graveyard","irrelevancy corner","card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubbery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
-        List<String> verbs = <String>["imagine","tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
+        List<String> effects = <String>["asleep","legal","illegal","extra legal","ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","unloved","apathetic","addicted","uncomfortable","boggling", "goaded", "enhanced", "murdered"];
+        List<String> nouns =<String> ["Baby","Grub","Bro","Mom","royalty","Queen","guardian","parent","Dad","opponent","graveyard","card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary","legendary","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubbery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
+        List<String> verbs = <String>["imagine","tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fond","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
 
-        for(int i = 0; i<13; i++) {
+        for(int i = 0; i<100; i++) {
             levels.add("${rand.pickFrom(effects).toUpperCase()} ${rand.pickFrom(nouns).toUpperCase()}");
             levels.add("${rand.pickFrom(verbs).toUpperCase()} ${rand.pickFrom(nouns).toUpperCase()}");
         }
