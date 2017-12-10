@@ -104,7 +104,18 @@ abstract class CharSheet {
         for(TextLayer textLayer in textLayers) {
             ctx.fillStyle = textLayer.fillStyle;
             ctx.font = textLayer.font;
+            int savedSize = textLayer.fontSize;
+            //ctx.fillText(textLayer.text, textLayer.topLeftX, textLayer.topLeftY);
+            int numLines = Renderer.simulateWrapTextToGetFontSize(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth, textLayer.maxHeight);
+            print(numLines);
+            if((numLines * textLayer.fontSize)>textLayer.maxHeight) {
+                print("shrinking needed");
+                textLayer.fontSize = (textLayer.maxHeight/numLines).floor();
+            }
+            ctx.font = textLayer.font;
+            textLayer.fontSize = savedSize; //restore
             Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
+            //Renderer.wrap_text(ctx,textLayer.text,textLayer.topLeftX,textLayer.topLeftY,textLayer.fontSize,textLayer.maxWidth,"left");
         }
 
         CanvasElement barCanvas = new CanvasElement(width: width, height: height);

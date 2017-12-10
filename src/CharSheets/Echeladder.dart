@@ -18,7 +18,7 @@ class Echeladder extends CharSheet {
     int echeladderStartX = 300;
     int echeladderStartY = 0;
     //also add procedural ones l8r
-    List<String> levels = <String>["Test1","Test2","Test3"];
+    List<String> levels = <String>["NIPPER CADET", "PESKY URCHIN", "BRAVESPROUT", "JUVESQUIRT", "RUMPUS BUSTER", "CHAMP-FRY", "ANKLEBITER", "CALLOUSED TENDERFOOT", "RASCALSPRAT", "GRITTY MIDGET", "BRITCHES RIPPER", "ALIEN URCHIN", "NESTING NEWB","SINGING SCURRYWORT","MUSICAL MOPPET","NERDY NOODLER","SCAMPERING SCIENTIST","MUSCLES HOARDER","BODY BOOSTER","PRATFALL PRIEST","BEAGLE PUSS DARTABOUT","APPRENTICE ARTIST","CULTURE BUCKAROO","BATTERBRAT","GRITTY GUARDIAN","FAKEY FAKE LOVER","FANTASTIC DREAMER","JUSTICE JUICER","BALANCE RUMBLER","TRIVIA SMARTYPANTS","NIGHTLY NABBER","QUESTING CUPID","ROMANCE EXPERT","FRIEND-TO-ALL","FRIEND COLLECTOR","ENEMY #1","JERKWAD JOURNEYER","SHAKY SHAKESPEARE","QUILL RUINER","HURRYWORTH HACKER","CLANKER CURMUDGEON","GREENTIKE","RIBBIT RUSTLER","FROG-WRANGLER","MARQUIS MCFLY","JUNIOR CLOCK BLOCKER","DEAD KID COLLECTOR","BOY SKYLARK","SODAJERK'S CONFIDANTE","MAN SKYLARK","APOCALYPSE HOW","REVELATION RUMBLER","PESSIMISM PILGRIM","FRIEND HOARDER YOUTH","HEMOGOBLIN","SOCIALIST BUTTERFLY","SHARKBAIT HEARTHROB","FEDORA FLEDGLING","PENCILWART PHYLACTERY","NIPPER-CADET","COIN-FLIPPER CONFIDANTE","TWO-FACED BUCKAROO","SHOWOFF SQUIRT","JUNGLEGYM SWASHBUCKLER","SUPERSTITIOUS SCURRYWART","KNOW-NOTHING ANKLEBITER","INKY BLACK SORROWMASTER","FISTICUFFSAFICTIONADO","MOPPET OF MADNESS","FLEDGLING HATTER","RAGAMUFFIN REVELER","GADABOUT PIPSQUEAK","BELIVER EXTRAORDINAIRE","DOCTOR FEELGOOD","BRUISE BUSTER","LODESTAR LIFER","BREACHES HEALER","ADHDLED YOUTH","LUCID DREAMER","LUCID DREAMER","QUESTING QUESTANT","LADABOUT LANCELOT","SIR SKULLDODGER","SEEING iDOG","PIPSQUEAK PROGNOSTICATOR","SCAMPERVIEWER 5000","SKAIA'S TOP IDOL","POPSTAR BOPPER","SONGSCUFFER","SKAIA'S TOP IDOL","POPSTAR BOPPER","SONGSCUFFER","SCURRYWART SERVANT","SAUCY PILGRIM","MADE OF SUCCESS","KNEEHIGH ROBINHOOD","DASHING DARTABOUT","COMMUNIST COMMANDER","APPRENTICE ANKLEBITER","JOURNEYING JUNIOR","OUTFOXED BUCKAROO","RUMPUS RUINER","HAMBURGLER YOUTH","PRISONBAIT","SERENE SCALLYWAG","MYSTICAL RUGMUFFIN","FAE FLEDGLING","PRINCE HARMING","ROYAL RUMBLER","DIGIT PRINCE","WESTWORD WORRYBITER","BUBBLETROUBLER","EYE OF GRINCH","WIZARDING TIKE","THE SORCERER'S SCURRYWART","FAMILIAR FRAYMOTTIFICTIONADO","4TH WALL AFICIONADO","CATACLYSM COMMANDER","AUTHOR","BOSTON SCREAMPIE","COOKIE OFFERER","FIRE FRIEND","MIDNIGHT BURNER","WRITER WATCHER","DIARY DEAREST","HERBAL ESSENCE","CHICKEN SEASONER","TOMEMASTER","SNOWMAN SAVIOR","NOBODY NOWHERE","NULLZILLA","KNEEHIGH ROBINHOOD","DASHING DARTABOUT","COMMUNIST COMMANDER","AMUSING AMATEUR","SPOTLIGHT POINTER","GREEK GOD","LAUGHING STOCKINGS","DELEGATION DELIVERER","LORDLING"];
 
     @override
     List<TextLayer> textLayers = new List<TextLayer>();
@@ -46,43 +46,52 @@ class Echeladder extends CharSheet {
         double x = echeladderStartX + 6.0;
         double y = echeladderStartY + 291.0;
         Random rand = new Random();
-        textLayers.add(new TextLayer("one", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        int maxWidth = 188;
+        int maxHeight = 14;
+        textLayers.add(new TextLayer("one", rand.pickFrom(levels), x, y, fontSize: 14, maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("two", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("two", rand.pickFrom(levels), x, y, fontSize: 14, maxHeight: maxHeight,maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("three", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("three", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("four", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("four", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("five", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("five", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("six", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("six", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("seven", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("seven", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("eight", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("eight", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("nine", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("nine", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("ten", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("ten", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: maxWidth, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("eleven", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("eleven", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("twelve", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("twelve", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("thirteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("thirteen", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Fourteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Fourteen", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Fifteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Fifteen", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
         y += -17;
-        textLayers.add(new TextLayer("Sixteen", rand.pickFrom(levels), x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        textLayers.add(new TextLayer("Sixteen", rand.pickFrom(levels), x, y, fontSize: 14,maxHeight: maxHeight, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
 
         textLayers = new List<TextLayer>.from(textLayers.reversed);
     }
 
     void initLevels() {
+        List<String> effects = <String>["asleep","legal","so totally illegal","illegal","extra legal","ironic","ripe","angsting","shitty","disappointing","amazing","perfect","confused","poisoned","dead","alive", "audited", "insane","unconditionally immortal", "immortal", "on fire","boring","missing","lost","litigated","deceitful","irrelevant","a lost cause","annoying","smelly","chaotic","trembling","afraid","beserk","vomiting","depressed","disappointing","in a fandom","unloved","apathetic","addicted","uncomfortable","boggling", "goaded", "enhanced", "murdered"];
+        List<String> nouns =<String> ["Baby","Grub","Bro","Mom","royalty","Queen","guardian","parent","Dad","opponent","graveyard","irrelevancy corner","card","monster","item","deed","feat","artifact","weapon","armor","shield","ring","mana","deck","creature","sword","legendary artifact","legendary weapon","god","meme","red mile", "ring of orbs no-fold","arm","mechanical bull","mystery","token","shrubbery","Blue Lady","gem","egg","coin","talisman", "turn", "head","goddamn mushroom"];
+        List<String> verbs = <String>["imagine","tap","use","discard","draw","imbibe","create","devour","vore","scatter","shred","place","select","choose","levitate","burn","throw away","place","dominate","humiliate","oggle","auto-parry","be","wear","flip","fondly regard","retrieve","throw","slay","defeat","become","grab","order","steal","smell","sample","taste","caress","fondle","placate","handle","pirouette","entrench","crumple","shatter","drop","farm","sign","pile","smash","resist","sip","understand","contemplate", "murder", "elevate", "enslave"];
 
+        for(int i = 0; i<13; i++) {
+            levels.add("${rand.pickFrom(effects).toUpperCase()} ${rand.pickFrom(nouns).toUpperCase()}");
+            levels.add("${rand.pickFrom(verbs).toUpperCase()} ${rand.pickFrom(nouns).toUpperCase()}");
+        }
     }
 
     @override
