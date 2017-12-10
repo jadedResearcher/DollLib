@@ -38,97 +38,97 @@ class Echeladder extends CharSheet {
     TextLayer fifteen;
     TextLayer sixteen;
 
-  Echeladder(Doll doll) : super(doll) {
-      randomizePalette();
+    Echeladder(Doll doll) : super(doll) {
+        randomizePalette();
 
-      double x = echeladderStartX + 6.0;
-      double y = echeladderStartY + 291.0;
-      textLayers.add(new TextLayer("one","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("two","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("three","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("four","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("five","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("six","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("seven","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("eight","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("nine","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("ten","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("eleven","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("twelve","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("thirteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("Fourteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("Fifteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
-      y+= -17;
-      textLayers.add(new TextLayer("Sixteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+        double x = echeladderStartX + 6.0;
+        double y = echeladderStartY + 291.0;
+        textLayers.add(new TextLayer("one", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("two", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("three", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("four", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("five", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("six", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("seven", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("eight", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("nine", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("ten", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("eleven", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("twelve", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("thirteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("Fourteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("Fifteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
+        y += -17;
+        textLayers.add(new TextLayer("Sixteen", "PLACEHOLDER", x, y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold", fontColor: ReferenceColours.BLACK));
 
-      textLayers = new List<TextLayer>.from(textLayers.reversed);
-  }
+        textLayers = new List<TextLayer>.from(textLayers.reversed);
+    }
 
-  @override
-  int width = 500;
-  @override
-  int height = 300;
+    @override
+    int width = 500;
+    @override
+    int height = 300;
 
-  @override
-  int type = 3;
+    @override
+    int type = 3;
 
-  Palette paletteToReplace = new EcheladderPalette()
-      ..border = '#4a92f7'
-      ..first = '#8ff74a'
-      ..second = '#ba1212'
-      ..third = '#ffffee'
-      ..fourth = '#f0ff00'
-      ..fifth = '#9c00ff'
-      ..six = '#2b6ade'
-      ..seven = '#003614'
-      ..eight = '#f8e69f'
-      ..nine = '#0000ff'
-      ..ten = '#eaeaea'
-      ..eleven = '#ff9600'
-      ..twelve = '#581212'
-      ..thirteen = '#ffa6ac'
-      ..fourteen = '#1f7636'
-      ..fifteen = '#ffe1fc'
-      ..sixteen = '#fcff00';
-
-
-  Palette palette = new EcheladderPalette()
-      ..border = '#444444'
-      ..first = '#000000'
-      ..second = '#000000'
-      ..third = '#000000'
-      ..fourth = '#000000'
-      ..fifth = '#000000'
-      ..six = '#000000'
-      ..seven = '#000000'
-      ..eight = '#000000'
-      ..nine = '#000000'
-      ..ten = '#000000'
-      ..eleven = '#000000'
-      ..twelve = '#000000'
-      ..thirteen = '#000000'
-      ..fourteen = '#000000'
-      ..fifteen = '#000000'
-      ..sixteen = '#000000';
+    Palette paletteToReplace = new EcheladderPalette()
+        ..border = '#4a92f7'
+        ..first = '#8ff74a'
+        ..second = '#ba1212'
+        ..third = '#ffffee'
+        ..fourth = '#f0ff00'
+        ..fifth = '#9c00ff'
+        ..six = '#2b6ade'
+        ..seven = '#003614'
+        ..eight = '#f8e69f'
+        ..nine = '#0000ff'
+        ..ten = '#eaeaea'
+        ..eleven = '#ff9600'
+        ..twelve = '#581212'
+        ..thirteen = '#ffa6ac'
+        ..fourteen = '#1f7636'
+        ..fifteen = '#ffe1fc'
+        ..sixteen = '#fcff00';
 
 
-  // TODO: implement barLayers
-  @override
-  List<BarLayer> get barLayers => [];
+    Palette palette = new EcheladderPalette()
+        ..border = '#444444'
+        ..first = '#000000'
+        ..second = '#000000'
+        ..third = '#000000'
+        ..fourth = '#000000'
+        ..fifth = '#000000'
+        ..six = '#000000'
+        ..seven = '#000000'
+        ..eight = '#000000'
+        ..nine = '#000000'
+        ..ten = '#000000'
+        ..eleven = '#000000'
+        ..twelve = '#000000'
+        ..thirteen = '#000000'
+        ..fourteen = '#000000'
+        ..fifteen = '#000000'
+        ..sixteen = '#000000';
+
+
+    // TODO: implement barLayers
+    @override
+    List<BarLayer> get barLayers => [];
 
     @override
     Element makeForm() {
@@ -142,7 +142,7 @@ class Echeladder extends CharSheet {
         return ret;
     }
 
-     Element  makePaletteStuff() {
+    Element makePaletteStuff() {
         Element container = new DivElement();
         container.style.padding = "10px";
         List<String> names = new List<String>.from(palette.names);
@@ -166,7 +166,6 @@ class Echeladder extends CharSheet {
         container.append(makeColorPicker(EcheladderPalette._FIRST, palette[EcheladderPalette._FIRST]));
 
 
-
         return container;
     }
 
@@ -188,44 +187,69 @@ class Echeladder extends CharSheet {
     }
 
 
-
-  void randomizePalette() {
-      Random rand = new Random();
-      EcheladderPalette p = new EcheladderPalette();
-    for(String key in palette.names) {
-        Colour newColor = new Colour(rand.nextInt(255), rand.nextInt(255),rand.nextInt(255));
-        p.add(key, newColor, true);
+    //for each color in pallete, make font layer have invert color
+    void invertFont() {
+        EcheladderPalette p = palette as EcheladderPalette;
+        textLayers[0].fontColor = invertColour(p.sixteen);
+        textLayers[1].fontColor = invertColour(p.fifteen);
+        textLayers[2].fontColor = invertColour(p.fourteen);
+        textLayers[3].fontColor = invertColour(p.thirteen);
+        textLayers[4].fontColor = invertColour(p.twelve);
+        textLayers[5].fontColor = invertColour(p.eleven);
+        textLayers[6].fontColor = invertColour(p.ten);
+        textLayers[7].fontColor = invertColour(p.nine);
+        textLayers[8].fontColor = invertColour(p.eight);
+        textLayers[9].fontColor = invertColour(p.seven);
+        textLayers[10].fontColor = invertColour(p.six);
+        textLayers[11].fontColor = invertColour(p.fifth);
+        textLayers[12].fontColor = invertColour(p.fourth);
+        textLayers[13].fontColor = invertColour(p.third);
+        textLayers[14].fontColor = invertColour(p.second);
+        textLayers[15].fontColor = invertColour(p.first);
     }
-    HomestuckPalette h = doll.palette as HomestuckPalette;
-    p.border = h.aspect_light;
-      for(String key in p.names) {
-          palette.add(key, p[key], true);
-      }
 
-  }
-
-  @override
-  Future<CanvasElement> draw() async {
-      if(canvas == null) canvas = new CanvasElement(width: width, height: height);
-      CanvasElement sheetElement = await drawSheetTemplate();
-
-      Renderer.swapPalette(sheetElement, paletteToReplace, palette);
+    Colour invertColour(Colour color) {
+        Colour ret = new Colour(255 -color.red, 255-color.green, 255-color.blue);
+        return ret;
+    }
 
 
-      CanvasElement dollElement = await drawDoll(doll,200,300);
-      CanvasElement textCanvas = await drawText();
+    void randomizePalette() {
+        Random rand = new Random();
+        EcheladderPalette p = new EcheladderPalette();
+        for (String key in palette.names) {
+            Colour newColor = new Colour(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+            newColor.setHSV(newColor.hue, rand.nextDouble(0.5)+0.5, newColor.value);
+            p.add(key, newColor, true);
+        }
+        HomestuckPalette h = doll.palette as HomestuckPalette;
+        p.border = h.aspect_light;
+        for (String key in p.names) {
+            palette.add(key, p[key], true);
+        }
+    }
+
+    @override
+    Future<CanvasElement> draw() async {
+        invertFont();
+        if (canvas == null) canvas = new CanvasElement(width: width, height: height);
+        CanvasElement sheetElement = await drawSheetTemplate();
+
+        Renderer.swapPalette(sheetElement, paletteToReplace, palette);
 
 
-      canvas.context2D.clearRect(0,0,width,height);
-      canvas.context2D.drawImage(sheetElement, echeladderStartX, echeladderStartY);
-      canvas.context2D.drawImage(textCanvas, 0, 0);
-      if(!hideDoll)canvas.context2D.drawImage(dollElement,50, 100);
+        CanvasElement dollElement = await drawDoll(doll, 200, 300);
+        CanvasElement textCanvas = await drawText();
 
-      return canvas;
-  }
+
+        canvas.context2D.clearRect(0, 0, width, height);
+        canvas.context2D.drawImage(sheetElement, echeladderStartX, echeladderStartY);
+        canvas.context2D.drawImage(textCanvas, 0, 0);
+        if (!hideDoll) canvas.context2D.drawImage(dollElement, 50, 100);
+
+        return canvas;
+    }
 }
-
-
 
 
 class EcheladderPalette extends Palette {
