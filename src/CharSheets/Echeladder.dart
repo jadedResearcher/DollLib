@@ -15,12 +15,67 @@ import "../loader/loader.dart";
     font color is inverse of bg color.
  */
 class Echeladder extends CharSheet {
+    int echeladderStartX = 300;
+    int echeladderStartY = 0;
+
+    @override
+    List<TextLayer> textLayers = new List<TextLayer>();
 
     TextLayer first;
+    TextLayer second;
+    TextLayer third;
+    TextLayer fourth;
+    TextLayer fifth;
+    TextLayer six;
+    TextLayer seven;
+    TextLayer eight;
+    TextLayer nine;
+    TextLayer ten;
+    TextLayer eleven;
+    TextLayer twelve;
+    TextLayer thirteen;
+    TextLayer fourteen;
+    TextLayer fifteen;
+    TextLayer sixteen;
+
   Echeladder(Doll doll) : super(doll) {
+      randomizePalette();
 
-      first = new TextLayer("First","PLACEHOLDER",345.0,470.0, fontSize: 14, maxWidth: 100, fontName: "Courier New", emphasis: emphasis,fontColor: ReferenceColours.BLACK);
+      double x = echeladderStartX + 6.0;
+      double y = echeladderStartY + 291.0;
+      textLayers.add(new TextLayer("one","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("two","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("three","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("four","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("five","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("six","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("seven","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("eight","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("nine","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("ten","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("eleven","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("twelve","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("thirteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("Fourteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("Fifteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
+      y+= -17;
+      textLayers.add(new TextLayer("Sixteen","PLACEHOLDER",x,y, fontSize: 14, maxWidth: 200, fontName: "Courier New", emphasis: "Bold",fontColor: ReferenceColours.BLACK));
 
+      textLayers = new List<TextLayer>.from(textLayers.reversed);
   }
 
   @override
@@ -75,9 +130,7 @@ class Echeladder extends CharSheet {
   @override
   List<BarLayer> get barLayers => [];
 
-  // TODO: implement textLayers
-  @override
-  List<TextLayer> get textLayers => [first];
+
 
 
 
@@ -98,7 +151,6 @@ class Echeladder extends CharSheet {
 
   @override
   Future<CanvasElement> draw() async {
-      randomizePalette();
       if(canvas == null) canvas = new CanvasElement(width: width, height: height);
       CanvasElement sheetElement = await drawSheetTemplate();
 
@@ -110,7 +162,7 @@ class Echeladder extends CharSheet {
 
 
       canvas.context2D.clearRect(0,0,width,height);
-      canvas.context2D.drawImage(sheetElement, 300, 0);
+      canvas.context2D.drawImage(sheetElement, echeladderStartX, echeladderStartY);
       canvas.context2D.drawImage(textCanvas, 0, 0);
       if(!hideDoll)canvas.context2D.drawImage(dollElement,50, 100);
 
